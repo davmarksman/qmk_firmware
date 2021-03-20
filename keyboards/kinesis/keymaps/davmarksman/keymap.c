@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
                   LALT_T(KC_ESC), MEH(KC_NO),
                             KC_DEL,        
-          LCTL_T(KC_BSPC),SFT,KC_LCTL ,
+          LCTL_T(KC_BSPC),LSFT,KC_LCTL ,
           //KC_BSPC ,LSFT_T(KC_SPC) ,KC_LCTL , // disable to make learning shift easier
           // Right Hand
           KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_MPRV ,KC_MPLY ,KC_MNXT ,KC_NO   ,LQ   ,
