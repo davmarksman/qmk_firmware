@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 
-
 // layers
 enum layer_names {
     QWERTY_MOD,
@@ -17,8 +16,13 @@ enum layer_names {
 #define LL1 OSL(L1)
 #define LNAV TO(NAV)
 #define LSYM TO(SYM)
-#define UNDO LCTL(KC_Z)
-#define REDO LCTL(KC_Y)
+
+// Userful defines
+#define K_UNDO LCTL(KC_Z)
+#define K_REDO LCTL(KC_Y)
+
+#define K_ALTESC LALT_T(KC_ESC)
+#define K_PASTE C(A(KC_C))
 
 // Tap dance
 enum {
@@ -27,7 +31,7 @@ enum {
     TD_2,
     TD_LB,
     TD_RB,
-    TD_EQ,
+    // TD_EQ,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -37,8 +41,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_1] = ACTION_TAP_DANCE_DOUBLE(KC_1, KC_EXCLAIM),
     [TD_LB] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
     [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
-    [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
+    // [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
 };
+
 
 
 /****************************************************************************************************
@@ -70,25 +75,25 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [QWERTY_MOD] = LAYOUT(
           KC_NO   ,KC_F1   ,KC_COPY ,KC_PSTE ,C(A(KC_C)),KC_F5   ,KC_F6   ,KC_F7   ,KC_F8   ,
-          TD(TD_EQ),TD(TD_1),TD(TD_2),KC_3    ,KC_4    ,KC_5    ,
+          KC_EQL  ,TD(TD_1),TD(TD_2),KC_3    ,KC_4    ,KC_5    ,
           KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,
           LNAV    ,LGUI_T(KC_A),LT(NAV,KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G    ,
           TD(TD_LB) ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,
                   KC_BSLS  ,KC_LEFT ,KC_RGHT ,LL1  ,
           // Thumb
-                  LALT_T(KC_ESC), MEH(KC_NO),
+                  K_ALTESC, MEH(KC_NO),
                             KC_DEL,        
-          LCTL_T(KC_BSPC),LSFT,KC_LCTL ,
+          LCTL_T(KC_BSPC),KC_LSFT,KC_LCTL ,
           //KC_BSPC ,LSFT_T(KC_SPC) ,KC_LCTL , // disable to make learning shift easier
           // Right Hand
-          KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_MPRV ,KC_MPLY ,KC_MNXT ,KC_NO   ,LQ   ,
+          KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_MPRV ,KC_MPLY ,KC_MNXT ,KC_F13   ,LQ   ,
           KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,TD(TD_MINS),
           KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_NUBS ,
           KC_H    ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L),RGUI_T(KC_SCLN),KC_QUOT ,
           KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,TD(TD_RB) ,
                   LL1,KC_RALT ,KC_RGUI ,KC_GRV  ,
           // Thumb
-          C(A(KC_C)),KC_RGUI ,
+          K_PASTE ,KC_RGUI ,
           KC_UP   ,
           KC_DOWN ,KC_ENT,LT(SYM, KC_SPC)
     ),
@@ -96,22 +101,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_ESC  ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,KC_F6   ,KC_F7   ,KC_F8   ,
           KC_EQL  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,
           KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,
-          LNAV   ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,
+          LNAV    ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,
           KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,
-                  KC_BSLS ,KC_LEFT ,KC_RGHT ,LL1  ,
+                   KC_BSLS ,KC_LEFT ,KC_RGHT ,LL1  ,
           // Thumb
-                  LALT_T(KC_ESC), MEH(KC_NO),
+                   K_ALTESC, MEH(KC_NO),
                             KC_DEL,
           KC_BSPC ,KC_LCTL,KC_LSFT ,
           // Right Hand size
-          KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_MPRV ,KC_MPLY ,KC_MNXT ,KC_NO   ,LQMOD ,
+          KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_MPRV ,KC_MPLY ,KC_MNXT ,KC_F13   ,LQMOD ,
           KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,KC_MINS ,
           KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_NUBS ,
           KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,KC_QUOT ,
           KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
-                   LL1  ,KC_LBRC ,KC_RBRC ,KC_GRV  ,
+                   LL1     ,KC_LBRC ,KC_RBRC ,KC_GRV  ,
           // Thumb
-          C(A(KC_C))   ,KC_RGUI ,
+          K_PASTE ,KC_RGUI ,
           KC_UP   ,
           KC_DOWN ,KC_ENT,KC_SPC
     ),
@@ -131,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_F11  ,
           KC_PGUP ,A(KC_LEFT),KC_NO   ,A(KC_RGHT),G(S(KC_S))   ,KC_F12  ,
           KC_PGDN ,KC_J    ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,
-          KC_NO   ,KC_NO   ,UNDO    ,REDO    ,KC_NO   ,KC_CAPS ,
+          KC_NO   ,KC_NO   ,K_UNDO  ,K_REDO  ,KC_NO   ,KC_CAPS ,
                    LQMOD   ,KC_NO   ,KC_NO   ,KC_NO   ,
            // Thumb
           KC_NO   ,KC_NO   ,
@@ -154,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_F11  ,
           KC_PGUP ,KC_HOME ,KC_UP   ,KC_END  ,KC_NO   ,KC_F12  ,
           KC_PGDN ,KC_LEFT ,KC_DOWN ,KC_RGHT ,KC_NO   ,KC_NO   ,
-          KC_NO   ,KC_NO   ,UNDO    ,REDO    ,KC_NO   ,KC_CAPS ,
+          KC_NO   ,KC_NO   ,K_UNDO  ,K_REDO  ,KC_NO   ,KC_CAPS ,
                    LQMOD   ,KC_NO   ,KC_NO   ,KC_NO   ,
            // Thumb
           KC_NO   ,KC_NO   ,
@@ -206,7 +211,8 @@ void led_set_user(uint8_t usb_led) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
-      case QWERTY:
+      case QWERTY: 
+      case SYM:
           writePin(LED_COMPOSE_PIN, 0);     
           writePin(LED_NUM_LOCK_PIN, 1);     
           writePin(LED_SCROLL_LOCK_PIN, 1);
@@ -220,7 +226,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
           writePin(LED_COMPOSE_PIN, 1);     
           writePin(LED_NUM_LOCK_PIN, 1);     
           writePin(LED_SCROLL_LOCK_PIN, 0);
-          break;
+          break; 
       default:
           writePin(LED_COMPOSE_PIN, 1);
           writePin(LED_SCROLL_LOCK_PIN, 1);
