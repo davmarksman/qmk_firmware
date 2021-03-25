@@ -4,7 +4,7 @@
 
 // Home row mods settings //
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_TERM 250
+#define TAPPING_TERM 220
 
 
 // Limits the max. amount of layers to 8 to save firmware memory.
