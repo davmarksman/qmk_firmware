@@ -15,6 +15,7 @@ enum layer_names {
 #define LQ TO(QWERTY)
 #define LL1 OSL(L1)
 #define LNAV TO(NAV)
+#define LSYM OSL(SYM) // or MO
 
 // Userful defines
 #define K_UNDO LCTL(KC_Z)
@@ -89,13 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_F1       ,KC_COPY     ,KC_PSTE     ,K_PASTE     ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,TD(TD_1)    ,TD(TD_2)    ,TD(TD_3)    ,TD(TD_4)    ,TD(TD_5)    ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,RGUI_T(KC_A),LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
+          LNAV        ,KC_A        ,LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
           TD(TD_LB)   ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
                        KT_ALTESC   ,MEH(KC_NO)  ,
                                     KC_DEL      ,
-          KT_C_BK     ,KC_LSFT     ,KC_LCTL     ,
+          KT_C_BK     ,KC_LSFT     ,LSYM        ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           TD(TD_6)    ,TD(TD_7)    ,TD(TD_8)    ,KC_9        ,KC_0        ,TD(TD_MINS) ,
@@ -179,9 +180,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 [SYM] = LAYOUT(
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_PLUS     ,KC_NO       ,KC_AT       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_PLUS     ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          LQMOD       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,KC_NO       ,
+          LQMOD       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,LQMOD       ,
           // Thumb
@@ -192,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_AT       ,KC_PLUS     ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
+          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,KC_PLUS     ,KC_UNDS     ,KC_NO     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
                        LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
@@ -201,6 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       
     ),
 };
+
 
 
 void matrix_init_user(void) {
