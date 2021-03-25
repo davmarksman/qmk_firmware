@@ -3,7 +3,7 @@
 // layers
 enum layer_names {
     QWERTY_MOD,
-    QWERTY,
+    GAME,
     L1,
     NAV,
     SYM
@@ -12,7 +12,7 @@ enum layer_names {
 
 // layer keys
 #define LQMOD TO(QWERTY_MOD)
-#define LQ TO(QWERTY)
+#define LQ TO(GAME)
 #define LL1 OSL(L1)
 #define LNAV TO(NAV)
 #define LSYM OSL(SYM) // or MO
@@ -101,15 +101,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           TD(TD_6)    ,TD(TD_7)    ,TD(TD_8)    ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,LT(NAV,KC_SCLN),KC_QUOT     ,
+          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,LT(NAV,KC_QUOT),
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
-                       LL1         ,KC_RALT     ,KC_RGUI     ,KC_GRV      ,
+                       LL1         ,KC_LALT     ,KC_RGUI     ,KC_GRV      ,
           // Thumb
           K_PASTE     ,KC_RGUI     ,
           KC_UP       ,
           KC_DOWN     ,KC_ENT      ,LT(L1, KC_SPC)
     ),
-[QWERTY] = LAYOUT(
+[GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
                        KT_ALTESC   ,MEH(KC_NO)  ,
                                     KC_DEL      ,
-          KC_BSPC     ,KC_LCTL     ,KC_LSFT     ,
+          KT_C_BK     ,KC_LSFT     ,KC_LCTL     ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQMOD       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KC_MINS     ,
@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,KC_PLUS     ,KC_UNDS     ,KC_NO     ,
+          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
                        LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
@@ -223,24 +223,29 @@ void led_set_user(uint8_t usb_led) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+    // interestingly had to set the one I wanted on to 0 and the rest to 1 (for off)
     switch (get_highest_layer(state)) {
-      case QWERTY: 
+      case GAME: 
       case SYM:
+          // For symbol layer set compose led on
           writePin(LED_COMPOSE_PIN, 0);     
           writePin(LED_NUM_LOCK_PIN, 1);     
           writePin(LED_SCROLL_LOCK_PIN, 1);
           break;
       case L1:
+          // For Layer 1 set numlock led on
           writePin(LED_COMPOSE_PIN, 1);     
           writePin(LED_NUM_LOCK_PIN, 0);     
           writePin(LED_SCROLL_LOCK_PIN, 1);
           break;      
       case NAV:
+          // For Layer Nav set scroll lock led on
           writePin(LED_COMPOSE_PIN, 1);     
           writePin(LED_NUM_LOCK_PIN, 1);     
           writePin(LED_SCROLL_LOCK_PIN, 0);
           break; 
       default:
+          // set all off
           writePin(LED_COMPOSE_PIN, 1);
           writePin(LED_SCROLL_LOCK_PIN, 1);
           writePin(LED_NUM_LOCK_PIN, 1);    
@@ -249,6 +254,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
        
 bool led_update_user(led_t led_state) {
+    // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
+
+    // we want caps lock to keep working as is:
     writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
 
     return false;
