@@ -2,7 +2,7 @@
 
 // layers
 enum layer_names {
-    QWERTY_MOD,
+    BASE,
     GAME,
     L1,
     NAV,
@@ -11,7 +11,7 @@ enum layer_names {
 
 
 // layer keys
-#define LQMOD TO(QWERTY_MOD)
+#define LBASE TO(BASE)
 #define LQ TO(GAME)
 #define LL1 OSL(L1)
 #define LNAV TO(NAV)
@@ -20,7 +20,8 @@ enum layer_names {
 // Userful defines
 #define K_UNDO LCTL(KC_Z)
 #define K_REDO LCTL(KC_Y)
-#define K_PASTE C(A(KC_C))
+#define K_CLIP C(A(KC_C))  // Paste Clipboard
+#define K_AHK MEH(KC_NO) // autohotkey 
 
 #define KT_ALTESC LALT_T(KC_ESC)
 #define KT_C_BK LCTL_T(KC_BSPC)
@@ -87,15 +88,15 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
          //KC_BSPC ,LSFT_T(KC_SPC) ,KC_LCTL , // disable to make learning shift easier
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[QWERTY_MOD] = LAYOUT( 
-          KC_NO       ,KC_F1       ,KC_COPY     ,KC_PSTE     ,K_PASTE     ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+[BASE] = LAYOUT( 
+          KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,TD(TD_1)    ,TD(TD_2)    ,TD(TD_3)    ,TD(TD_4)    ,TD(TD_5)    ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
           LNAV        ,KC_A        ,LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
           TD(TD_LB)   ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
-                       KT_ALTESC   ,MEH(KC_NO)  ,
+                       KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
           KT_C_BK     ,KC_LSFT     ,LSYM        ,
           // Right Hand
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
                        LL1         ,KC_LALT     ,KC_RGUI     ,KC_GRV      ,
           // Thumb
-          K_PASTE     ,KC_RGUI     ,
+          K_AHK       ,KC_RGUI     ,
           KC_UP       ,
           KC_DOWN     ,KC_ENT      ,LT(L1, KC_SPC)
     ),
@@ -118,18 +119,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_LSFT     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
-                       KT_ALTESC   ,MEH(KC_NO)  ,
+                       KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-          KT_C_BK     ,KC_LSFT     ,KC_LCTL     ,
+          KT_C_BK     ,KC_LSFT     ,LSYM        ,
           // Right Hand
-          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQMOD       ,
+          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LBASE       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KC_MINS     ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,KC_J        ,KC_K        ,KC_L        ,KC_SCLN     ,KC_QUOT     ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RSFT     ,
                        LL1         ,KC_LBRC     ,KC_RBRC     ,KC_GRV      ,
           // Thumb
-          K_PASTE     ,KC_RGUI     ,
+          K_AHK       ,KC_RGUI     ,
           KC_UP       ,
           KC_DOWN     ,KC_ENT      ,KC_SPC      
     ),
@@ -137,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           A(KC_TAB)   ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
-          LQMOD       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
+          LBASE       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
-                       KC_INS      ,KC_HOME     ,KC_END      ,LQMOD       ,
+                       KC_INS      ,KC_HOME     ,KC_END      ,LBASE       ,
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
                                     KC_NO       ,
@@ -150,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_PGUP     ,A(KC_LEFT)  ,KC_NO       ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
           KC_PGDN     ,KC_AT       ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,K_UNDO      ,K_REDO      ,KC_NO       ,KC_CAPS     ,
-                       LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
+                       LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
           KC_PGUP     ,
@@ -160,9 +161,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           KC_TAB      ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,KC_NO       ,
-          LQMOD       ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,KC_NO       ,
+          LBASE       ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       KC_NO       ,KC_NO       ,KC_NO       ,LQMOD       ,
+                       KC_NO       ,KC_NO       ,KC_NO       ,LBASE       ,
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
                                     KC_NO       ,
@@ -173,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,KC_NO       ,KC_F12      ,
           KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
-                       LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
+                       LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
           KC_NO       ,
@@ -183,9 +184,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          LQMOD       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
+          LBASE       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       KC_NO       ,KC_NO       ,KC_NO       ,LQMOD       ,
+                       KC_NO       ,KC_NO       ,KC_NO       ,LBASE       ,
           // Thumb
                        KC_NO       ,KC_NO       ,
                                     KC_NO       ,
@@ -196,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,KC_NO       ,KC_NO       ,KC_DQUO     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
+                       LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
           KC_NO       ,
