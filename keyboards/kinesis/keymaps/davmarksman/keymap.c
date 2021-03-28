@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,TD(TD_1)    ,TD(TD_2)    ,TD(TD_3)    ,TD(TD_4)    ,TD(TD_5)    ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
+          LNAV        ,KC_A        ,LT(L1,KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
           TD(TD_LB)   ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,LT(NAV,KC_QUOT),
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
-                       LL1         ,KC_LALT     ,KC_RGUI     ,KC_GRV      ,
+                       KC_LALT     ,KC_RGUI     ,KC_NO       ,KC_GRV      ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
