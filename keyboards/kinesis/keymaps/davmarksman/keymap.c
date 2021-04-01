@@ -55,6 +55,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_8] = ACTION_TAP_DANCE_DOUBLE(KC_8, KC_ASTR),
     [TD_LB] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
     [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
+    [TD_X_UNDO] = ACTION_TAP_DANCE_DOUBLE(KC_X, K_UNDO),
     // [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
 };
 
@@ -93,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_EQL      ,TD(TD_1)    ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
           LNAV        ,KC_A        ,LT(L1,KC_S) ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
-          TD(TD_LB)   ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
+          TD(TD_LB)   ,KC_Z        ,TD(TD_X_UNDO),KC_C        ,KC_V        ,KC_B        ,
                        KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
@@ -143,14 +144,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_INS      ,KC_HOME     ,KC_END      ,LBASE       ,
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
-                                    K_REDO       ,
-          KT_C_DEL    ,KC_LSFT     ,K_UNDO       ,
+                                    K_REDO      ,
+          KT_C_DEL    ,KC_LSFT     ,K_UNDO      ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
           KC_NO       ,KC_AT       ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO      ,KC_NO       ,KC_CAPS     ,
+          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
                        LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
