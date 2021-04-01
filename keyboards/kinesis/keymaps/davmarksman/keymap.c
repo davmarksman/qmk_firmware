@@ -90,9 +90,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT( 
           KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
-          KC_EQL      ,TD(TD_1)    ,TD(TD_2)    ,TD(TD_3)    ,TD(TD_4)    ,TD(TD_5)    ,
+          KC_EQL      ,TD(TD_1)    ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,LT(L1,KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
+          LNAV        ,KC_A        ,LT(L1,KC_S) ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
           TD(TD_LB)   ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
@@ -101,15 +101,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KT_C_BK     ,KC_LSFT     ,LSYM        ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
-          TD(TD_6)    ,TD(TD_7)    ,TD(TD_8)    ,KC_9        ,KC_0        ,TD(TD_MINS) ,
+          KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,LT(NAV,KC_QUOT),
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
-                       KC_LALT     ,KC_RGUI     ,KC_NO       ,KC_GRV      ,
+                       KC_LALT     ,KC_RGUI     ,KC_QUES     ,KC_GRV      ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
-          KC_DOWN     ,KC_ENT      ,LT(L1, KC_SPC)
+          KC_DOWN     ,LT(L1, KC_SPC),KC_ENT      
     ),
 [GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
-          KC_DOWN     ,KC_ENT      ,KC_SPC      
+          KC_DOWN     ,KC_SPC      ,KC_ENT      
     ),
 [L1] = LAYOUT(
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
@@ -143,14 +143,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_INS      ,KC_HOME     ,KC_END      ,LBASE       ,
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
-                                    KC_NO       ,
-          KT_C_DEL    ,KC_LSFT     ,KC_NO       ,
+                                    K_REDO       ,
+          KT_C_DEL    ,KC_LSFT     ,K_UNDO       ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
-          KC_PGUP     ,A(KC_LEFT)  ,KC_NO       ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
-          KC_PGDN     ,KC_AT       ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,K_UNDO      ,K_REDO      ,KC_NO       ,KC_CAPS     ,
+          K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
+          KC_NO       ,KC_AT       ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO      ,KC_NO       ,KC_CAPS     ,
                        LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
@@ -195,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,KC_NO       ,KC_NO       ,KC_DQUO     ,
+          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,S(KC_NUBS)  ,KC_NO       ,KC_DQUO     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
                        LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
@@ -204,8 +204,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       
     ),
 };
-
-
 
 void matrix_init_user(void) {
 
@@ -217,7 +215,7 @@ void matrix_scan_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  return true;
+    return true;
 }
 
 void led_set_user(uint8_t usb_led) {
@@ -225,42 +223,19 @@ void led_set_user(uint8_t usb_led) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // interestingly had to set the one I wanted on to 0 and the rest to 1 (for off)
-    switch (get_highest_layer(state)) {
-      case GAME: 
-      case SYM:
-          // For symbol layer set compose led on
-          writePin(LED_COMPOSE_PIN, 0);     
-          writePin(LED_NUM_LOCK_PIN, 1);     
-          writePin(LED_SCROLL_LOCK_PIN, 1);
-          break;
-      case L1:
-          // For Layer 1 set numlock led on
-          writePin(LED_COMPOSE_PIN, 1);     
-          writePin(LED_NUM_LOCK_PIN, 0);     
-          writePin(LED_SCROLL_LOCK_PIN, 1);
-          break;      
-      case NAV:
-          // For Layer Nav set scroll lock led on
-          writePin(LED_COMPOSE_PIN, 1);     
-          writePin(LED_NUM_LOCK_PIN, 1);     
-          writePin(LED_SCROLL_LOCK_PIN, 0);
-          break; 
-      default:
-          // set all off
-          writePin(LED_COMPOSE_PIN, 1);
-          writePin(LED_SCROLL_LOCK_PIN, 1);
-          writePin(LED_NUM_LOCK_PIN, 1);    
-    }
-  return state;
+    uint8_t hi_state = get_highest_layer(state);
+    writePin(LED_COMPOSE_PIN, !((hi_state == GAME) | (hi_state == SYM)));
+    writePin(LED_SCROLL_LOCK_PIN, !(hi_state == NAV));
+    writePin(LED_NUM_LOCK_PIN, !(hi_state == L1));    
+
+    return state;
 }
        
 bool led_update_user(led_t led_state) {
-    // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
-
     // we want caps lock to keep working as is:
     writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
 
+    // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
     return false;
 }
 
