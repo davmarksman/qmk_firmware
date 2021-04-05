@@ -16,6 +16,7 @@ enum layer_names {
 #define LL1 OSL(L1)
 #define LNAV TO(NAV)
 #define LSYM OSL(SYM) // or MO
+#define LNAV_Q LT(NAV,KC_QUOT) 
 
 // Userful defines
 #define K_UNDO LCTL(KC_Z)
@@ -26,6 +27,14 @@ enum layer_names {
 #define KT_ALTESC LALT_T(KC_ESC)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
+
+// Custom codes
+enum custom_keycodes {
+    K_EQ_GR = SAFE_RANGE,
+    K_AND,
+    K_OR
+};
+
 
 // Tap dance
 enum {
@@ -40,6 +49,8 @@ enum {
     TD_8,
     TD_LB,
     TD_RB,
+    TD_X_UNDO,
+    TD_QUOT,
     // TD_EQ,
 };
 
@@ -56,6 +67,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_LB] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
     [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
     [TD_X_UNDO] = ACTION_TAP_DANCE_DOUBLE(KC_X, K_UNDO),
+    [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_AT),
     // [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
 };
 
@@ -95,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
           LNAV        ,KC_A        ,LT(L1,KC_S) ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
           TD(TD_LB)   ,KC_Z        ,TD(TD_X_UNDO),KC_C        ,KC_V        ,KC_B        ,
-                       KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
+                       K_UNDO      ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
@@ -104,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,LT(NAV,KC_QUOT),
+          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,TD(TD_QUOT) ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
-                       KC_LALT     ,KC_RGUI     ,KC_QUES     ,KC_GRV      ,
+                       KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV      ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
@@ -118,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
           LNAV        ,KC_A        ,KC_S        ,KC_D        ,KC_F        ,KC_G        ,
           KC_LSFT     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
-                       KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
+                       KC_NO       ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
@@ -129,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,KC_J        ,KC_K        ,KC_L        ,KC_SCLN     ,KC_QUOT     ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RSFT     ,
-                       LL1         ,KC_LBRC     ,KC_RBRC     ,KC_GRV      ,
+                       KC_BSLS     ,KC_LBRC     ,KC_RBRC     ,KC_GRV      ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
@@ -184,10 +196,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYM] = LAYOUT(
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_NO       ,KC_NO       ,K_EQ_GR     ,KC_NO       ,KC_NO       ,
+          LBASE       ,KC_EXCLAIM  ,KC_AT       ,KC_NO       ,KC_DLR      ,KC_PERC     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          LBASE       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       KC_NO       ,KC_NO       ,KC_NO       ,LBASE       ,
+                       KC_NO       ,KC_NO       ,KC_NO       ,K_UNDO      ,
           // Thumb
                        KC_NO       ,KC_NO       ,
                                     KC_NO       ,
@@ -195,10 +207,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_NO       ,K_AND       ,KC_NO       ,K_OR        ,KC_NO       ,KC_NO       ,
+          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,S(KC_NUBS)  ,S(KC_QUOT)  ,KC_DQUO     ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,S(KC_NUBS)  ,KC_NO       ,KC_DQUO     ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
+                       KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
           KC_NO       ,
@@ -215,7 +227,29 @@ void matrix_scan_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
+    switch (keycode) {
+        case K_EQ_GR:
+            if (record->event.pressed) {
+                SEND_STRING("=>");
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
+        case K_AND:
+            if (record->event.pressed) {
+                SEND_STRING("&&");
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
+        case K_OR:
+            if (record->event.pressed) {
+                SEND_STRING("~~");
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
+    }
     return true;
 }
 
