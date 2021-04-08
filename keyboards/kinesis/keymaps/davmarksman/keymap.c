@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
                        KC_NO       ,KC_NO       ,
                                     KC_NO       ,
-          KT_C_DEL    ,KC_LSFT     ,KC_NO       ,
+          KT_C_DEL    ,KC_EXCLAIM     ,KC_NO       ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
