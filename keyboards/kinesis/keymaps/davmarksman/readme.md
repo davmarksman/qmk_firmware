@@ -30,4 +30,16 @@ qmk json2c  "/c/Dev/Tools/KinT/qmk_firmware-kinesis-kint2pp-kinesis_kint2pp_layo
 /c/Dev/Tools/KinT/qmk/keyboards/kinesis/keymaps/davmarksman/keymap.c
 
 python keymapviz "/c/Dev/Tools/KinT/qmk/keyboards/kinesis/keymaps/davmarksman/keymap.c"
+
+
+
+```
+
+
+# Handwired
+```
+
+keyboards\handwired\6davkey\keymaps\default\keymap.c
+
+qmk compile -kb handwired/6davkey -km default
 ```
