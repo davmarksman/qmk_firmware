@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "sendstring_uk.h"
 
 // layers
 enum layer_names {
@@ -157,12 +158,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
                                     K_REDO      ,
-          KT_C_DEL    ,KC_LSFT     ,K_UNDO      ,
+          KT_C_DEL    ,KC_KP_PLUS  ,K_UNDO      ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
-          KC_NO       ,KC_AT       ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_AT       ,KC_UNDS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
                        LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
@@ -244,7 +245,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case K_OR:
             if (record->event.pressed) {
-                SEND_STRING("¬¬");
+                SEND_STRING("||");
             } else {
                 // when keycode QMKBEST is released
             }
