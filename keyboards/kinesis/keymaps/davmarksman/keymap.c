@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-          KT_C_BK     ,KC_LSFT     ,LSYM        ,
+          KC_BSPC     ,KC_LSFT     ,LSYM        ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           A(KC_TAB)   ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
-          LBASE       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
+          LBASE       ,KC_NO       ,C(S(KC_F))  ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
                        KC_INS      ,KC_HOME     ,KC_END      ,LBASE       ,
           // Thumb
@@ -163,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
-          KC_NO       ,KC_AT       ,KC_UNDS     ,KC_UNDS     ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_AT       ,KC_NO       ,KC_UNDS     ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
                        LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
