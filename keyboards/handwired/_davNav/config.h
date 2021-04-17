@@ -22,16 +22,23 @@
 #define PRODUCT_ID      0x0007
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    Davmarksman
-#define PRODUCT         Davkey6
+#define PRODUCT         DavNav
 
 /* key matrix size */
 #define MATRIX_ROWS 2
-#define MATRIX_COLS 3
+#define MATRIX_COLS 4
 
 /* pin-out */
 #define MATRIX_ROW_PINS { B6, B5 }
-#define MATRIX_COL_PINS { F5, F7, B3 }
+#define MATRIX_COL_PINS { F5, F7, B3, D7 }
+#define ENCODERS_PAD_A { D4 }
+#define ENCODERS_PAD_B { D0 }
 #define UNUSED_PINS
+
+
+/* Change encoder resolution to lower value*/
+#define ENCODER_RESOLUTION 2
+
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
