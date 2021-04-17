@@ -33,7 +33,8 @@ enum layer_names {
 enum custom_keycodes {
     K_EQ_GR = SAFE_RANGE,
     K_AND,
-    K_OR
+    K_OR,
+    K_X2X
 };
 
 
@@ -106,18 +107,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,TD(TD_1)    ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,LT(L1,KC_S) ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
-          TD(TD_LB)   ,KC_Z        ,TD(TD_X_UNDO),KC_C        ,KC_V        ,KC_B        ,
+          LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
+          TD(TD_LB)   ,KC_Z        ,KC_X       ,KC_C        ,KC_V       ,KC_B        ,
                        K_UNDO      ,KC_LEFT     ,KC_RGHT     ,LL1         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-          KC_BSPC     ,KC_LSFT     ,LSYM        ,
+          KC_BSPC     ,OSM(MOD_LSFT),LSYM        ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,TD(TD_QUOT) ,
+          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,TD(TD_QUOT) ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
                        KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV      ,
           // Thumb
@@ -152,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           A(KC_TAB)   ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
-          LBASE       ,KC_NO       ,C(S(KC_F))  ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
+          LBASE       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
                        KC_INS      ,KC_HOME     ,KC_END      ,LBASE       ,
           // Thumb
@@ -163,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
-          KC_NO       ,KC_AT       ,KC_NO       ,KC_UNDS     ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_AT       ,KC_UNDS     ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
                        LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
@@ -199,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,K_EQ_GR     ,KC_NO       ,KC_NO       ,
           LBASE       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_NO       ,K_X2X       ,KC_NO       ,KC_NO       ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,K_UNDO      ,
           // Thumb
                        KC_NO       ,KC_NO       ,
@@ -250,6 +251,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode QMKBEST is released
             }
             break;
+        case K_X2X:
+            if (record->event.pressed) {
+                SEND_STRING("x => x");
+            } else {
+                // when keycode QMKBEST is released
+            }
+            break;
     }
     return true;
 }
@@ -263,15 +271,25 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     writePin(LED_COMPOSE_PIN, !((hi_state == GAME) | (hi_state == SYM)));
     writePin(LED_SCROLL_LOCK_PIN, !(hi_state == NAV));
     writePin(LED_NUM_LOCK_PIN, !(hi_state == L1));    
+    // writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
 
     return state;
+}
+
+void oneshot_mods_changed_user(uint8_t mods) {
+  if (mods & MOD_MASK_SHIFT) {  
+    writePin(LED_CAPS_LOCK_PIN, 0);
+  }
+  if (!mods) { 
+    writePin(LED_CAPS_LOCK_PIN, 1);
+  }
 }
        
 bool led_update_user(led_t led_state) {
     // we want caps lock to keep working as is:
-    writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
+    // writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
 
     // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
-    return false;
+    return false; 
 }
 
