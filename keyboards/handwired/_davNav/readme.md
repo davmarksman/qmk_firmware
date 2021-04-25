@@ -10,5 +10,5 @@ https://docs.qmk.fm/#/hand_wire
 ```
 keyboards\handwired\6davkey\keymaps\default\keymap.c
 
-qmk compile -kb handwired/6davkey -km default
+qmk compile -kb handwired/_davNav -km default
 ``
