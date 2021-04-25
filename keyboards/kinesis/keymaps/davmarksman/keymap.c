@@ -1,6 +1,13 @@
 #include QMK_KEYBOARD_H
 #include "sendstring_uk.h"
 
+
+// This will import the uprintf function
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
+
+
 // layers
 enum layer_names {
     BASE,
@@ -108,19 +115,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_EQL      ,TD(TD_1)    ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
           LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
-          TD(TD_LB)   ,KC_Z        ,KC_X       ,KC_C        ,KC_V       ,KC_B        ,
-                       K_UNDO      ,KC_LEFT     ,KC_RGHT     ,LL1         ,
+          KC_LCBR     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
+                       LL1      ,KC_LEFT     ,KC_RGHT     ,K_UNDO         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-          KC_BSPC     ,OSM(MOD_LSFT),LSYM        ,
+          KT_C_BK     ,OSM(MOD_LSFT),LSYM        ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,TD(TD_QUOT) ,
-          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
-                       KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV      ,
+          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,KC_QUOT     ,
+          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RCBR     ,
+                       KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV       ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
@@ -132,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
           LNAV        ,KC_A        ,KC_S        ,KC_D        ,KC_F        ,KC_G        ,
           KC_LSFT     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
-                       KC_NO       ,KC_LEFT     ,KC_RGHT     ,LL1         ,
+                       LL1       ,KC_LEFT     ,KC_RGHT     ,K_UNDO         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
@@ -143,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,KC_J        ,KC_K        ,KC_L        ,KC_SCLN     ,KC_QUOT     ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RSFT     ,
-                       KC_BSLS     ,KC_LBRC     ,KC_RBRC     ,KC_GRV      ,
+                       KC_LALT     ,KC_RGUI     ,KC_RBRC     ,KC_GRV      ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_UP       ,
@@ -152,21 +159,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [L1] = LAYOUT(
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          A(KC_TAB)   ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
+          KC_TAB      ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
           LBASE       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
-                       KC_INS      ,KC_HOME     ,KC_END      ,LBASE       ,
+                       KC_INS      ,KC_HOME     ,KC_END      ,K_UNDO       ,
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
-                                    K_REDO      ,
-          KT_C_DEL    ,KC_KP_PLUS  ,K_UNDO      ,
+                                    KC_NO       ,
+          KT_C_DEL    ,KC_KP_PLUS  ,KC_NO       ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
           KC_NO       ,KC_AT       ,KC_UNDS     ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
-                       LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
+                       KC_LALT     ,KC_RGUI     ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
           KC_PGUP     ,
@@ -174,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 [NAV] = LAYOUT(
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
+          KC_ESC      ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_TAB      ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,KC_NO       ,
           LBASE       ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
@@ -185,11 +192,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_LCTL     ,KC_LSFT     ,KC_NO       ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
+          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO      ,KC_NO      ,
           KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,KC_NO       ,KC_F12      ,
           KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
-                       LBASE       ,KC_NO       ,KC_NO       ,KC_NO       ,
+                       KC_LALT     ,KC_RGUI     ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
           KC_NO       ,
@@ -205,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
                        KC_NO       ,KC_NO       ,
                                     KC_NO       ,
-          KT_C_DEL    ,KC_EXCLAIM     ,KC_NO       ,
+          KT_C_DEL    ,KC_EXCLAIM  ,KC_NO       ,
           // Right Hand
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
@@ -229,33 +236,63 @@ void matrix_scan_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef CONSOLE_ENABLE
+        if (record->event.pressed) {
+            uprintf("0x%04X,%u,%u,%u\n", keycode, record->event.key.row, record->event.key.col, get_highest_layer(layer_state));
+        }
+    #endif
+
     switch (keycode) {
+        case KT_C_BK:
+        {
+            static bool delkey_registered;
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    del_mods(MOD_MASK_SHIFT);
+                    register_code(KC_DEL);
+                    delkey_registered = true;
+                    set_mods(get_mods());
+                    return false;
+                }
+                if (get_oneshot_mods() & MOD_MASK_SHIFT) {
+                    del_oneshot_mods(MOD_MASK_SHIFT);
+                    register_code(KC_DEL);
+                    delkey_registered = true;
+                    return false;
+                }
+            } else {
+                if (delkey_registered) {
+                    unregister_code(KC_DEL);
+                    delkey_registered = false;
+                    return false;
+                }
+            }
+            return true;
+        }
+        case OSM(MOD_LSFT):
+            if (record->event.pressed && get_oneshot_mods()) {
+                clear_oneshot_mods ();
+                return false;
+            }
+            break;
         case K_EQ_GR:
             if (record->event.pressed) {
                 SEND_STRING("=>");
-            } else {
-                // when keycode QMKBEST is released
             }
             break;
         case K_AND:
             if (record->event.pressed) {
                 SEND_STRING("&&");
-            } else {
-                // when keycode QMKBEST is released
             }
             break;
         case K_OR:
             if (record->event.pressed) {
                 SEND_STRING("||");
-            } else {
-                // when keycode QMKBEST is released
             }
             break;
         case K_X2X:
             if (record->event.pressed) {
                 SEND_STRING("x => x");
-            } else {
-                // when keycode QMKBEST is released
             }
             break;
     }
@@ -277,7 +314,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 void oneshot_mods_changed_user(uint8_t mods) {
-  if (mods & MOD_MASK_SHIFT) {  
+  if (mods & MOD_MASK_SHIFT) { 
     writePin(LED_CAPS_LOCK_PIN, 0);
   }
   if (!mods) { 

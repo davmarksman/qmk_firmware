@@ -35,6 +35,16 @@ python keymapviz "/c/Dev/Tools/KinT/qmk/keyboards/kinesis/keymaps/davmarksman/ke
 
 ```
 
+# Heatmap
+```
+./hid_listen | egrep --line-buffered "(0x[A-F0-9]+,)?(NA|[0-9]+),(NA|[0-9]+),[0-9]{1,2}" | tee -a keylog.csv
+
+.\hid_listen.exe > keys.csv
+
+.\hid_listen.exe | tee -a keys.csv
+
+```
+
 
 # Handwired
 ```
