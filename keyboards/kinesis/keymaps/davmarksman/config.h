@@ -10,4 +10,5 @@
 // Limits the max. amount of layers to 8 to save firmware memory.
 #define LAYER_STATE_8BIT
 
-#define ONESHOT_TIMEOUT 2000  /* Time (in ms) before the one shot key is released */
+#define ONESHOT_TIMEOUT 1500  /* Time (in ms) before the one shot key is released */
+
