@@ -66,13 +66,10 @@ enum {
     TD_RB,
     TD_X_UNDO,
     TD_QUOT,
-    TD_SLSH,
     TD_H_THE,
     TD_G_ING,
-    TD_SLSH_TRI,
     // ion, 
     // ment
-    // TD_EQ,
 };
 
 // Tap dance functions
@@ -100,24 +97,7 @@ void td_ing_reset(qk_tap_dance_state_t *state, void *user_data) {
         unregister_code(KC_G);
     }
 }
-void td_slash_fin(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        register_code(KC_SLSH);
-    } else if (state->count == 2) {
-        register_code(KC_NUBS);
-    }else {
-        register_code(KC_SLSH);
-        unregister_code(KC_SLSH);
-        register_code(KC_SLSH);
-    }
-}
-void td_slash_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1 || state->count == 3) {
-        unregister_code(KC_SLSH);
-    } else {
-        unregister_code(KC_NUBS);
-    }
-}
+
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, KC_UNDS),
@@ -133,11 +113,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
     [TD_X_UNDO] = ACTION_TAP_DANCE_DOUBLE(KC_X, K_UNDO),
     [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_AT),
-    [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_NUBS),
     [TD_H_THE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_the_fin, td_the_reset),
     [TD_G_ING] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_ing_fin, td_ing_reset),
-    [TD_SLSH_TRI] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_slash_fin, td_slash_reset),
-    // [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
 };
 
 
@@ -167,8 +144,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 *                                 |      |      | End  |         | PgDn |      |      |
 *                                 `--------------------'         `--------------------'
 */
-
-         //KC_BSPC ,LSFT_T(KC_SPC) ,KC_LCTL , // disable to make learning shift easier
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT( 
           KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -278,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,K_AND       ,KC_NO       ,K_OR        ,KC_NO       ,KC_NO       ,
           KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,S(KC_NUBS)  ,S(KC_QUOT)  ,KC_DQUO     ,
-          KC_NO       ,KS_FN       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KS_FN       ,KC_NO       ,KC_NO       ,KC_NUBS      ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
