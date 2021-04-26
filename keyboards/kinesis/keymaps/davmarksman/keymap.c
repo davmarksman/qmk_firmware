@@ -41,11 +41,17 @@ enum custom_keycodes {
     K_EQ_GR = SAFE_RANGE,
     K_AND,
     K_OR,
-    K_X2X
+    KS_X2X,
+    KS_THE,
+    KS_ING,
+    KS_FN,
+    KS_VAR,
 };
 
 
-// Tap dance
+/*
+* TAP DANCE
+*/
 enum {
     TD_MINS,
     TD_1,
@@ -60,8 +66,58 @@ enum {
     TD_RB,
     TD_X_UNDO,
     TD_QUOT,
+    TD_SLSH,
+    TD_H_THE,
+    TD_G_ING,
+    TD_SLSH_TRI,
+    // ion, 
+    // ment
     // TD_EQ,
 };
+
+// Tap dance functions
+void td_the_fin(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        register_code(KC_H);
+    } else {
+        SEND_STRING("the");
+    }
+}
+void td_the_reset(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        unregister_code(KC_H);
+    }
+}
+void td_ing_fin(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        register_code(KC_G);
+    } else {
+        SEND_STRING("ing");
+    }
+}
+void td_ing_reset(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        unregister_code(KC_G);
+    }
+}
+void td_slash_fin(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        register_code(KC_SLSH);
+    } else if (state->count == 2) {
+        register_code(KC_NUBS);
+    }else {
+        register_code(KC_SLSH);
+        unregister_code(KC_SLSH);
+        register_code(KC_SLSH);
+    }
+}
+void td_slash_reset(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1 || state->count == 3) {
+        unregister_code(KC_SLSH);
+    } else {
+        unregister_code(KC_NUBS);
+    }
+}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, KC_UNDS),
@@ -77,6 +133,10 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
     [TD_X_UNDO] = ACTION_TAP_DANCE_DOUBLE(KC_X, K_UNDO),
     [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_AT),
+    [TD_SLSH] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_NUBS),
+    [TD_H_THE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_the_fin, td_the_reset),
+    [TD_G_ING] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_ing_fin, td_ing_reset),
+    [TD_SLSH_TRI] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_slash_fin, td_slash_reset),
     // [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
 };
 
@@ -114,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,TD(TD_1)    ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
+          LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),LSFT_T(KC_F),TD(TD_G_ING),
           KC_LCBR     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        LL1      ,KC_LEFT     ,KC_RGHT     ,K_UNDO         ,
           // Thumb
@@ -125,8 +185,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,KC_QUOT     ,
-          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RCBR     ,
+          TD(TD_H_THE),RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,KC_QUOT     ,
+          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,TD(TD_SLSH_TRI),KC_RCBR     ,
                        KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV       ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
@@ -206,8 +266,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,K_EQ_GR     ,KC_NO       ,KC_NO       ,
-          LBASE       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
-          KC_NO       ,KC_NO       ,K_X2X       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          LBASE       ,KC_EXCLAIM  ,S(KC_QUOT)  ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
+          KC_NO       ,KC_NO       ,KS_X2X      ,KC_NO       ,KS_VAR       ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,K_UNDO      ,
           // Thumb
                        KC_NO       ,KC_NO       ,
@@ -218,7 +278,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,K_AND       ,KC_NO       ,K_OR        ,KC_NO       ,KC_NO       ,
           KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,S(KC_NUBS)  ,S(KC_QUOT)  ,KC_DQUO     ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KS_FN       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
@@ -290,9 +350,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("||");
             }
             break;
-        case K_X2X:
+        case KS_X2X:
             if (record->event.pressed) {
                 SEND_STRING("x => x");
+            }
+            break;
+        case KS_THE:
+            if (record->event.pressed) {
+                SEND_STRING("the");
+            }
+            break;
+        case KS_ING:
+            if (record->event.pressed) {
+                SEND_STRING("ing");
+            }
+            break;
+        case KS_FN:
+            if (record->event.pressed) {
+                SEND_STRING("function");
+            }
+            break;
+        case KS_VAR:
+            if (record->event.pressed) {
+                SEND_STRING("var");
             }
             break;
     }
@@ -329,4 +409,3 @@ bool led_update_user(led_t led_state) {
     // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
     return false; 
 }
-
