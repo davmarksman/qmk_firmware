@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "sendstring_uk.h"
-
+#include "keymap.h"
 
 // This will import the uprintf function
 #ifdef CONSOLE_ENABLE
@@ -17,7 +17,6 @@ enum layer_names {
     SYM
 };
 
-
 // layer keys
 #define LBASE TO(BASE)
 #define LQ TO(GAME)
@@ -31,7 +30,6 @@ enum layer_names {
 #define K_REDO LCTL(KC_Y)
 #define K_CLIP C(A(KC_C))  // Paste Clipboard
 #define K_AHK MEH(KC_NO) // autohotkey 
-
 #define KT_ALTESC LALT_T(KC_ESC)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
@@ -45,76 +43,18 @@ enum custom_keycodes {
     KS_THE,
     KS_ING,
     KS_FN,
-    KS_VAR,
 };
-
 
 /*
 * TAP DANCE
 */
 enum {
     TD_MINS,
-    TD_1,
-    TD_2,
-    TD_3,
-    TD_4,
-    TD_5,
-    TD_6,
-    TD_7,
-    TD_8,
-    TD_LB,
-    TD_RB,
-    TD_X_UNDO,
-    TD_QUOT,
-    TD_H_THE,
-    TD_G_ING,
-    // ion, 
-    // ment
 };
-
-// Tap dance functions
-void td_the_fin(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        register_code(KC_H);
-    } else {
-        SEND_STRING("the");
-    }
-}
-void td_the_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        unregister_code(KC_H);
-    }
-}
-void td_ing_fin(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        register_code(KC_G);
-    } else {
-        SEND_STRING("ing");
-    }
-}
-void td_ing_reset(qk_tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        unregister_code(KC_G);
-    }
-}
 
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, KC_UNDS),
-    [TD_1] = ACTION_TAP_DANCE_DOUBLE(KC_1, KC_EXCLAIM),
-    [TD_2] = ACTION_TAP_DANCE_DOUBLE(KC_2, KC_AT),
-    [TD_3] = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_HASH),
-    [TD_4] = ACTION_TAP_DANCE_DOUBLE(KC_4, KC_DLR),
-    [TD_5] = ACTION_TAP_DANCE_DOUBLE(KC_5, KC_PERC),
-    [TD_6] = ACTION_TAP_DANCE_DOUBLE(KC_6, KC_CIRC),
-    [TD_7] = ACTION_TAP_DANCE_DOUBLE(KC_7, KC_AMPR),
-    [TD_8] = ACTION_TAP_DANCE_DOUBLE(KC_8, KC_ASTR),
-    [TD_LB] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
-    [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
-    [TD_X_UNDO] = ACTION_TAP_DANCE_DOUBLE(KC_X, K_UNDO),
-    [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOT, KC_AT),
-    [TD_H_THE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_the_fin, td_the_reset),
-    [TD_G_ING] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_ing_fin, td_ing_reset),
 };
 
 
@@ -147,11 +87,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT( 
           KC_NO       ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
-          KC_EQL      ,TD(TD_1)    ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
-          KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),LSFT_T(KC_F),TD(TD_G_ING),
+          KC_EQL      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
+          KC_TAB      ,KC_Q        ,KC_W        ,KC_NO        ,KC_R        ,KC_T       ,
+          LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),KC_F         ,KC_G        ,
           KC_LCBR     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
-                       LL1      ,KC_LEFT     ,KC_RGHT     ,K_UNDO         ,
+                       LL1         ,KC_LEFT     ,KC_RGHT     ,KC_DOWN         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
@@ -160,13 +100,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          TD(TD_H_THE),RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,KC_QUOT     ,
-          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,TD(TD_SLSH_TRI),KC_RCBR     ,
+          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,KC_QUOT     ,
+          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RCBR     ,
                        KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV       ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
-          KC_UP       ,
-          KC_DOWN     ,LT(L1, KC_SPC),KC_ENT      
+          KC_NO     ,
+          //KC_DOWN     ,LT(L1, KC_SPC),KC_ENT  
+          KC_ENT     ,LT(L1, KC_SPC),KC_E      
     ),
 [GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -242,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,K_EQ_GR     ,KC_NO       ,KC_NO       ,
           LBASE       ,KC_EXCLAIM  ,S(KC_QUOT)  ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
-          KC_NO       ,KC_NO       ,KS_X2X      ,KC_NO       ,KS_VAR       ,KC_NO       ,
+          KC_NO       ,KC_NO       ,KS_X2X      ,KC_NO       ,KC_NO       ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,K_UNDO      ,
           // Thumb
                        KC_NO       ,KC_NO       ,
@@ -345,11 +286,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("function");
             }
             break;
-        case KS_VAR:
-            if (record->event.pressed) {
-                SEND_STRING("var");
-            }
-            break;
     }
     return true;
 }
@@ -363,7 +299,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     writePin(LED_COMPOSE_PIN, !((hi_state == GAME) | (hi_state == SYM)));
     writePin(LED_SCROLL_LOCK_PIN, !(hi_state == NAV));
     writePin(LED_NUM_LOCK_PIN, !(hi_state == L1));    
-    // writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
 
     return state;
 }
@@ -378,8 +313,6 @@ void oneshot_mods_changed_user(uint8_t mods) {
 }
        
 bool led_update_user(led_t led_state) {
-    // we want caps lock to keep working as is:
-    // writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
 
     // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
     return false; 

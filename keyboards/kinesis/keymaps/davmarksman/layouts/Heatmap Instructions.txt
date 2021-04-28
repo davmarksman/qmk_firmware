@@ -2,6 +2,8 @@
 http://www.keyboard-layout-editor.com/#/
 
 
+https://precondition.github.io/qmk-heatmap
+
 2. grid
  _  _  _  _  _ _  _  _  _             _  _  _  _  _ _  _  _  _
 |C||D||E||C||D|E||C||D||E|           |C||D||E||C||D|E||C||E||D|
