@@ -12,4 +12,4 @@
 
 #define ONESHOT_TIMEOUT 1500  /* Time (in ms) before the one shot key is released */
 
-#define COMBO_COUNT 4
+#define COMBO_COUNT 3
