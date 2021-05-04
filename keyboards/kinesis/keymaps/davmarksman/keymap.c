@@ -1,3 +1,4 @@
+//Kinesis
 #include QMK_KEYBOARD_H
 #include "sendstring_uk.h"
 #include "keymap.h"
@@ -40,9 +41,6 @@ enum custom_keycodes {
     K_AND,
     K_OR,
     KS_X2X,
-    KS_THE,
-    KS_ING,
-    KS_FN,
 };
 
 /*
@@ -102,10 +100,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),KC_L        ,KC_SCLN     ,KC_QUOT     ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RCBR     ,
-                       KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV       ,
+                       KC_LALT     ,KC_RGUI     ,KC_BSLS     ,KC_GRV      ,
           // Thumb
           K_AHK       ,KC_RGUI     ,
-          KC_NO     ,
+          KC_DOWN     ,
           //KC_DOWN     ,LT(L1, KC_SPC),KC_ENT  
           KC_ENT     ,LT(L1, KC_SPC),KC_E      
     ),
@@ -136,8 +134,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           KC_TAB      ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
-          LBASE       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
+          LBASE       ,KC_LCBR     ,KC_RCBR     ,KC_LPRN     ,KC_RPRN     ,C(S(KC_F))  ,
+          KC_NO       ,KC_NO       ,KC_NO       ,KC_LBRC     ,KC_RBRC     ,KC_NO       ,
                        KC_INS      ,KC_HOME     ,KC_END      ,K_UNDO       ,
           // Thumb
                        KT_ALTESC   ,KC_NO       ,
@@ -147,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           K_REDO      ,K_UNDO      ,A(KC_LEFT)  ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
-          KC_NO       ,KC_AT       ,KC_UNDS     ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
+          KC_NO       ,KC_AT       ,KC_UNDS     ,KC_LBRC     ,KC_RBRC     ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_CAPS     ,
                        KC_LALT     ,KC_RGUI     ,KC_NO       ,KC_NO       ,
           // Thumb
@@ -181,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYM] = LAYOUT(
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,K_EQ_GR     ,KC_NO       ,KC_NO       ,
+          KC_NO       ,KC_GRV      ,KC_NO       ,K_EQ_GR     ,KC_NO       ,KC_NO       ,
           LBASE       ,KC_EXCLAIM  ,S(KC_QUOT)  ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
           KC_NO       ,KC_NO       ,KS_X2X      ,KC_NO       ,KC_NO       ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,K_UNDO      ,
@@ -194,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           KC_NO       ,K_AND       ,KC_NO       ,K_OR        ,KC_NO       ,KC_NO       ,
           KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,S(KC_NUBS)  ,S(KC_QUOT)  ,KC_DQUO     ,
-          KC_NO       ,KS_FN       ,KC_NO       ,KC_NO       ,KC_NUBS      ,KC_NO       ,
+          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NUBS      ,KC_NO       ,
                        KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
           // Thumb
           KC_NO       ,KC_NO       ,
@@ -219,32 +217,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #endif
 
     switch (keycode) {
-        case KT_C_BK:
-        {
-            static bool delkey_registered;
-            if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT) {
-                    del_mods(MOD_MASK_SHIFT);
-                    register_code(KC_DEL);
-                    delkey_registered = true;
-                    set_mods(get_mods());
-                    return false;
-                }
-                if (get_oneshot_mods() & MOD_MASK_SHIFT) {
-                    del_oneshot_mods(MOD_MASK_SHIFT);
-                    register_code(KC_DEL);
-                    delkey_registered = true;
-                    return false;
-                }
-            } else {
-                if (delkey_registered) {
-                    unregister_code(KC_DEL);
-                    delkey_registered = false;
-                    return false;
-                }
-            }
-            return true;
-        }
         case OSM(MOD_LSFT):
             if (record->event.pressed && get_oneshot_mods()) {
                 clear_oneshot_mods ();
@@ -269,21 +241,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KS_X2X:
             if (record->event.pressed) {
                 SEND_STRING("x => x");
-            }
-            break;
-        case KS_THE:
-            if (record->event.pressed) {
-                SEND_STRING("the");
-            }
-            break;
-        case KS_ING:
-            if (record->event.pressed) {
-                SEND_STRING("ing");
-            }
-            break;
-        case KS_FN:
-            if (record->event.pressed) {
-                SEND_STRING("function");
             }
             break;
     }
