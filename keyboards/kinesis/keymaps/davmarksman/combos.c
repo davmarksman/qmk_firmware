@@ -9,22 +9,19 @@
 * Combos
 */
 enum combos {
-  YU_THE,
-  UI_ING,
-  FN_FN,
-  Y7_AND
+  YU_AND,
+  UI_ING, 
+  SF_THE
 };
 
-const uint16_t PROGMEM the_combo[] = {KC_Y, KC_U, COMBO_END};
-const uint16_t PROGMEM ing_combo[] = {KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM func_combo[] = {KC_F, KC_M, COMBO_END};
-const uint16_t PROGMEM and_combo[] = {KC_7, KC_Y, COMBO_END};
+const uint16_t PROGMEM yu_combo[] = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM sf_combo[] = {KC_S, KC_F, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [YU_THE] = COMBO_ACTION(the_combo),
-  [UI_ING] = COMBO_ACTION(ing_combo),
-  [FN_FN] = COMBO_ACTION(func_combo),
-  [Y7_AND] = COMBO_ACTION(and_combo),
+  [YU_AND] = COMBO_ACTION(yu_combo),
+  [UI_ING] = COMBO_ACTION(ui_combo),
+  [SF_THE] = COMBO_ACTION(sf_combo),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -32,7 +29,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
   oneshot_mod_state = get_oneshot_mods();
 
   switch(combo_index) {
-    case YU_THE:
+    case SF_THE:
       if (pressed) {
         if (mod_state & MOD_MASK_SHIFT) {
             del_mods(MOD_MASK_SHIFT);
@@ -40,9 +37,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             set_mods(mod_state);
         }
         else {
-
             send_string("the");
-
         }
       }
       break;
@@ -51,7 +46,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         SEND_STRING("ing");
       }
       break;
-    case Y7_AND:
+    case YU_AND:
       if (pressed) {
           if (mod_state & MOD_MASK_SHIFT) {
               del_mods(MOD_MASK_SHIFT);
@@ -59,15 +54,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
               set_mods(mod_state);
           }
           else {
-
               send_string("and");
           }
         }
         break;
-    case FN_FN:
-      if (pressed) {
-        SEND_STRING("function[]{}"); // as i've got that () change. Don't think its necessary anymore
-      }
-      break;
   }
 }
