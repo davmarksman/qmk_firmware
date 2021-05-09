@@ -34,7 +34,7 @@ Input scope analysis:
 
 
 # Dvorak
-- + Kinesis has labels for this
+- Kinesis has labels for this
 - ; is in an horrible positions on the left hand. But . is in a great position
 - Moves alot of keys
 - 
