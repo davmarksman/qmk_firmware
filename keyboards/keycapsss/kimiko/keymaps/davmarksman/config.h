@@ -46,7 +46,7 @@
 #define COMBO_COUNT 8
 
 /* Change encoder resolution to lower value*/
-#define ENCODER_RESOLUTION 2
+//#define ENCODER_RESOLUTION 1
 
 
 /* State on both hands */

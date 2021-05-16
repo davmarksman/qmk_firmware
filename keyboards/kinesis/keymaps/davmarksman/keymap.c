@@ -240,8 +240,8 @@ void led_set_user(uint8_t usb_led) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t hi_state = get_highest_layer(state);
     writePin(LED_COMPOSE_PIN, !((hi_state == _GAME) | (hi_state == _SYM)));
-    writePin(LED_SCROLL_LOCK_PIN, !((hi_state == _NAV) | (hi_state == _QWERTY)));
-    writePin(LED_NUM_LOCK_PIN, !((hi_state == _L1)| (hi_state == _QWERTY)| (hi_state == _GAME)));    
+    writePin(LED_SCROLL_LOCK_PIN, !((hi_state == _NAV) | (hi_state == _BASE)));
+    writePin(LED_NUM_LOCK_PIN, !((hi_state == _L1)| (hi_state == _BASE)| (hi_state == _GAME)));    
 
     return state;
 }

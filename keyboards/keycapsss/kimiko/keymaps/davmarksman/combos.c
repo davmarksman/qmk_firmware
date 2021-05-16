@@ -12,7 +12,7 @@ enum combos {
   KU_Q,
   FO_FOR,
   TD_THE,
-  TH_THE,
+  TH_TH,
   TN_ENT,
   IN_ING,
   ON_ION,
@@ -36,7 +36,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [KU_Q] = COMBO_ACTION(ku_combo),
   [FO_FOR] = COMBO_ACTION(fo_combo),
   [TD_THE] = COMBO_ACTION(td_combo),
-  [TH_THE] = COMBO_ACTION(th_combo),
+  [TH_TH] = COMBO_ACTION(th_combo),
   [TN_ENT] = COMBO_ACTION(tn_combo),
   [IN_ING] = COMBO_ACTION(in_combo),
   [ON_ION] = COMBO_ACTION(on_combo),
@@ -76,15 +76,15 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         }
       }
       break;
-    case TH_THE:
+    case TH_TH:
       if (pressed) {
         if (mod_state & MOD_MASK_SHIFT) {
             del_mods(MOD_MASK_SHIFT);
-            send_string("The");
+            send_string("Th");
             set_mods(mod_state);
         }
         else {
-            send_string("the");
+            send_string("th");
         }
       }
       break;

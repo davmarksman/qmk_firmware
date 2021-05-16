@@ -34,17 +34,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_BASE] = LAYOUT(
     KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KC_NUBS,
-    KC_TAB,   KC_J,   KC_G,    KC_M,    KC_F,    KC_EQL,                      TD(TD_MINS),KC_K,    KC_U,    KC_W,    KC_Z,    KC_RPRN,
-    KC_LPRN,  KC_H,   KC_R,    KH_C_S,  KC_T,    KC_B,                        KC_Y,       KC_I,    KC_E,    KC_O,    KC_A,    KC_QUOT,
-    KC_LCBR,  KC_X,   KC_C,    KC_L,    KC_D,    KC_V,    K_CLIP,  K_AHK,     TD(TD_SCLN),KC_P,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCBR,
-                      KC_LEFT, KC_RGHT, K_OSFT,  KT_C_BK, LSYM_TB, LNAV_ENT, L1_SPC,   KC_N,    KC_LALT, KC_RGUI
+    KC_TAB,   KC_J,   KC_C,    KC_L,    KC_H,    KC_EQL,                      TD(TD_MINS),KC_K,    KC_U,    KC_W,    KC_Z,    KC_RPRN,
+    KC_LPRN,  KC_F,   KC_R,   KH_C_S,   KC_T,    KC_B,                        KC_Y,       KC_I,    KC_E,    KC_O,    KC_A,    KC_QUOT,
+    KC_LCBR,  KC_X,   KC_G,    KC_M,    KC_D,    KC_V,    K_CLIP,  K_AHK,     TD(TD_SCLN),KC_P,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCBR,
+                      KC_LEFT, KC_RGHT, K_OSFT,  KT_C_BK, LSYM_TB, LNAV_ENT,  L1_SPC,     KC_N,    KC_LALT, KC_LGUI
 ),
 
 [_GAME] = LAYOUT(
     KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,     KC_8,    KC_9,    KC_0,    KC_MINS,
     KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_NUBS,
     KC_EQL,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                        KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    K_CLIP,  K_AHK,     KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+    KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    LBASE,  LQ,     KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                       KC_LEFT, KC_RGHT, KC_LSFT, KT_C_BK, XXXXXXX, KC_ENT,    KC_SPC,  XXXXXXX, KC_LALT, KC_RGUI
 ),
 [_L1] = LAYOUT(
@@ -64,10 +64,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_NAV] = LAYOUT(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, KC_HOME, KC_UP,   KC_END,  XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LBASE, LQ,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                       XXXXXXX, XXXXXXX, KC_LSFT, KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
@@ -392,18 +392,18 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     // Encoder on master side
     if (index == 0) {
         if (clockwise) {
-            tap_code16(KC_DOWN);
-        } else {
             tap_code16(KC_UP);
+        } else {
+            tap_code16(KC_DOWN);
         }
     }
     // Encoder on slave side
     else if (index == 1) {
         // Undo /Redo
         if (clockwise) {
-            tap_code16(K_UNDO);
-        } else {
             tap_code16(K_REDO);
+        } else {
+            tap_code16(K_UNDO);
         }
     }
 }
