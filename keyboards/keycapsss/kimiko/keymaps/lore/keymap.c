@@ -1,18 +1,20 @@
 
-// qmk compile -kb keycapsss/kimiko -km emman
+// qmk compile -kb keycapsss/kimiko -km lore
 #include QMK_KEYBOARD_H
 
 enum layers {
     _QWERTY,
-    _LOWER,
-    _RAISE,
+    _EXCEL,
+    _NAV,
     _ADJUST,
 };
 
-#define RAISE MO(_RAISE)
-#define LOWER MO(_LOWER)
+#define NAV MO(_NAV)
+#define EXCEL MO(_EXCEL)
 #define K_UNDO LCTL(KC_Z)
 #define K_REDO LCTL(KC_Y)
+
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -31,11 +33,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_QWERTY] = LAYOUT(
-    KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
-    KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
+    KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
+    KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_EQL,
     KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                      KC_UP, KC_DOWN,  RAISE, KC_LCTRL,   KC_SPC,   KC_ENT,   KC_BSPC, LOWER, KC_RGUI, KC_LALT
+    KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+                      KC_LEFT, KC_RGHT, KC_BSPC, EXCEL,   KC_ENT,   KC_SPC,   NAV,     KC_DEL,  KC_LGUI, KC_LALT
 ),
 /* LOWER
  * ,-------------------------------------------.                    ,-----------------------------------------.
@@ -51,13 +53,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                 `----------------------------------'       '------------------------------------'
  */
 
-[_LOWER] = LAYOUT(
-    KC_ESC, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,                  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F12,
-    KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
-                      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-),
+[_EXCEL] = LAYOUT(
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_KP_PLUS,KC_EQL,  KC_LPRN, KC_RPRN, KC_BSPC,    XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, ALGR(KC_4),XXXXXXX, XXXXXXX,                 KC_PMNS,   KC_7,    KC_8,    KC_9,    KC_KP_SLASH,KC_NUBS,
+    _______, XXXXXXX, KC_DEL,  KC_F2,   KC_F4,   KC_PERC,                   KC_DEL,    KC_4,    KC_5,    KC_6,    KC_KP_ASTERISK,XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX,   KC_1,    KC_2,    KC_3,    KC_CIRC,    KC_RSFT,
+                      _______, _______, _______, _______, _______, KC_BSPC, KC_KP_DOT, KC_0,    _______, _______
+),  
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
@@ -72,12 +74,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                 `----------------------------------'       '------------------------------------'
  */
 
-[_RAISE] = LAYOUT(
-    KC_ESC, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LCBR,  KC_RCBR, KC_NO,   KC_NO,    _______,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LPRN,  KC_RPRN, KC_NO,   KC_NO,   KC_NO,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______,  KC_NO,  KC_LBRC,  KC_RBRC, KC_NO,   KC_NO,   KC_NO,
-                      _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______
+[_NAV] = LAYOUT(
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                      KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+    _______, KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,                      KC_NO,  KC_NO,    KC_UP,   KC_NO,  KC_NO,   KC_F12,
+    _______, KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,                      KC_NO,  KC_LEFT,  KC_DOWN, KC_RGHT,KC_NO,   KC_NO,
+    _______, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______,  KC_NO,  KC_NO,    KC_NO,   KC_NO,  KC_NO,   KC_RSFT,
+                     _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______
 ),
 /* ADJUST (Press LOWER and RAISE together)
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -104,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    state = update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
+    state = update_tri_layer_state(state, _NAV, _EXCEL, _ADJUST);
     return state;
 }
 
@@ -280,9 +282,9 @@ void render_layer_state(void) {
         0x20, 0xdd, 0xde, 0xdf, 0x20, 0};
     if(layer_state_is(_ADJUST)) {
         oled_write_P(adjust_layer, false);
-    } else if(layer_state_is(_LOWER)) {
+    } else if(layer_state_is(_EXCEL)) {
         oled_write_P(lower_layer, false);
-    } else if(layer_state_is(_RAISE)) {
+    } else if(layer_state_is(_NAV)) {
         oled_write_P(raise_layer, false);
     } else {
         oled_write_P(default_layer, false);
@@ -298,6 +300,7 @@ void render_status_main(void) {
     render_space();
     render_mod_status_gui_alt(get_mods()|get_oneshot_mods());
     render_mod_status_ctrl_shift(get_mods()|get_oneshot_mods());
+    oled_write_P(PSTR("LORE"), false);
 }
 
 void render_status_secondary(void) {
@@ -322,73 +325,21 @@ void oled_task_user(void) {
 void encoder_update_user(uint8_t index, bool clockwise) {
     // Encoder on master side
     if (index == 0) {
-        switch (get_highest_layer(layer_state)) {
-            // If the Default (QWERTY) layer is active
-            case _QWERTY:
-                // Arrow Up/Down
-                if (clockwise) {
-                    tap_code(KC_RGHT);
-                } else {
-                    tap_code(KC_LEFT);
-                }
-                break;
-
-            // If the LOWER layer is active
-            case _LOWER:
-                // Volume up/down
-                if (clockwise) {
-                    tap_code(KC_VOLU);
-                } else {
-                    tap_code(KC_VOLD);
-                }
-                break;
-
-            // If the ADJUST layer is active
-            case _ADJUST:
-                // RGB brightness up/down
-                if (clockwise) {
-                    rgblight_decrease_val(); // tap_code(RGB_VAD);
-                } else {
-                    rgblight_increase_val(); // tap_code(RGB_VAI);
-                }
-                break;
+        // Arrow Up/Down
+        if (clockwise) {
+            tap_code(KC_DOWN);
+        } else {
+            tap_code(KC_UP);
         }
     }
     // Encoder on slave side
     else if (index == 1) {
-        switch (get_highest_layer(layer_state)) {
-            // If the Default (QWERTY) layer is active
-            case _QWERTY:
-                // Undo /Redo
-                if (clockwise) {
-                    tap_code16(K_UNDO);
-                } else {
-                    tap_code16(K_REDO);
-                }
-                break;
-
-            // If the RAISE layer is active
-            case _RAISE:
-                // Switch browser tabs
-                if (clockwise) {
-                    tap_code16(LCTL(KC_TAB));
-                } else {
-                    tap_code16(RCS(KC_TAB));
-                }
-                break;
-
-            // If the ADJUST layer is active
-            case _ADJUST:
-                // RGB hue up/down
-                if (clockwise) {
-                    // tap_code(RGB_HUI);
-                    rgblight_increase_hue();
-                } else {
-                    // tap_code(RGB_HUD);
-                    rgblight_decrease_hue();
-                }
-                break;
+        if (clockwise) {
+            tap_code16(K_UNDO);
+        } else {
+            tap_code16(K_REDO);
         }
     }
 }
 #endif // ENCODER_ENABLE
+
