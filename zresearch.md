@@ -190,7 +190,7 @@ Defo need to move that backspace postion. Looking at the stats its in a horrible
 # difficulty matrix
 https://workmanlayout.org/#back-to-the-drawing-board  
 https://colemakmods.github.io/mod-dh/compare.html  
-https://deskthority.net/wiki/BEAKLf
+https://deskthority.net/wiki/BEAKL#Effort_Grid  
 https://stevep99.github.io/keyboard-effort-grid/
 
 
@@ -224,7 +224,6 @@ thinking changes
 
 
 Liking this layout
-
 
 
 # Top keys
@@ -356,6 +355,7 @@ Tried my layout here.
 
 - TH bigram not great but way around with th combo.
 - ow/wo other bigram not great. But occurence is sufficently lOW
+- left index has high utilisation.
 
 http://colemakmods.github.io/mod-dh/analyze.html
 ```
@@ -367,20 +367,20 @@ x  g  m  d  v  ;  p  ,  .  /  n
 
 ```
 effort: 4
-5.0 3.3 2.8 2.8 3.6 3.6 2.8 2.8 3.3 4.0  4.7 3.9
-4.0 2.4 2.0 2.2 3.2 3.2 2.2 2.0 2.4 3.0  4.4 4.4
-2.9 1.3 1.1 1.0 2.9 2.9 1.0 1.1 1.3 1.6  3.4
-4.2 2.6 2.3 1.6 3.0 3.0 1.6 2.3 2.6 3.2  1.0 
+4.0 3.3 2.8 2.8 3.6 3.6 2.8 2.8 3.3 4.0  4.7 3.9
+5.0 2.4 2.0 2.2 3.2 3.2 2.2 2.0 2.4 3.0  4.4 4.4
+3.4 1.3 1.1 1.0 2.9 2.9 1.0 1.1 1.3 1.6  3.4
+5.2 2.6 2.3 1.6 3.0 3.0 1.6 2.3 2.6 3.2  1.0 
 penalties:
  2.5  3.0  4.0  #same-finger
  0.5  1.0  1.5  #pinky-ring
  0.1  0.2  0.3  #ring-middle
 -0.2 -0.1  0.0  #middle-index
 fingers: 4
-1 1 2 3 3 6 6 7 8 8 9 9
+1 1 2 3 3 6 6 7 8 8 9 8
 0 1 2 3 3 6 6 7 8 9 3 6
 0 1 2 3 3 6 6 7 8 9 9
-0 1 2 3 3 6 6 7 8 9 9
+0 1 2 3 3 6 6 7 8 9 5
 type:
 matrix
 ```
@@ -390,3 +390,34 @@ matrix
 - Penalise left pinky
 - Top ring and middle better 
 - Top index RU and index bottom right is hard on kimiko but ok on kinesis
+
+
+  # Goal is to get to my current avg - 50 wpm
+  
+1  2  3  4  5  6  7  8  9  0  q   
+w  g  m  f  =  '  k  u  j  z  [  ]
+r  s  t  h  b  y  i  e  o  a  ;
+x  c  l  d  v  -  p  /  ,  .  n
+
+
+# Options: 
+- Don't like P position. Think it's recieved such a nice position considering its usuage.
+- H position is fine but feel should be better
+- L position is not ideal as use L alot.
+- wsad arrow keys position feels more natural. or can try on ijkl. requires swapping symbol and nav triggers to other hands.
+- thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
+
+
+
+# Typing pratice
+
+84.84%
+88.89%
+88.76%
+85.16%
+86.39%
+89.60%
+91.78%
+90.67%
+91.55%
+93.48%
