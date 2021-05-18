@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_DOWN     ,
-          KC_ENT      ,L1_SPC      ,KC_E      
+          LNAV_ENT    ,L1_SPC      ,KC_N      
     ),
 [_GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,K_AND       ,K_GRV3      ,K_OR        ,XXXXXXX     ,XXXXXXX     ,
           KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,K_PIPE      ,KC_BSLS     ,XXXXXXX  ,
-          XXXXXXX     ,K_AT      ,KC_GRV      ,K_EQ_GR     ,KC_TILD     ,XXXXXXX     ,
+          XXXXXXX     ,K_AT        ,KC_GRV      ,K_EQ_GR     ,KC_TILD     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
@@ -158,8 +158,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          KC_TAB      ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,XXXXXXX     ,
-          XXXXXXX     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,XXXXXXX     ,
+          KC_TAB      ,XXXXXXX     ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,
+          XXXXXXX     ,XXXXXXX     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,LBASE       ,
           // Thumb
