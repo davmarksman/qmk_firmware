@@ -16,23 +16,28 @@ enum combos {
   TN_ENT,
   IN_ING,
   ON_ION,
-  DN_AND
+  DN_AND, 
+
+  // This must be the last item in the enum.
+  // This is used to automatically update the combo count.
+  COMBO_LENGTH
 };
 
+uint16_t COMBO_LEN = COMBO_LENGTH;
 
 
 const uint16_t PROGMEM ku_combo[] = {KC_K, KC_U, COMBO_END};
 const uint16_t PROGMEM fo_combo[] = {KC_F, KC_O, COMBO_END};
 const uint16_t PROGMEM td_combo[] = {KC_T, KC_D, COMBO_END};
 const uint16_t PROGMEM th_combo[] = {KC_T, KC_H, COMBO_END};
-const uint16_t PROGMEM tn_combo[] = {KC_T, KC_N, COMBO_END};
-const uint16_t PROGMEM in_combo[] = {KC_I, KC_N, COMBO_END};
-const uint16_t PROGMEM on_combo[] = {KC_O, KC_N, COMBO_END};
-const uint16_t PROGMEM dn_combo[] = {KC_D, KC_N, COMBO_END};
+const uint16_t PROGMEM tn_combo[] = {KC_T, LNAV_N, COMBO_END};
+const uint16_t PROGMEM in_combo[] = {KC_I, LNAV_N, COMBO_END};
+const uint16_t PROGMEM on_combo[] = {KC_O, LNAV_N, COMBO_END};
+const uint16_t PROGMEM dn_combo[] = {KC_D, LNAV_N, COMBO_END};
 
 
 
-combo_t key_combos[COMBO_COUNT] = {
+combo_t key_combos[] = {
   [KU_Q] = COMBO_ACTION(ku_combo),
   [FO_FOR] = COMBO_ACTION(fo_combo),
   [TD_THE] = COMBO_ACTION(td_combo),

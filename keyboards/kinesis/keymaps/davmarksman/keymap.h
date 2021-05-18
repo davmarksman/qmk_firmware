@@ -25,6 +25,7 @@ enum layer_names {
 #define LSYM_TB LT(_SYM, KC_TAB)
 #define LNAV_ENT LT(_NAV,KC_ENT) 
 #define LNAV TO(_NAV)
+#define LNAV_N LT(_NAV,KC_N)
 
 // Userful defines
 #define K_OSFT OSM(MOD_LSFT)
@@ -41,6 +42,8 @@ enum layer_names {
 #define K_GLOBAL C(S(KC_F))
 #define K_UNDOTB C(S(KC_T))
 #define K_SNIP G(S(KC_S))
+
+#define KH_C_S LCTL_T(KC_S)
 
 // Custom codes
 enum custom_keycodes {

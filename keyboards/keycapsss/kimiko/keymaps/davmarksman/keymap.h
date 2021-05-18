@@ -25,6 +25,7 @@ enum layers {
 #define LSYM_TB LT(_SYM, KC_TAB)
 #define LNAV_ENT LT(_NAV,KC_ENT) 
 #define LNAV TO(_NAV)
+#define LNAV_N LT(_NAV,KC_N) 
 
 // Userful defines
 #define K_OSFT OSM(MOD_LSFT)

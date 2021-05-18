@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_DOWN     ,
-          LNAV_ENT    ,L1_SPC      ,KC_N      
+          LNAV_ENT    ,L1_SPC      ,LNAV_ENT      
     ),
     [_QWERTY] = LAYOUT( 
           XXXXXXX     ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_DOWN     ,
-          LNAV_ENT    ,L1_SPC      ,KC_N      
+          LNAV_ENT    ,L1_SPC      ,LNAV_ENT      
     ),
 [_GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
