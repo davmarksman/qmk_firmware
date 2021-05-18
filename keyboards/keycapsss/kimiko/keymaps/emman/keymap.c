@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,                  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F12,
     KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
+    KC_LSFT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, XXXXXXX, KC_UNDS, KC_PLUS, KC_NO, KC_NUBS, KC_RSFT,
                       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 /* RAISE
@@ -74,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_RAISE] = LAYOUT(
     KC_ESC, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LCBR,  KC_RCBR, KC_NO,   KC_NO,    _______,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LPRN,  KC_RPRN, KC_NO,   KC_NO,   KC_NO,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______,  KC_NO,  KC_LBRC,  KC_RBRC, KC_NO,   KC_NO,   KC_NO,
+    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LCBR,  KC_RCBR, KC_TILD,   KC_NO,    _______,
+    KC_LSFT,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LPRN,  KC_RPRN, KC_BSLS,   S(KC_BSLS),   KC_NO,
+    KC_LSFT,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______,  KC_NO,  KC_LBRC,  KC_RBRC, KC_GRV,   KC_NUBS,   KC_RSFT,
                       _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______
 ),
 /* ADJUST (Press LOWER and RAISE together)
