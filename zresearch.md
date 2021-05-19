@@ -272,13 +272,13 @@ Right      - 303            I-O-N  - 157
 -          - 290            I-N-G  - 141 
 0          - 276            F-O-R  - 139
 ,          - 274            T-H-E  - 130
-1          - 232            E-N-T   - 129
+1          - 232            E-N-T  - 129
 =          - 191            A-N-D  - 102
-/          - 189            
+/          - 189            ??L-I-N           - 121
 OSM(SYM)   - 186            
-X          - 178            
-2          - 169
-J_Mod      - 166
+X          - 178            V-A-R
+2          - 169            broker
+J_Mod      - 166            david
 ;          - 153
 (          - 143
 Q          - 139
@@ -348,14 +348,28 @@ F4         - 6
 
 ```
 
+# Hands down
+## Original alt-nx
+```
+1  2  3  4  5  6  7  8  9  0  q   
+w  g  m  f  =  '  k  u  j  z  [  ]
+r  s  t  h  b  y  i  e  o  a  ;
+x  c  l  d  v  -  p  /  ,  .  n
+```
+## Original alt
+```
+w c h f v   / y u q j
+r s n t g   k i e o a 
+x m l d b   z p ' , .
+```
 
 # Layout testing 
 
 Tried my layout here. 
 
-- TH bigram not great but way around with th combo.
+- TH bigram not great but way around with th/the combos.
 - ow/wo other bigram not great. But occurence is sufficently lOW
-- left index has high utilisation.
+- left index has high utilisation > 20%. But my f vs h usuage is neligable (think ctrl+f is to blame=10%)
 
 http://colemakmods.github.io/mod-dh/analyze.html
 ```
@@ -393,19 +407,6 @@ matrix
 
 
   # Goal is to get to my current avg - 50 wpm
-  
-1  2  3  4  5  6  7  8  9  0  q   
-w  g  m  f  =  '  k  u  j  z  [  ]
-r  s  t  h  b  y  i  e  o  a  ;
-x  c  l  d  v  -  p  /  ,  .  n
-
-
-# Options: 
-- Don't like P position. Think it's recieved such a nice position considering its usuage.
-- H position is fine but feel should be better
-- L position is not ideal as use L alot.
-- wsad arrow keys position feels more natural. or can try on ijkl. requires swapping symbol and nav triggers to other hands.
-- thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
 
 
 
@@ -421,3 +422,36 @@ x  c  l  d  v  -  p  /  ,  .  n
 90.67%
 91.55%
 93.48%
+88.72%
+92.44%
+93.28%
+87.88%
+
+
+# Options: 
+- Don't like P position. Think it's recieved such a nice position considering its usuage.
+- 'H' position is fine but feel should be better
+- 'L' position is not ideal as use 'L' alot. I would also argue reverse. On kinesis it almost same as 'p' and only slightly worse on kimiko
+- wsad arrow keys position feels more natural. or can try on ijkl. requires swapping symbol and nav triggers to other hands.
+- thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
+- alt ex has 'p' in position i like. 
+- swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. But 'f' also has ctrl+f = 10% of 'f' usuage. So taking that out brings almost on par with g.
+- also nice to have: f has a homing key that makes it ideal to find home. popping j on i so get that homing too.
+- Only way to reduce right pink would be to swap 'f' and 'w'. Plus 'for' combo to negate sfb. 
+- left index has high utilisation > 20%. But my 'f' vs 'h'  usuage is neligable (think ctrl+f is to blame=10%)
+
+
+Swapping l and p gives problems with li bigram. V. Common in my dataset
+Same-Finger Bigrams
+finger 7 	LI 	0.557%
+finger 7 	IL 	0.433%
+
+
+updated would look like:
+```
+1  2  3  4  5  6  7  8  9  0  q   
+j  c  f  h  =  -  k  u  p  z  [  ]
+w  r  s  t  b  y  i  e  o  a  '
+x  g  m  d  v  ;  l  ,  .  /  n
+```
+'w', 'f', 'l', 'p' change.
