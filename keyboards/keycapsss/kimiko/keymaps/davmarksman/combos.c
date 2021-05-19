@@ -17,6 +17,9 @@ enum combos {
   IN_ING,
   ON_ION,
   DN_AND, 
+  OR_FOR, 
+  DM_DAV, 
+  BK_BROK, 
 
   // This must be the last item in the enum.
   // This is used to automatically update the combo count.
@@ -34,6 +37,9 @@ const uint16_t PROGMEM tn_combo[] = {KC_T, LNAV_N, COMBO_END};
 const uint16_t PROGMEM in_combo[] = {KC_I, LNAV_N, COMBO_END};
 const uint16_t PROGMEM on_combo[] = {KC_O, LNAV_N, COMBO_END};
 const uint16_t PROGMEM dn_combo[] = {KC_D, LNAV_N, COMBO_END};
+const uint16_t PROGMEM or_combo[] = {KC_O, KC_R, COMBO_END};
+const uint16_t PROGMEM dm_combo[] = {KC_D, KC_M, COMBO_END};
+const uint16_t PROGMEM bk_combo[] = {KC_B, KC_K, COMBO_END};
 
 
 
@@ -46,6 +52,9 @@ combo_t key_combos[] = {
   [IN_ING] = COMBO_ACTION(in_combo),
   [ON_ION] = COMBO_ACTION(on_combo),
   [DN_AND] = COMBO_ACTION(dn_combo),
+  [OR_FOR] = COMBO_ACTION(or_combo),
+  [DM_DAV] = COMBO_ACTION(dm_combo),
+  [BK_BROK] = COMBO_ACTION(bk_combo),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -117,6 +126,42 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
           }
           else {
               send_string("and");
+          }
+        }
+        break;
+    case OR_FOR:
+      if (pressed) {
+          if (mod_state & MOD_MASK_SHIFT) {
+              del_mods(MOD_MASK_SHIFT);
+              send_string("For");
+              set_mods(mod_state);
+          }
+          else {
+              send_string("for");
+          }
+        }
+        break;
+    case DM_DAV:
+      if (pressed) {
+          if (mod_state & MOD_MASK_SHIFT) {
+              del_mods(MOD_MASK_SHIFT);
+              send_string("David");
+              set_mods(mod_state);
+          }
+          else {
+              send_string("david");
+          }
+        }
+        break;
+    case BK_BROK:
+      if (pressed) {
+          if (mod_state & MOD_MASK_SHIFT) {
+              del_mods(MOD_MASK_SHIFT);
+              send_string("Broker");
+              set_mods(mod_state);
+          }
+          else {
+              send_string("broker");
           }
         }
         break;
