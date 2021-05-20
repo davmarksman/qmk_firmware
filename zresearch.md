@@ -399,6 +399,21 @@ type:
 matrix
 ```
 
+## Finger distribution with my layout:
+```
+Finger 0 - 2.28%
+Finger 1 - 7.21%
+Finger 2 - 8.46%
+Finger 3 - 8.81%
+
+Finger 5 - 7.45%
+Finger 6 - 7.96%
+Finger 7 - 6.46%
+Finger 8 - 4.88%
+
+Finger 11 - 17.73%
+Finger 12 - 16.94%
+```
 
 # Effort Matrix
 - Penalise left pinky
@@ -411,7 +426,7 @@ matrix
 
 
 # Typing pratice
-
+```
 84.84%
 88.89%
 88.76%
@@ -427,26 +442,43 @@ matrix
 93.28%
 87.88%
 
+84.20%
+89.10%
+96.33%
+92.99%
+94.46%
+92.42%
+93.43%
+93.14%
+92.61%
 
+84.66%
+```
 # Options: 
-- Don't like P position. Think it's recieved such a nice position considering its usuage.
+
 - 'H' position is fine but feel should be better
-- 'L' position is not ideal as use 'L' alot. I would also argue reverse. On kinesis it almost same as 'p' and only slightly worse on kimiko
+- Thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
 - wsad arrow keys position feels more natural. or can try on ijkl. requires swapping symbol and nav triggers to other hands.
-- thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
-- alt ex has 'p' in position i like. 
-- swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. But 'f' also has ctrl+f = 10% of 'f' usuage. So taking that out brings almost on par with g.
-- also nice to have: f has a homing key that makes it ideal to find home. popping j on i so get that homing too.
-- Only way to reduce right pink would be to swap 'f' and 'w'. Plus 'for' combo to negate sfb. 
+- alt ex has 'p' in position i like, where 'h' currently is 
 - left index has high utilisation > 20%. But my 'f' vs 'h'  usuage is neligable (think ctrl+f is to blame=10%)
 
+### Pinky dilema:
+- swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. B1jiion;ei6piiiiiiiiieeeei889wkwfffff1jbrings almost on par with g.
+- also nice to have: f has a homing key that makes it ideal to find home. popping j on i so get that homing too.
+- Only way to reduce right pink would be to swap 'f' and 'w'. Plus 'for' combo to negate sfb. 
+- From my data fo gram ok as long as have for combo. For was 139/163 fo grams
 
-Swapping l and p gives problems with li bigram. V. Common in my dataset
-Same-Finger Bigrams
-finger 7 	LI 	0.557%
-finger 7 	IL 	0.433%
+### 'L' Dilema
+- Don't like P position. Think it's recieved such a nice position considering its usuage.
+- 'L' position is not ideal as use 'L' alot. I would also argue reverse. On kinesis it almost same as 'p' and only slightly worse on kimiko
 
+Swapping l and p gives problems with li bigram. V. Common in my dataset  
+Same-Finger Bigrams  
+finger 7 	LI 	0.557%  
+finger 7 	IL 	0.433%  
+th is like 3%  
 
+## Proposal
 updated would look like:
 ```
 1  2  3  4  5  6  7  8  9  0  q   
@@ -454,4 +486,44 @@ j  c  f  h  =  -  k  u  p  z  [  ]
 w  r  s  t  b  y  i  e  o  a  '
 x  g  m  d  v  ;  l  ,  .  /  n
 ```
-'w', 'f', 'l', 'p' change.
+'w', 'f', 'l', 'p' change.  
+Finger distribution with my layout:
+```
+Finger 0 - 1.54%
+Finger 1 - 7.21%
+Finger 2 - 7.35%
+Finger 3 - 8.81%
+
+Finger 5 - 8.47%
+Finger 6 - 7.96%
+Finger 7 - 7.29%
+Finger 8 - 4.88%
+
+Finger 11 - 17.73%
+Finger 12 - 16.94%
+```
+
+## Proposal Pink
+```
+1  2  3  4  5  6  7  8  9  0  q   
+j  c  l  h  =  -  k  u  f  z  [  ]
+w  r  s  t  b  y  i  e  o  a  '
+x  g  m  d  v  ;  p  ,  .  /  n
+```
+'w', 'f', change.  
+
+Finger distribution with my layout:
+```
+Finger 0 - 1.54%
+Finger 1 - 7.21%
+Finger 2 - 8.46%
+Finger 3 - 8.81%
+
+Finger 5 - 7.45%
+Finger 6 - 7.96%
+Finger 7 - 7.2%
+Finger 8 - 4.88%
+
+Finger 11 - 17.73%
+Finger 12 - 16.94%
+```
