@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb{}
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-          K_OSFT      ,KT_C_BK     ,LSYM_TB     ,
+          K_OSFT      ,KT_C_BK     ,KC_TAB     ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LQM      ,LQ          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KC_NUBS     ,
@@ -61,19 +61,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_DOWN     ,
-          LNAV_ENT    ,L1_SPC      ,LNAV_ENT      
+          KC_ENT    ,L1_SPC      ,LSYN_N      
     ),
-    [_QWERTY] = LAYOUT( 
+[_QWERTY] = LAYOUT( 
           XXXXXXX     ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T       ,
-          LNAV        ,KC_A        ,KC_S        ,LCTL_T(KC_D),KC_F        ,KC_G        ,
+          XXXXXXX     ,KC_A        ,KC_S        ,LCTL_T(KC_D),KC_F        ,KC_G        ,
           KC_LCBR     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        LL1         ,KC_LEFT     ,KC_RGHT     ,KC_DOWN         ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-          K_OSFT      ,KT_C_BK,LSYM_TB    ,
+          K_OSFT      ,KT_C_BK     ,KC_TAB     ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LBASE          ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,TD(TD_MINS) ,
@@ -84,19 +84,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           K_AHK       ,KC_RGUI     ,
           KC_DOWN     ,
-          LNAV_ENT    ,L1_SPC      ,LNAV_ENT      
+          KC_ENT      ,L1_SPC      ,LSYN_N      
     ),
 [_GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,KC_S        ,KC_D        ,KC_F        ,KC_G        ,
+          KC_LSFT      ,KC_A        ,KC_S        ,KC_D        ,KC_F        ,KC_G        ,
           KC_LSFT     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
                        LL1         ,KC_LEFT     ,KC_RGHT     ,K_UNDO      ,
           // Thumb
                        KT_ALTESC   ,K_CLIP      ,
                                     KC_DEL      ,
-         KC_LSFT     , KT_C_BK     ,LSYM_TB     ,
+         KC_LSFT     , KT_C_BK     ,KC_TAB      ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LBASE       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KC_MINS     ,
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           XXXXXXX     ,XXXXXXX     ,A(KC_LEFT)  ,A(KC_RGHT)  ,XXXXXXX     ,KC_F12      ,
-          XXXXXXX     ,KC_AT       ,KC_UNDS     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,KC_AT       ,KC_UNDS     ,KC_BSLS     ,XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,K_SNIP      ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,KC_INS      ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
@@ -132,51 +132,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXXXX     ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     
     ),
-[_SYM] = LAYOUT(
+[_SYNAV] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,K_AT        ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
+          XXXXXXX     ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
+          XXXXXXX     ,XXXXXXX     ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,
+          XXXXXXX     ,XXXXXXX     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,
           XXXXXXX     ,KS_X2X      ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_UNDO      ,
+                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          XXXXXXX     ,KT_C_DEL    ,XXXXXXX     ,
+          KT_S_EXLM    ,KT_C_DEL    ,XXXXXXX     ,
           // Right Hand
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,K_AND       ,K_GRV3      ,K_OR        ,XXXXXXX     ,XXXXXXX     ,
-          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,K_PIPE      ,KC_BSLS     ,XXXXXXX  ,
-          XXXXXXX     ,K_AT        ,KC_GRV      ,K_EQ_GR     ,KC_TILD     ,XXXXXXX     ,
+          KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
+          XXXXXXX     ,K_AND       ,K_GRV3      ,K_OR        ,XXXXXXX     ,KC_F12      ,
+          KC_DLR      ,KC_AMPR     ,KC_ASTR     ,K_PIPE      ,KC_BSLS     ,XXXXXXX     ,
+          XXXXXXX     ,K_AT        ,KC_GRV      ,K_EQ_GR     ,K_TILDE     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,
-          XXXXXXX     ,KC_EXLM     ,XXXXXXX     
-    ),
-[_NAV] = LAYOUT(
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          KC_ESC      ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          KC_TAB      ,XXXXXXX     ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,
-          XXXXXXX     ,XXXXXXX     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,LBASE       ,
-          // Thumb
-                       KT_ALTESC   ,XXXXXXX     ,
-                                    XXXXXXX     ,
-          KC_LSFT,     KC_LCTL     ,XXXXXXX     ,
-          // Right Hand
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX    ,XXXXXXX    ,
-          KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,XXXXXXX     ,KC_F12      ,
-          KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,KC_CAPS     ,
-                       KC_LALT     ,KC_RGUI     ,XXXXXXX     ,XXXXXXX     ,
-          // Thumb
-          XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,
-          XXXXXXX     ,KC_ENT      ,KC_SPC      
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     
     ),
 };
 
@@ -239,9 +216,9 @@ void led_set_user(uint8_t usb_led) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t hi_state = get_highest_layer(state);
-    writePin(LED_COMPOSE_PIN, !((hi_state == _GAME) | (hi_state == _SYM)));
-    writePin(LED_SCROLL_LOCK_PIN, !((hi_state == _NAV) | (hi_state == _BASE)));
-    writePin(LED_NUM_LOCK_PIN, !((hi_state == _L1)| (hi_state == _BASE)| (hi_state == _GAME)));    
+    writePin(LED_COMPOSE_PIN, !(hi_state == _BASE));
+    writePin(LED_SCROLL_LOCK_PIN, !(hi_state == _SYNAV));
+    writePin(LED_NUM_LOCK_PIN, !((hi_state == _L1)| (hi_state == _GAME)));    
 
     return state;
 }

@@ -31,13 +31,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                 | LCTRL| LGUI | LALT |LOWER| Space /       \Enter \  |RAISE |BackSP| RGUI | RALT |
  *                 `----------------------------------'       '------------------------------------'
  */
- 
+
  [_BASE] = LAYOUT(
     KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KC_NUBS,
     KC_TAB,   KC_J,   KC_C,    KC_L,    KC_H,    KC_EQL,                      TD(TD_MINS),KC_K,    KC_U,    KC_W,    KC_Z,    KC_RPRN,
-    KC_LPRN,  KC_F,   KC_R,   KH_C_S,   KC_T,    KC_B,                        KC_Y,       KC_I,    KC_E,    KC_O,    KC_A,    KC_QUOT,
+    KC_LPRN,  KC_F,   KC_R,    KH_C_S,  KC_T,    KC_B,                        KC_Y,       KC_I,    KC_E,    KC_O,    KC_A,    KC_QUOT,
     KC_LCBR,  KC_X,   KC_G,    KC_M,    KC_D,    KC_V,    K_CLIP,  K_AHK,     TD(TD_SCLN),KC_P,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCBR,
-                      KC_LEFT, KC_RGHT, LSYM_TB, K_OSFT,  KT_C_BK, L1_SPC,    LNAV_N,     LNAV_ENT,KC_LALT, KC_RGUI
+                      KC_LEFT, KC_RGHT, KC_TAB,  K_OSFT,  KT_C_BK, L1_SPC,    LSYN_N,     KC_ENT,  KC_LALT, KC_RGUI
 ),
 
 [_GAME] = LAYOUT(
@@ -45,46 +45,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_NUBS,
     KC_EQL,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                        KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    LBASE,  LQ,         KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                      KC_LEFT, KC_RGHT, KC_LSFT, KT_C_BK, XXXXXXX, KC_ENT,    KC_SPC,  XXXXXXX, KC_LALT, KC_RGUI
+                      KC_LEFT, KC_RGHT, XXXXXXX, KC_LSFT, KT_C_BK, KC_ENT,    KC_SPC,  XXXXXXX, KC_LALT, KC_RGUI
 ),
 [_L1] = LAYOUT(
     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, K_UNDOTB,                    XXXXXXX, XXXXXXX, A(KC_LEFT),A(KC_RGHT),KC_NO,KC_F12,
-    XXXXXXX, KC_BSLS, KC_LBRC, KC_LCBR, KC_LPRN, K_GLOBAL,                    XXXXXXX, KC_AT,   KC_UNDS, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, KC_BSLS, KC_LBRC, KC_LCBR, KC_LPRN, K_GLOBAL,                    XXXXXXX, KC_AT,   KC_UNDS, KC_BSLS, XXXXXXX, XXXXXXX,
     KC_CAPS, KS_X2X,  KC_RBRC, KC_RCBR, KC_RPRN, XXXXXXX,   LBASE,  LQ,       XXXXXXX, K_SNIP,  XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,
-                      KC_HOME, KC_END,  KC_PPLS, KT_C_DEL, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
+                      KC_HOME, KC_END,  XXXXXXX, KC_PPLS,   KC_DEL, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 
-[_SYM] = LAYOUT(
+[_SYNAV] = LAYOUT(
     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, K_AND,   K_GRV3,  K_OR,    XXXXXXX, KC_F12,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DLR,  XXXXXXX,                     XXXXXXX, KC_AMPR, KC_ASTR, K_PIPE,  KC_BSLS, XXXXXXX,
-    _______, KC_NO,   KS_X2X,   KC_NO,   KC_NO,  KC_NO,     LBASE, LQ,        XXXXXXX, K_AT,    KC_GRV,  K_EQ_GR, KC_TILD, XXXXXXX,
-                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_EXLM, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                     XXXXXXX, K_AND,   K_GRV3,  K_OR,    XXXXXXX, KC_F12,
+    XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                     KC_DLR,  KC_AMPR, KC_ASTR, K_PIPE,  KC_BSLS, XXXXXXX,
+    _______, KS_X2X,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  LBASE, LQ,         XXXXXXX, K_AT,    KC_GRV,  K_EQ_GR, K_TILDE, XXXXXXX,
+                      XXXXXXX, XXXXXXX, XXXXXXX,KT_S_EXLM, KT_C_BK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
-[_NAV] = LAYOUT(
-    RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_HOME, KC_UP,   KC_END,  XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LBASE, LQ,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                      XXXXXXX, XXXXXXX, KC_LSFT, KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-),
-
-[_ADJUST] = LAYOUT(
-    RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                      _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______
-  )
 };
-
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    state = update_tri_layer_state(state, _L1, _SYM, _ADJUST);
-    return state;
-}
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -306,7 +285,7 @@ void render_layer_state(void) {
         oled_write_P(adjust_layer, false);
     } else if(layer_state_is(_L1)) {
         oled_write_P(l1_layer, false);
-    } else if(layer_state_is(_SYM)) {
+    } else if(layer_state_is(_SYNAV)) {
         oled_write_P(sym_layer, false);
     } else {
         oled_write_P(default_layer, false);
@@ -392,9 +371,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     // Encoder on master side
     if (index == 0) {
         if (clockwise) {
-            tap_code16(KC_UP);
-        } else {
             tap_code16(KC_DOWN);
+        } else {
+            tap_code16(KC_UP);
         }
     }
     // Encoder on slave side

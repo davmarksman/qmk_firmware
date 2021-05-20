@@ -11,9 +11,7 @@ enum layer_names {
     _BASE,
     _GAME,
     _L1,
-    _NAV,
-    _SYM,
-    //_ADJUST
+    _SYNAV,
 };
 
 // layer keys
@@ -22,10 +20,7 @@ enum layer_names {
 #define LQM TO(_QWERTY)
 #define LL1 OSL(_L1)
 #define L1_SPC LT(_L1, KC_SPC)
-#define LSYM_TB LT(_SYM, KC_TAB)
-#define LNAV_ENT LT(_NAV,KC_ENT) 
-#define LNAV TO(_NAV)
-#define LNAV_N LT(_NAV,KC_N)
+#define LSYN_N LT(_SYNAV,KC_N) 
 
 // Userful defines
 #define K_OSFT OSM(MOD_LSFT)
@@ -33,11 +28,14 @@ enum layer_names {
 #define K_REDO LCTL(KC_Y)
 #define K_CLIP C(A(KC_C))  // Paste Clipboard
 #define K_AHK MEH(KC_NO) // autohotkey 
+
 #define KT_ALTESC LALT_T(KC_ESC)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
+#define KT_S_EXLM LSFT_T(KC_EXLM)
 
 #define K_AT S(KC_QUOT)
+#define K_TILDE S(KC_BSLS)
 #define K_PIPE S(KC_NUBS)
 #define K_GLOBAL C(S(KC_F))
 #define K_UNDOTB C(S(KC_T))

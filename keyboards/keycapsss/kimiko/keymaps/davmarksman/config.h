@@ -19,8 +19,6 @@
 #define ONESHOT_TIMEOUT 1500  /* Time (in ms) before the one shot key is released */
 
 #define COMBO_TERM 70
-/* Change encoder resolution to lower value*/
-//#define ENCODER_RESOLUTION 1
 
 
 /* State on both hands */

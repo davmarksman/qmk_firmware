@@ -11,5 +11,3 @@
 #define LAYER_STATE_8BIT
 
 #define ONESHOT_TIMEOUT 1500  /* Time (in ms) before the one shot key is released */
-
-#define COMBO_COUNT 8
