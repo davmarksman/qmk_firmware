@@ -13,6 +13,10 @@ enum layers {
 #define LOWER MO(_LOWER)
 #define K_UNDO LCTL(KC_Z)
 #define K_REDO LCTL(KC_Y)
+#define K_PIPE S(KC_NUBS)
+#define K_COPY LCTL(KC_C)
+#define K_PASTE LCTL(KC_V)
+#define K_CUT LCTL(KC_X)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -53,10 +57,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT(
     KC_ESC, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,                  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F12,
-    KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
-    KC_LSFT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, XXXXXXX, KC_UNDS, KC_PLUS, KC_NO, KC_NUBS, KC_RSFT,
-                      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    KC_NO,  KC_HOME, KC_UP,   KC_END,  KC_PGUP, KC_NO,                     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_F12,
+    KC_NO,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_NO,                     KC_CIRC, K_COPY,  K_PASTE, K_CUT,   KC_NO, KC_TILD,
+    KC_LSFT, KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO, KC_NO,    XXXXXXX, KC_UNDS, KC_PLUS, KC_NO,   KC_NUBS, KC_RSFT,
+                      _______, _______, _______, _______, _______, _______, KC_DEL, _______, _______, _______
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -73,11 +77,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT(
-    KC_ESC, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LCBR,  KC_RCBR, KC_TILD,   KC_NO,    _______,
-    KC_LSFT,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,                      KC_NO,  KC_LPRN,  KC_RPRN, KC_BSLS,   S(KC_BSLS),   KC_NO,
-    KC_LSFT,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______,  KC_NO,  KC_LBRC,  KC_RBRC, KC_GRV,   KC_NUBS,   KC_RSFT,
-                      _______, _______, _______, _______,  _______, _______,  _______, _______, _______, _______
+    KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,                      KC_F6,   KC_F7,   KC_F8,   KC_F9,     KC_F10,    KC_F11,
+    KC_NO,   KC_HOME, KC_UP,   KC_END,  KC_PGUP,  KC_NO,                      K_PIPE,  KC_LCBR,  KC_RCBR, KC_TILD,  XXXXXXX,    _______,
+    KC_LSFT, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,  KC_NO,                      KC_NUBS, KC_LPRN,  KC_RPRN, KC_BSLS,  S(KC_BSLS), KC_NO,
+    KC_CAPS, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______, _______,  KC_NO,   KC_LBRC,  KC_RBRC, KC_GRV,   XXXXXXX,   KC_INS,
+                      _______, _______, _______, _______,  _______, _______,  KC_DEL, _______, _______, _______
 ),
 /* ADJUST (Press LOWER and RAISE together)
  * ,-----------------------------------------.                    ,-----------------------------------------.
