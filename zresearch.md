@@ -177,7 +177,6 @@ Z
 
 - Seems balanced across both hands
 - L postion is not so idea. Swap with H.
-- 
 
 
 # Comparing heatmaps
@@ -227,6 +226,9 @@ Liking this layout
 
 
 # Top keys
+See also
+- https://gist.github.com/lydell/c439049abac2c9226e53
+- http://norvig.com/mayzner.html
 ```
 Bk    - 8670             
 Space   - 6459             
@@ -344,8 +346,6 @@ Ctrl-O     - 6
 F4         - 6
 |          - 5
 ||         - 4
-
-
 ```
 
 # Hands down
@@ -420,40 +420,6 @@ Finger 12 - 16.94%
 - Top ring and middle better 
 - Top index RU and index bottom right is hard on kimiko but ok on kinesis
 
-
-  # Goal is to get to my current avg - 50 wpm
-
-
-
-# Typing pratice
-```
-84.84%
-88.89%
-88.76%
-85.16%
-86.39%
-89.60%
-91.78%
-90.67%
-91.55%
-93.48%
-88.72%
-92.44%
-93.28%
-87.88%
-
-84.20%
-89.10%
-96.33%
-92.99%
-94.46%
-92.42%
-93.43%
-93.14%
-92.61%
-
-84.66%
-```
 # Options: 
 
 - 'H' position is fine but feel should be better
@@ -504,13 +470,14 @@ Finger 12 - 16.94%
 ```
 
 ## Proposal Pink
+Accepted this proposal
 ```
 1  2  3  4  5  6  7  8  9  0  q   
-j  c  l  h  =  -  k  u  f  z  [  ]
+j  c  l  f  =  -  k  u  h  z  [  ]
 w  r  s  t  b  y  i  e  o  a  '
 x  g  m  d  v  ;  p  ,  .  /  n
 ```
-'w', 'f', change.  
+'w', 'f', 'h', change.  
 
 Finger distribution with my layout:
 ```
@@ -527,3 +494,115 @@ Finger 8 - 4.88%
 Finger 11 - 17.73%
 Finger 12 - 16.94%
 ```
+
+# Realised that my map actually creates some character clashes with home row left
+looked to fix like this but stats bad
+'s' doesn't play as well with 'l' or 'm'. Same for 'r' col.
+```
+1  2  3  4  5  6  7  8  9  0  q   
+j  l  c  g  =  -  k  u  f  z  [  ]
+w  r  s  t  b  y  i  e  o  a  '
+x  h  m  d  v  ;  p  ,  .  /  n
+```
+
+# Programming
+Base
+```
+.          - 581 - 1.137%
+,          - 239 - 0.468%
+-          - 223 - 0.437%
+=          - 199 - 0.39%
+;          - 115 - 0.225%
+/          - 113 - 0.221%
+:          - 88 - 0.172%
+'          - 75 - 0.147%
+>          - 39 - 0.076%
+@          - 39 - 0.076%
+?          - 24 - 0.047%
+<          - 24 - 0.047%
+%          - 19 - 0.037%
+\          - 18 - 0.035%
+£          - 12 - 0.023%
+```
+
+Programming
+```
+(          - 148 - 0.29%
+{          - 117 - 0.229%
+"          - 89 - 0.174%
+)          - 70 - 0.137%
+_          - 53 - 0.104%
++          - 45 - 0.088%
+[          - 42 - 0.082%
+*          - 38 - 0.074%
+}          - 20 - 0.039%
+!          - 18 - 0.035%
+&          - 17 - 0.033%
+$          - 16 - 0.031%
+|          - 11 - 0.022%
+```
+
+Editing
+```
+#          - 34 - 0.067%
+`          - 19 - 0.037%
+```
+
+
+# 23/5/21   
+Accepted change
+```
+1  2  3  4  5  6  7  8  9  0  q   
+j  c  l  f  =  -  k  u  h  z  [  ]
+w  r  s  t  g  y  i  e  o  a  '
+x  b  m  d  v  ;  p  ,  .  /  n
+```
+- 'w', 'f', 'h', change - fix issue of left pinky overwork by replacing with lower freq 'w'. Also read 'h' gels better as a const on the vowel hand. 
+- 'g' and 'b' change - not really nessary - optional change as use both the same frequency. Keeps 'g' in qwerty pos, but b on qwerty finger. On kimiko index pos is slightly easier. kinesis other way
+- 'r' 's' change - Been hard to learn new 's' and 'r' pos. This return 's' to qwerty pos. Slight stats improvement
+- Jay-Z change - move 'j' and 'z' to original hands. No stat change.
+
+
+
+# Typing pratice
+Goal is to get to my current avg - 50 wpm
+```
+84.84%
+88.89%
+88.76%
+85.16%
+86.39%
+89.60%
+91.78%
+90.67%
+91.55%
+93.48%
+88.72%
+92.44%
+93.28%
+87.88%
+
+84.20%
+89.10%
+96.33%
+92.99%
+94.46%
+92.42%
+93.43%
+93.14%
+92.61%
+
+84.66%
+92.63%
+93.00%
+88.27%
+
+89.70%
+92.25%
+93.59%
+90.25%
+
+90.43%
+```
+
+
