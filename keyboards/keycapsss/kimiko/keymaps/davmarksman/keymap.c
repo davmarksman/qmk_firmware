@@ -15,6 +15,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
 };
 
+bool is_alt_tab_active = false; 
+uint16_t alt_tab_timer = 0;     
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -34,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_BASE] = LAYOUT(
     KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KC_NUBS,
-    KC_TAB,   KC_J,   KC_C,    KC_L,    KC_H,    KC_EQL,                      TD(TD_MINS),KC_K,    KC_U,    KC_W,    KC_Z,    KC_RPRN,
-    KC_LPRN,  KC_F,   KC_R,    KH_C_S,  KC_T,    KC_B,                        KC_Y,       KC_I,    KC_E,    KC_O,    KC_A,    KC_QUOT,
-    KC_LCBR,  KC_X,   KC_G,    KC_M,    KC_D,    KC_V,    K_CLIP,  K_AHK,     TD(TD_SCLN),KC_P,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCBR,
+    KC_TAB,   KC_Z,   KC_C,    KC_L,    KC_F,    KC_EQL,                      TD(TD_MINS),KC_K,    KC_U,    KC_H,    KC_J,    KC_BSLS,
+    K_ALT_TAB,KC_W,   KC_S,    HOME_C_R,KC_T,    KC_G,                        KC_Y,       KC_I,    KC_E,    KC_O,    KC_A,  KC_QUOT,
+    K_CTLSFT, KC_X,   KC_B,    KC_M,    KC_D,    KC_V,    K_CLIP,  K_AHK,     TD(TD_SCLN),KC_P,    KC_COMM, KC_DOT,  KC_SLSH, KC_GRV,
                       KC_LEFT, KC_RGHT, KC_TAB,  K_OSFT,  KT_C_BK, L1_SPC,    LSYN_N,     KC_ENT,  KC_LALT, KC_RGUI
 ),
 
@@ -50,21 +53,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L1] = LAYOUT(
     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, K_UNDOTB,                    XXXXXXX, XXXXXXX, A(KC_LEFT),A(KC_RGHT),KC_NO,KC_F12,
-    XXXXXXX, KC_BSLS, KC_LBRC, KC_LCBR, KC_LPRN, K_GLOBAL,                    XXXXXXX, KC_AT,   KC_UNDS, KC_BSLS, XXXXXXX, XXXXXXX,
-    KC_CAPS, KS_X2X,  KC_RBRC, KC_RCBR, KC_RPRN, XXXXXXX,   LBASE,  LQ,       XXXXXXX, K_SNIP,  XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,
+    XXXXXXX, XXXXXXX, KC_LBRC, KC_LCBR, KC_LPRN, K_GLOBAL,                    XXXXXXX, KC_AT,   KC_UNDS, KC_ASTR, XXXXXXX, XXXXXXX,
+    KC_CAPS, KS_X2X,  KC_RBRC, KC_RCBR, KC_RPRN, XXXXXXX,   LBASE,  LQ,       K_SNIP,  K_SNIP,  XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,
                       KC_HOME, KC_END,  XXXXXXX, KC_PPLS,   KC_DEL, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 
 [_SYNAV] = LAYOUT(
     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    XXXXXXX, XXXXXXX, KC_HOME, KC_UP,   KC_END,  KC_PGUP,                     XXXXXXX, K_AND,   K_GRV3,  K_OR,    XXXXXXX, KC_F12,
-    XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                     KC_DLR,  KC_AMPR, KC_ASTR, K_PIPE,  KC_BSLS, XXXXXXX,
-    _______, KS_X2X,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  LBASE, LQ,         XXXXXXX, K_AT,    KC_GRV,  K_EQ_GR, K_TILDE, XXXXXXX,
-                      XXXXXXX, XXXXXXX, XXXXXXX,KT_S_EXLM, KT_C_BK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, K_GRV3,  K_AND,   K_OR,    XXXXXXX,                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  XXXXXXX, KC_F12,
+    XXXXXXX, K_EQ_GR, KC_EXLM, KC_AMPR, K_PIPE,  KC_DLR,                      KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+    _______, KS_X2X,  K_AT,    XXXXXXX, XXXXXXX, XXXXXXX,  LBASE, LQ,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                      XXXXXXX, XXXXXXX, RCS(KC_NO),KC_LSFT, KT_C_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 };
-
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #ifdef CONSOLE_ENABLE
@@ -80,6 +82,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed && get_oneshot_mods()) {
                 clear_oneshot_mods ();
                 return false;
+            }
+            break; 
+        case KC_R:
+        {
+            // remap ctr-r to ctr-f.
+            static bool f_registered;
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_CTRL) {
+                    register_code(KC_F);
+                    f_registered = true;
+                    return false;
+                }
+            } else {
+                if (f_registered) {
+                    unregister_code(KC_F);
+                    f_registered = false;
+                    return false;
+                }
+            }
+            return true;
+        }
+        case K_ALT_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LALT);
+                }
+                alt_tab_timer = timer_read();
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            break;
+        case K_SA_TAB:
+            if (record->event.pressed) {
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LALT);
+                }
+                alt_tab_timer = timer_read();
+                register_code(KC_LSFT);
+                register_code(KC_TAB);
+                unregister_code(KC_LSFT);
+            } else {
+                unregister_code(KC_TAB);
             }
             break;
         case K_EQ_GR:
@@ -109,6 +156,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
     }
     return true;
+}
+
+void matrix_scan_user(void) { // The very important timer.
+  if (is_alt_tab_active) {
+    if (timer_elapsed(alt_tab_timer) > 1000) {
+      unregister_code(KC_LALT);
+      is_alt_tab_active = false;
+    }
+  }
 }
 
 #ifdef OLED_DRIVER_ENABLE
@@ -277,13 +333,11 @@ void render_layer_state(void) {
         0x20, 0x9a, 0x9b, 0x9c, 0x20,
         0x20, 0xba, 0xbb, 0xbc, 0x20,
         0x20, 0xda, 0xdb, 0xdc, 0x20, 0};
-    static const char PROGMEM adjust_layer[] = {
-        0x20, 0x9d, 0x9e, 0x9f, 0x20,
-        0x20, 0xbd, 0xbe, 0xbf, 0x20,
-        0x20, 0xdd, 0xde, 0xdf, 0x20, 0};
-    if(layer_state_is(_ADJUST)) {
-        oled_write_P(adjust_layer, false);
-    } else if(layer_state_is(_L1)) {
+    // static const char PROGMEM adjust_layer[] = {
+    //     0x20, 0x9d, 0x9e, 0x9f, 0x20,
+    //     0x20, 0xbd, 0xbe, 0xbf, 0x20,
+    //     0x20, 0xdd, 0xde, 0xdf, 0x20, 0};
+    if(layer_state_is(_L1)) {
         oled_write_P(l1_layer, false);
     } else if(layer_state_is(_SYNAV)) {
         oled_write_P(sym_layer, false);

@@ -28,6 +28,8 @@ enum layers {
 #define K_REDO LCTL(KC_Y)
 #define K_CLIP C(A(KC_C))  // Paste Clipboard
 #define K_AHK MEH(KC_NO) // autohotkey 
+#define K_CTLSFT LCTL(KC_LSFT) // Ctrl Shift
+
 
 #define KT_ALTESC LALT_T(KC_ESC)
 #define KT_C_BK LCTL_T(KC_BSPC)
@@ -41,7 +43,8 @@ enum layers {
 #define K_UNDOTB C(S(KC_T))
 #define K_SNIP G(S(KC_S))
 
-#define KH_C_S LCTL_T(KC_S)
+#define HOME_C_S LCTL_T(KC_S)
+#define HOME_C_R LCTL_T(KC_R)
 
 // Custom codes
 enum custom_keycodes {
@@ -49,7 +52,9 @@ enum custom_keycodes {
     K_AND,
     K_OR,
     KS_X2X,
-    K_GRV3
+    K_GRV3,
+    K_ALT_TAB,
+    K_SA_TAB,
 };
 
 /*
@@ -57,7 +62,7 @@ enum custom_keycodes {
 */
 enum {
     TD_MINS,
-    TD_SCLN
+    TD_SCLN,
+    TD_EQL
 };
-
 
