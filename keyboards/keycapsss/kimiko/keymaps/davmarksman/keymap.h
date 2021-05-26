@@ -16,7 +16,7 @@ enum layers {
 
 // layer keys
 #define LBASE TO(_BASE)
-#define LQ TO(_GAME)
+#define LGAME TO(_GAME)
 // #define LQM TO(_QWERTY)
 #define LL1 OSL(_L1)
 #define L1_SPC LT(_L1, KC_SPC)
@@ -31,7 +31,8 @@ enum layers {
 #define K_CTLSFT LCTL(KC_LSFT) // Ctrl Shift
 
 
-#define KT_ALTESC LALT_T(KC_ESC)
+#define KT_A_ESC LALT_T(KC_ESC)
+#define KT_A_TAB LALT_T(KC_TAB)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
 #define KT_S_EXLM LSFT_T(KC_EXLM)

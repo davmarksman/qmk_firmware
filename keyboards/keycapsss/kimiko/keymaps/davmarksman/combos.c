@@ -9,7 +9,7 @@
 * Combos
 */
 enum combos {
-  KU_Q,
+  KU_QU,
   FO_FOR,
   TD_THE,
   TF_TH,
@@ -57,7 +57,7 @@ const uint16_t PROGMEM lf_combo[] = {KC_F, KC_L, COMBO_END};
 
 
 combo_t key_combos[] = {
-  [KU_Q] = COMBO_ACTION(ku_combo),
+  [KU_QU] = COMBO_ACTION(ku_combo),
   [FO_FOR] = COMBO_ACTION(fo_combo),
   [TD_THE] = COMBO_ACTION(td_combo),
   [TF_TH] = COMBO_ACTION(tf_combo),
@@ -79,9 +79,16 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
   mod_state = get_mods();
 
   switch(combo_index) {
-    case KU_Q:
+    case KU_QU:
       if (pressed) {
-        tap_code16(KC_Q);
+        if (mod_state & MOD_MASK_SHIFT) {
+            del_mods(MOD_MASK_SHIFT);
+            send_string("Qu");
+            set_mods(mod_state);
+        }
+        else {
+            send_string("qu");
+        }
       }
       break;
     case FO_FOR:
