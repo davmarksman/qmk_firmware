@@ -17,8 +17,10 @@ enum layers {
 // layer keys
 #define LBASE TO(_BASE)
 #define LGAME TO(_GAME)
-// #define LQM TO(_QWERTY)
 #define LL1 OSL(_L1)
+#define LNAV MO(_SYNAV)
+
+// #define LQM TO(_QWERTY)
 #define L1_SPC LT(_L1, KC_SPC)
 #define LSYN_N LT(_SYNAV,KC_N) 
 
