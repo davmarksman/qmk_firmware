@@ -26,6 +26,9 @@ enum layer_names {
 #define K_SAVE LCTL(KC_S)
 #define LSYS_NO LT(SYS,KC_NO)
 
+#define LSYS TO(SYS)
+#define LBASE TO(BASE)
+
 // F2, Save
 // No, No
 // F9, F10,
@@ -37,15 +40,15 @@ qmk compile -kb handwired/_davFnPad -km default
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT(
-     KC_F2   ,LSYS_NO
+     KC_NO   ,LSYS
     ,KC_F7   ,KC_F8
     ,KC_F10  ,KC_F11
-    ,KC_F12  ,K_SAVE
+    ,KC_F12  ,KC_F2
   ),
   [SYS] = LAYOUT(
-    RESET     ,KC_NO     
-    ,KC_NO    ,KC_NO     
-    ,KC_NO    ,KC_NO  
-    ,KC_NO    ,KC_NO        
+    RESET     ,LBASE     
+    ,KC_F13    ,KC_F14     
+    ,KC_F15    ,KC_F16  
+    ,KC_F17    ,KC_F18        
   )
 };
