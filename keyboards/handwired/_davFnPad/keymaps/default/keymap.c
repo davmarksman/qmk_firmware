@@ -1,54 +1,44 @@
- /* Copyright 2020 Bratzworth 
-  * 
-  * This program is free software: you can redistribute it and/or modify 
-  * it under the terms of the GNU General Public License as published by 
-  * the Free Software Foundation, either version 2 of the License, or 
-  * (at your option) any later version. 
-  * 
-  * This program is distributed in the hope that it will be useful, 
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of 
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-  * GNU General Public License for more details. 
-  * 
-  * You should have received a copy of the GNU General Public License 
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>. 
-  */
+/*
+qmk compile -kb handwired/_davFnPad -km default
+*/
+
 #include QMK_KEYBOARD_H
 
 
 // layers
 enum layer_names {
     BASE,
+    APP,
     SYS,
 };
 
 
-#define K_SAVE LCTL(KC_S)
-#define LSYS_NO LT(SYS,KC_NO)
 
-#define LSYS TO(SYS)
+#define K_SAVE LCTL(KC_S)
+#define LSYS_F7 LT(SYS,KC_F7)
+
+#define LAPP TO(APP)
 #define LBASE TO(BASE)
 
-// F2, Save
-// No, No
-// F9, F10,
-// F11, F12, 
-
-/*
-qmk compile -kb handwired/_davFnPad -km default
-*/
+ 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT(
-     KC_NO   ,LSYS
-    ,KC_F7   ,KC_F8
+     KC_F2   ,LAPP
+    ,LSYS_F7 ,KC_F8
     ,KC_F10  ,KC_F11
-    ,KC_F12  ,KC_F2
+    ,KC_F12  ,K_SAVE
   ),
-  [SYS] = LAYOUT(
-    RESET     ,LBASE     
+  [APP] = LAYOUT(
+     RESET     ,LBASE     
     ,KC_F13    ,KC_F14     
     ,KC_F15    ,KC_F16  
     ,KC_F17    ,KC_F18        
+  ),
+  [SYS] = LAYOUT(
+     KC_NO    ,KC_NO     
+    ,KC_NO    ,RESET     
+    ,KC_NO    ,KC_NO  
+    ,KC_NO    ,KC_NO        
   )
 };
