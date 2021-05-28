@@ -30,7 +30,6 @@ enum layers {
 #define K_REDO LCTL(KC_Y)
 #define K_CLIP C(A(KC_C))  // Paste Clipboard
 #define K_AHK MEH(KC_NO) // autohotkey 
-#define K_CTLSFT LCTL(KC_LSFT) // Ctrl Shift
 
 
 #define KT_A_ESC LALT_T(KC_ESC)
@@ -56,8 +55,6 @@ enum custom_keycodes {
     K_OR,
     KS_X2X,
     K_GRV3,
-    K_ALT_TAB,
-    K_SA_TAB,
 };
 
 /*
@@ -65,7 +62,6 @@ enum custom_keycodes {
 */
 enum {
     TD_MINS,
-    TD_SCLN,
-    TD_EQL
+    TD_SCLN
 };
 
