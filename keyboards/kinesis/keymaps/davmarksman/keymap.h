@@ -32,7 +32,6 @@ enum layer_names {
 #define KT_ALTESC LALT_T(KC_ESC)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
-#define KT_S_EXLM LSFT_T(KC_EXLM)
 
 #define K_AT S(KC_QUOT)
 #define K_TILDE S(KC_BSLS)
