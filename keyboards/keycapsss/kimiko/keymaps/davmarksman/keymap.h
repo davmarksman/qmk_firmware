@@ -23,6 +23,7 @@ enum layers {
 // #define LQM TO(_QWERTY)
 #define L1_SPC LT(_L1, KC_SPC)
 #define LSYN_N LT(_SYNAV,KC_N) 
+#define LSYN_TAB LT(_SYNAV,KC_TAB) 
 
 // Userful defines
 #define K_OSFT OSM(MOD_LSFT)
