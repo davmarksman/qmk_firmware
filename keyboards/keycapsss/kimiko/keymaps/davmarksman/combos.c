@@ -17,14 +17,15 @@ enum combos {
   IN_ING,
   ON_ION,
   DN_AND, 
-  OR_FOR, 
   DM_DAV, 
-  BR_BROK, 
-  BO_BROK,
-
+  BK_BROK, 
+  MV_MARK,
+  VA_VAR,
+  
   // Shortcuts
   BM_COPY,//xc qwerty
   BD_PASTE, //cv qwerty
+  BX_UNDO, // xz qwerty
   CL_ALL, // we qwerty
   LF_FIND, // er qwerty
 
@@ -44,16 +45,17 @@ const uint16_t PROGMEM tn_combo[] = {KC_T, LSYN_N, COMBO_END};
 const uint16_t PROGMEM in_combo[] = {KC_I, LSYN_N, COMBO_END};
 const uint16_t PROGMEM on_combo[] = {KC_O, LSYN_N, COMBO_END};
 const uint16_t PROGMEM dn_combo[] = {KC_D, LSYN_N, COMBO_END};
-const uint16_t PROGMEM or_combo[] = {KC_O, KC_R, COMBO_END};
 const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END};
-const uint16_t PROGMEM br_combo[] = {KC_B, HOME_C_R, COMBO_END};
-const uint16_t PROGMEM bo_combo[] = {KC_B, KC_O, COMBO_END};
+const uint16_t PROGMEM bk_combo[] = {KC_B, KC_K, COMBO_END};
+const uint16_t PROGMEM mv_combo[] = {KC_M, KC_V, COMBO_END};
+const uint16_t PROGMEM va_combo[] = {KC_V, KC_A, COMBO_END};
 
+  // Shortcuts
 const uint16_t PROGMEM bm_combo[] = {KC_B, KC_M, COMBO_END};
 const uint16_t PROGMEM bd_combo[] = {KC_B, KC_D, COMBO_END};
+const uint16_t PROGMEM bx_combo[] = {KC_B, KC_X, COMBO_END};
 const uint16_t PROGMEM cl_combo[] = {KC_C, KC_L, COMBO_END};
 const uint16_t PROGMEM lf_combo[] = {KC_F, KC_L, COMBO_END};
-
 
 
 combo_t key_combos[] = {
@@ -65,72 +67,63 @@ combo_t key_combos[] = {
   [IN_ING] = COMBO_ACTION(in_combo),
   [ON_ION] = COMBO_ACTION(on_combo),
   [DN_AND] = COMBO_ACTION(dn_combo),
-  [OR_FOR] = COMBO_ACTION(or_combo), // maybe remove
   [DM_DAV] = COMBO_ACTION(dv_combo),
-  [BR_BROK] = COMBO_ACTION(br_combo),
-  [BO_BROK] = COMBO_ACTION(bo_combo),
+  [BK_BROK] = COMBO_ACTION(bk_combo),
+  [MV_MARK] = COMBO_ACTION(mv_combo),
+  [VA_VAR] = COMBO_ACTION(va_combo),
+
+  // Shortcuts
   [BM_COPY] = COMBO_ACTION(bm_combo),
   [BD_PASTE] = COMBO_ACTION(bd_combo),
+  [BX_UNDO] = COMBO_ACTION(bx_combo),
   [CL_ALL] = COMBO_ACTION(cl_combo),
   [LF_FIND] = COMBO_ACTION(lf_combo),
 };
 
-void process_combo_event(uint16_t combo_index, bool pressed) {
-  mod_state = get_mods();
+void word_combo(bool pressed, uint8_t mod_state, const char* word) {
+  if (pressed) {
+    if (mod_state & MOD_MASK_SHIFT) {
+      del_mods(MOD_MASK_SHIFT);
+      send_string(word);
+      set_mods(mod_state);
+    }
+    else {
+      char* lower =(char *) word;
+      lower[0] =  lower[0] + 32; // make first char lower
+      send_string(lower);
+    }
+  }
+}
 
+void process_combo_event(uint16_t combo_index, bool pressed) {
+#ifdef CONSOLE_ENABLE
+    if (pressed) {
+        combo_t *combo = &key_combos[combo_index];
+        uint8_t idx = 0;
+        uint16_t combo_keycode;
+        while ((combo_keycode = pgm_read_word(&combo->keys[idx])) != COMBO_END) {
+            uprintf("0x%04X,NA,NA,%u\n", combo_keycode, get_highest_layer(layer_state));
+            idx++;
+        }
+    }
+#endif
+
+  mod_state = get_mods();
   switch(combo_index) {
     case KU_QU:
-      if (pressed) {
-        if (mod_state & MOD_MASK_SHIFT) {
-            del_mods(MOD_MASK_SHIFT);
-            send_string("Qu");
-            set_mods(mod_state);
-        }
-        else {
-            send_string("qu");
-        }
-      }
+      word_combo(pressed,mod_state, "Qu");
       break;
     case FO_FOR:
-      if (pressed) {
-        if (mod_state & MOD_MASK_SHIFT) {
-            del_mods(MOD_MASK_SHIFT);
-            send_string("For");
-            set_mods(mod_state);
-        }
-        else {
-            send_string("for");
-        }
-      }
+      word_combo(pressed,mod_state, "For");
       break;
     case TD_THE:
-      if (pressed) {
-        if (mod_state & MOD_MASK_SHIFT) {
-            del_mods(MOD_MASK_SHIFT);
-            send_string("The");
-            set_mods(mod_state);
-        }
-        else {
-            send_string("the");
-        }
-      }
+      word_combo(pressed,mod_state, "The");
       break;
     case TF_TH:
-      if (pressed) {
-        if (mod_state & MOD_MASK_SHIFT) {
-            del_mods(MOD_MASK_SHIFT);
-            send_string("Th");
-            set_mods(mod_state);
-        }
-        else {
-            send_string("th");
-        }
-      }
+      word_combo(pressed,mod_state, "Th");
       break;
     case TN_ENT:
-      if (pressed) {
-        SEND_STRING("ent");
-      }
+      word_combo(pressed,mod_state, "Ent");
       break;
     case IN_ING:
       if (pressed) {
@@ -143,91 +136,45 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       }
       break;
     case DN_AND:
-      if (pressed) {
-          if (mod_state & MOD_MASK_SHIFT) {
-              del_mods(MOD_MASK_SHIFT);
-              send_string("And");
-              set_mods(mod_state);
-          }
-          else {
-              send_string("and");
-          }
-        }
-        break;
-    case OR_FOR:
-      if (pressed) {
-          if (mod_state & MOD_MASK_SHIFT) {
-              del_mods(MOD_MASK_SHIFT);
-              send_string("For");
-              set_mods(mod_state);
-          }
-          else {
-              send_string("for");
-          }
-        }
-        break;
+      word_combo(pressed,mod_state, "And");
+      break;
     case DM_DAV:
-      if (pressed) {
-          if (mod_state & MOD_MASK_SHIFT) {
-              del_mods(MOD_MASK_SHIFT);
-              send_string("David");
-              set_mods(mod_state);
-          }
-          else {
-              send_string("david");
-          }
-        }
-        break;
-    case BR_BROK:
-      if (pressed) {
-          if (mod_state & MOD_MASK_SHIFT) {
-              del_mods(MOD_MASK_SHIFT);
-              send_string("Broker");
-              set_mods(mod_state);
-          }
-          else {
-              send_string("broker");
-          }
-        }
-        break;
-    case BO_BROK:
-      if (pressed) {
-          if (mod_state & MOD_MASK_SHIFT) {
-              del_mods(MOD_MASK_SHIFT);
-              send_string("Broker");
-              set_mods(mod_state);
-          }
-          else {
-              send_string("broker");
-          }
-        }
-        break;
+      word_combo(pressed,mod_state, "David");
+      break;
+    case BK_BROK:
+      word_combo(pressed,mod_state, "Broker");
+      break;
+    case MV_MARK:
+      word_combo(pressed,mod_state, "Mark");
+      break;
+    case VA_VAR:
+      word_combo(pressed,mod_state, "Var");
+      break;
+
+    // Shortcuts
     case BM_COPY:
       if (pressed) {
-        register_code(KC_LCTRL);
-        tap_code(KC_C);
-        unregister_code(KC_LCTRL);
+        tap_code16(C(KC_C));
       }
       break;
     case BD_PASTE:
       if (pressed) {
-        register_code(KC_LCTRL);
-        tap_code(KC_V);
-        unregister_code(KC_LCTRL);
+        tap_code16(C(KC_V));
+      }
+      break;
+    case BX_UNDO:
+      if (pressed) {
+        tap_code16(C(KC_Z));
       }
       break;
     case CL_ALL:
       if (pressed) {
-        register_code(KC_LCTRL);
-        tap_code(KC_A);
-        unregister_code(KC_LCTRL);
+        tap_code16(C(KC_A));
       }
       break;
     case LF_FIND:
       if (pressed) {
-        register_code(KC_LCTRL);
-        tap_code(KC_F);
-        unregister_code(KC_LCTRL);
+        tap_code16(C(KC_F));
       }
       break;
   }
