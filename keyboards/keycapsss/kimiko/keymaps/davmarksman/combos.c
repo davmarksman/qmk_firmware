@@ -80,7 +80,7 @@ combo_t key_combos[] = {
   [LF_FIND] = COMBO_ACTION(lf_combo),
 };
 
-void word_combo(bool pressed, uint8_t mod_state, const char* word) {
+void word_combo(bool pressed, uint8_t mod_state, char* word) {
   if (pressed) {
     if (mod_state & MOD_MASK_SHIFT) {
       del_mods(MOD_MASK_SHIFT);
@@ -88,9 +88,9 @@ void word_combo(bool pressed, uint8_t mod_state, const char* word) {
       set_mods(mod_state);
     }
     else {
-      char* lower =(char *) word;
-      lower[0] =  lower[0] + 32; // make first char lower
-      send_string(lower);
+      word[0] = word[0] + 32; // make first char lower
+      send_string(word);
+      word[0] = word[0] - 32; // reset
     }
   }
 }

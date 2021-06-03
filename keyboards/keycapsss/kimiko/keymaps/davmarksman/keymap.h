@@ -45,6 +45,8 @@ enum layers {
 #define K_GLOBAL C(S(KC_F))
 #define K_UNDOTB C(S(KC_T))
 #define K_SNIP G(S(KC_S))
+#define K_CUR_BK A(KC_LEFT)
+#define K_CUR_FW A(KC_RGHT)
 
 #define HOME_C_S LCTL_T(KC_S)
 #define HOME_C_R LCTL_T(KC_R)
