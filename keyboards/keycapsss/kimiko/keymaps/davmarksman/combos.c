@@ -23,8 +23,8 @@ enum combos {
   VA_VAR,
   
   // Shortcuts
-  BM_COPY,//xc qwerty
-  BD_PASTE, //cv qwerty
+  BM_COPY,//xc qwertymd
+  MD_PASTE, //cv qwerty
   BX_UNDO, // xz qwerty
   CL_ALL, // we qwerty
   LF_FIND, // er qwerty
@@ -52,7 +52,7 @@ const uint16_t PROGMEM va_combo[] = {KC_V, KC_A, COMBO_END};
 
   // Shortcuts
 const uint16_t PROGMEM bm_combo[] = {KC_B, KC_M, COMBO_END};
-const uint16_t PROGMEM bd_combo[] = {KC_B, KC_D, COMBO_END};
+const uint16_t PROGMEM md_combo[] = {KC_M, KC_D, COMBO_END};
 const uint16_t PROGMEM bx_combo[] = {KC_B, KC_X, COMBO_END};
 const uint16_t PROGMEM cl_combo[] = {KC_C, KC_L, COMBO_END};
 const uint16_t PROGMEM lf_combo[] = {KC_F, KC_L, COMBO_END};
@@ -74,7 +74,7 @@ combo_t key_combos[] = {
 
   // Shortcuts
   [BM_COPY] = COMBO_ACTION(bm_combo),
-  [BD_PASTE] = COMBO_ACTION(bd_combo),
+  [MD_PASTE] = COMBO_ACTION(md_combo),
   [BX_UNDO] = COMBO_ACTION(bx_combo),
   [CL_ALL] = COMBO_ACTION(cl_combo),
   [LF_FIND] = COMBO_ACTION(lf_combo),
@@ -157,7 +157,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(C(KC_C));
       }
       break;
-    case BD_PASTE:
+    case MD_PASTE:
       if (pressed) {
         tap_code16(C(KC_V));
       }
