@@ -18,14 +18,25 @@ enum layer_names {
 #define LSYS LT(SYS,KC_NO)
 #define K_UNDO LCTL(KC_Z)
 
+// Apps
+#define KA_RENAME KC_F2
+#define KA_FIREFX KC_F17
+#define KA_VSCODE KC_F18
+#define KA_CHROME KC_F15
+#define KA_VS19 KC_F16
+#define KA_APP1 KC_F13
+#define KA_APP2 KC_F14
+#define KA_VOL KC_F20
+#define KA_EXPLR G(KC_E)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT(
-    LSYS_HOME  ,KC_UP    ,KT_C_END   , 
-    KC_LEFT    ,KC_DOWN  ,KC_RGHT   ,K_UNDO
+    KA_FIREFX  ,KA_CHROME    ,KA_APP1   , 
+    KA_VSCODE    ,KA_VS19  ,KA_APP2   ,LSYS
   ),
   [SYS] = LAYOUT(
-    KC_NO     ,KC_NO     ,RESET     ,
+    RESET     ,KC_NO     ,RESET     ,
     KC_NO     ,KC_NO     ,KC_NO     ,KC_NO   
   )
 };
