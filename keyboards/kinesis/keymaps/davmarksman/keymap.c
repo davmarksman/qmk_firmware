@@ -45,12 +45,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Z        ,KC_C        ,KC_L        ,KC_F        ,KC_EQL      ,
           KC_Q        ,KC_W        ,KC_S        ,HOME_C_R    ,KC_T        ,KC_G        ,
-          KA_RENAME   ,KC_X        ,KC_B        ,KC_M        ,KC_D        ,KC_V        ,
-                       XXXXXXX     ,KC_LEFT     ,KC_RGHT     ,KC_LGUI     ,
+          K_WINDL     ,KC_X        ,KC_B        ,KC_M        ,KC_D        ,KC_V        ,
+                       K_WINDR     ,KC_LEFT     ,KC_RGHT      ,KC_LGUI     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
                                     KC_DEL      ,
-          K_OSFT      ,KT_C_BK     ,KC_TAB      ,
+          K_OSFT      ,LSYN_BK     ,KC_TAB      ,
           // Right Hand
           KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL      ,LGAME       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           KC_UP       ,K_AHK       ,
           KC_DOWN     ,
-          KC_ENT      ,L1_SPC      ,LSYN_N      
+          KC_ENT      ,L1_SPC      ,KC_N      
     ),
 [_GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -89,14 +89,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_UNDOTB    ,
+          XXXXXXX     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,K_UNDOTB    ,
           XXXXXXX     ,K_EQ_GR     ,KC_LBRC     ,KC_LCBR     ,KC_LPRN     ,K_GLOBAL    ,
           KC_CAPS     ,KS_X2X      ,KC_RBRC     ,KC_RCBR     ,KC_RPRN     ,XXXXXXX     ,
                        XXXXXXX     ,KC_HOME     ,KC_END      ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_PPLS     ,KC_DEL      ,KC_EXLM     ,
+          KC_EXLM     ,KC_DEL      ,XXXXXXX     ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
@@ -114,8 +114,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,XXXXXXX     ,
           XXXXXXX     ,XXXXXXX     ,KC_LALT     ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,RCS(KC_NO)  ,
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,RCS(KC_NO)  ,XXXXXXX     ,
+                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
@@ -130,8 +130,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     
-    ),
+          XXXXXXX     ,KT_C_DEL     ,XXXXXXX     
+    )
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -173,6 +173,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case K_GRV3:
             if (record->event.pressed) {
                 SEND_STRING("```");
+            }
+            break;
+        case K_WINDR:
+            if (record->event.pressed) {
+                tap_code16(C(KC_L));
+                tap_code16(C(KC_C));
+                tap_code16(C(KC_W));
+                register_code(KC_LCTL);
+                tap_code_delay(KC_N, 100);
+                tap_code_delay(KC_V, 200);
+                unregister_code(KC_LCTL);
+                tap_code16(KC_ENT);
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+            }
+            break;
+        case K_WINDL:
+            if (record->event.pressed) {
+                tap_code16(C(KC_L));
+                tap_code16(C(KC_C));
+                tap_code16(C(KC_W));
+                register_code(KC_LCTL);
+                tap_code_delay(KC_N, 100);
+                tap_code_delay(KC_V, 200);
+                unregister_code(KC_LCTL);
+                tap_code16(KC_ENT);
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
             }
             break;
     }

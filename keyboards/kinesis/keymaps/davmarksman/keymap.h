@@ -22,12 +22,18 @@ enum layer_names {
 #define L1_SPC LT(_L1, KC_SPC)
 #define LSYN_N LT(_SYNAV,KC_N) 
 
+
 // Mods
 #define KT_A_ESC LALT_T(KC_ESC)
 #define KT_A_TAB LALT_T(KC_TAB)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
 #define HOME_C_R LCTL_T(KC_R)
+
+// expriment symbol nav layer
+#define LSYN_BK LT(_SYNAV,KC_BSPC) 
+
+
 
 // Userful defines
 #define K_OSFT OSM(MOD_LSFT)
@@ -65,7 +71,9 @@ enum custom_keycodes {
     K_AND,
     K_OR,
     KS_X2X,
-    K_GRV3
+    K_GRV3,
+    K_WINDR,
+    K_WINDL,
 };
 
 /*
