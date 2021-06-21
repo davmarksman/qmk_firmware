@@ -10,7 +10,7 @@
 */
 enum combos {
   KU_QU,
-  FO_FOR,
+  FO_FOR, // had misfire
   TD_THE,
   TF_TH,
   TN_ENT,
@@ -19,13 +19,11 @@ enum combos {
   DN_AND, 
   DM_DAV, 
   BK_BROK, 
-  MV_MARK,
-  VA_VAR,
+  BN_BL, 
+  BRACK_,
+  SBRACK_,
   
   // Shortcuts
-  BM_COPY,//xc qwertymd
-  MD_PASTE, //cv qwerty
-  BX_UNDO, // xz qwerty
   CL_ALL, // we qwerty
   LF_FIND, // er qwerty
 
@@ -38,22 +36,20 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 
 
 const uint16_t PROGMEM ku_combo[] = {KC_K, KC_U, COMBO_END};
-const uint16_t PROGMEM fo_combo[] = {KC_F, KC_O, COMBO_END};
+const uint16_t PROGMEM fo_combo[] = {KC_F, KC_O, COMBO_END};  
 const uint16_t PROGMEM td_combo[] = {KC_T, KC_D, COMBO_END};
 const uint16_t PROGMEM tf_combo[] = {KC_T, KC_F, COMBO_END};
-const uint16_t PROGMEM tn_combo[] = {KC_T, LSYN_N, COMBO_END};
-const uint16_t PROGMEM in_combo[] = {KC_I, LSYN_N, COMBO_END};
-const uint16_t PROGMEM on_combo[] = {KC_O, LSYN_N, COMBO_END};
-const uint16_t PROGMEM dn_combo[] = {KC_D, LSYN_N, COMBO_END};
+const uint16_t PROGMEM tn_combo[] = {KC_T, KC_N, COMBO_END};
+const uint16_t PROGMEM in_combo[] = {KC_I, KC_N, COMBO_END};
+const uint16_t PROGMEM on_combo[] = {KC_O, KC_N, COMBO_END};
+const uint16_t PROGMEM dn_combo[] = {KC_D, KC_N, COMBO_END};
 const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END};
 const uint16_t PROGMEM bk_combo[] = {KC_B, KC_K, COMBO_END};
-const uint16_t PROGMEM mv_combo[] = {KC_M, KC_V, COMBO_END};
-const uint16_t PROGMEM va_combo[] = {KC_V, KC_A, COMBO_END};
+const uint16_t PROGMEM bn_combo[] = {KC_B, KC_N, COMBO_END};
+const uint16_t PROGMEM brack_combo[] = {KC_LPRN, KC_RPRN, COMBO_END};
+const uint16_t PROGMEM sbrack_combo[] = {KC_LBRC, KC_RBRC, COMBO_END};
 
-  // Shortcuts
-const uint16_t PROGMEM bm_combo[] = {KC_B, KC_M, COMBO_END};
-const uint16_t PROGMEM md_combo[] = {KC_M, KC_D, COMBO_END};
-const uint16_t PROGMEM bx_combo[] = {KC_B, KC_X, COMBO_END};
+// Shortcuts
 const uint16_t PROGMEM cl_combo[] = {KC_C, KC_L, COMBO_END};
 const uint16_t PROGMEM lf_combo[] = {KC_F, KC_L, COMBO_END};
 
@@ -69,13 +65,11 @@ combo_t key_combos[] = {
   [DN_AND] = COMBO_ACTION(dn_combo),
   [DM_DAV] = COMBO_ACTION(dv_combo),
   [BK_BROK] = COMBO_ACTION(bk_combo),
-  [MV_MARK] = COMBO_ACTION(mv_combo),
-  [VA_VAR] = COMBO_ACTION(va_combo),
+  [BN_BL] = COMBO_ACTION(bn_combo),
+  [BRACK_] = COMBO_ACTION(brack_combo),
+  [SBRACK_] = COMBO_ACTION(sbrack_combo),
 
   // Shortcuts
-  [BM_COPY] = COMBO_ACTION(bm_combo),
-  [MD_PASTE] = COMBO_ACTION(md_combo),
-  [BX_UNDO] = COMBO_ACTION(bx_combo),
   [CL_ALL] = COMBO_ACTION(cl_combo),
   [LF_FIND] = COMBO_ACTION(lf_combo),
 };
@@ -108,6 +102,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     }
 #endif
 
+
   mod_state = get_mods();
   switch(combo_index) {
     case KU_QU:
@@ -139,34 +134,30 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       word_combo(pressed,mod_state, "And");
       break;
     case DM_DAV:
-      word_combo(pressed,mod_state, "David");
+      if (pressed) {
+        SEND_STRING("David");
+      }
       break;
     case BK_BROK:
-      word_combo(pressed,mod_state, "Broker");
+      word_combo(pressed,mod_state, "Brok");
       break;
-    case MV_MARK:
-      word_combo(pressed,mod_state, "Mark");
+    case BN_BL:
+      word_combo(pressed,mod_state, "Bl");
       break;
-    case VA_VAR:
-      word_combo(pressed,mod_state, "Var");
+    case BRACK_:
+      if (pressed) {
+        tap_code16(KC_LPRN);
+        tap_code16(KC_RPRN);
+      }
+      break;
+    case SBRACK_:
+      if (pressed) {
+        tap_code16(KC_LBRC);
+        tap_code16(KC_RBRC);
+      }
       break;
 
     // Shortcuts
-    case BM_COPY:
-      if (pressed) {
-        tap_code16(C(KC_C));
-      }
-      break;
-    case MD_PASTE:
-      if (pressed) {
-        tap_code16(C(KC_V));
-      }
-      break;
-    case BX_UNDO:
-      if (pressed) {
-        tap_code16(C(KC_Z));
-      }
-      break;
     case CL_ALL:
       if (pressed) {
         tap_code16(C(KC_A));
