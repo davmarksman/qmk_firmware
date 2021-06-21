@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_TAB      ,KC_Z        ,KC_C        ,KC_L        ,KC_F        ,KC_EQL      ,
           KC_Q        ,KC_W        ,KC_S        ,HOME_C_R    ,KC_T        ,KC_G        ,
           K_WINDL     ,KC_X        ,KC_B        ,KC_M        ,KC_D        ,KC_V        ,
-                       K_WINDR     ,KC_LEFT     ,KC_RGHT      ,KC_LGUI     ,
+                       K_WINDR     ,KC_LEFT     ,KC_RGHT     ,KC_LGUI     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
                                     KC_DEL      ,
@@ -89,14 +89,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,K_UNDOTB    ,
-          XXXXXXX     ,K_EQ_GR     ,KC_LBRC     ,KC_LCBR     ,KC_LPRN     ,K_GLOBAL    ,
-          KC_CAPS     ,KS_X2X      ,KC_RBRC     ,KC_RCBR     ,KC_RPRN     ,XXXXXXX     ,
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,KC_LCBR     ,KC_RCBR     ,K_UNDOTB    ,
+          XXXXXXX     ,K_EQ_GR     ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
+          KC_CAPS     ,KS_X2X      ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
                        XXXXXXX     ,KC_HOME     ,KC_END      ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_EXLM     ,KC_DEL      ,XXXXXXX     ,
+          KC_PPLS     ,KC_DEL      ,XXXXXXX     ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
@@ -113,13 +113,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,KC_LALT     ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,RCS(KC_NO)  ,XXXXXXX     ,
+          XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
+          XXXXXXX     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_LSFT     ,KT_C_DEL    ,RCS(KC_NO)  ,
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX  ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,
-          XXXXXXX     ,KT_C_DEL     ,XXXXXXX     
+          XXXXXXX     ,KC_DEL     ,XXXXXXX     
     )
 };
 
