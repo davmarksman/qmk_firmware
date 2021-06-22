@@ -676,40 +676,102 @@ geschokt [] Shocked
 
 
 
+het huis (the house)
+de boom (the tree)
+de auto's (the cars)
+
+dit huis (this house)
+deze boom (this tree)
+deze auto's (these cars)
+
+dat huis (that house)
+die boom (that tree)
+die auto's (those cars)
+
+hier (here)
+daar (there)
+die (that/those)
+dat (that)
+deze (this/these)
+dit (this)
+
+
 Daar Weet Ik Niks Van. - I [Know Nothing] Don't Know Anything About It
 Hij Weet Waar - (D)ie Het Over Heeft - (2) He Knows What He's Talking About, "He Knows His Stuff."
 (Sometimes A "D" Is Added To "Ie" For Easier Pronunciation
 Hij Heeft Er Niet Lang Over Nagedacht - "He Didn't Think Long About It"
 
+that is my car = dat is mijn auto;
+those are my words = dat zijn mijn woorden;
+that is my house = dat is mijn huis;
+'That' still has a third meaning (called 'conjunction') which also translates as dat in Dutch, like in:
+is it true that ...? is het waar dat ...?
+The word order after this dat will be dealt with in a future lesson.
+
+Die week moet ik werken - ('That week I have to [be at] work')
+Dat jaar was heel mooi - ('[That year was very beautiful] That was a good year')
+Een dezer dagen ... - ('One of these days ...') - a standard expression with an old-fashioned possessive ending; modern Dutch would be 'een van deze dagen.' 
+
 
 (de) Rust => Rest
 (de) Kerk: Church
-Ik kon gisteren niet inslapen @ Yesterday I had trouble falling asleep *
-Ik krijg niet genoeg slaap @ <I don't get enough sleep>
-Ik voel me niet lekker @ I'm not feeling well, I'm sick
-Ik ben een beetje ziek  _I'm a little sick, "under the weather"
+Ik kon gisteren niet inslapen - Yesterday I had trouble falling asleep
+Ik krijg niet genoeg slaap - <I don't get enough sleep>
+Ik voel me niet lekker - I'm not feeling well, I'm sick
+Ik ben een beetje ziek _ I'm a little sick, "under the weather"
 
-Ik was drie dagen ziek  _I was sick for 3 days
-Ik ben ziek geweest  _I've been sick
-Ik heb vandaag geen hoofdpijn @	I don't have a headache today
-Ik ben aan de beterende hand  _I'm getting better, I'm on the mend
+Tough! You ought not to play roughly while laughing.
+That he laughed while they coughed into the dough is throughly sick.
+Through he brought it, I thought the borough had drought
+Its naughty we wrought fraught 
+My daughter (or Mijn tochter) ought to plough more
+They roughly roughed tougher books
+We blame rougher naughts on thoughtless slaughter of bees
+Thorough a great onslaught, we laughable and thoughtfully held our throughput
+although we were distraught throughout
+
+    
+    
+this car here =	deze auto hier [de auto]
+these words are hard -	deze woorden zijn moeilijk [de woorden]
+this house here =	dit huis hier [het huis]
+that car there - die auto daar [de auto]
+those words are easy =	die woorden zijn gemakkelijk [de woorden]
+that house there -	dat huis daar [het huis]
+If I'm not mistaken, English uses 'this' for nearby singular and 'these' for nearby plural, 'that' for faraway singular and 'those' for faraway plural.
+
+
+Ik was drie dagen ziek _ I was sick for 3 days
+Ik ben ziek geweest _ I've been sick
+Ik heb vandaag geen hoofdpijn :	I don't have a headache today
+Ik ben aan de beterende hand: I'm getting better: I'm on the mend
 (de) Winkel = Shop, store
 (de) Supermarkt = Supermarket
 
 
-Ik voelde me de laatste dagen wat grieperig  _In recent days I felt like I had the flu.
-Ik was zo ziek_I was (so) very sick, I felt miserable
-Business
-(De) Zakenman => Businessman
-(De) Ondernemer => Entrepreneur
-(De) Bedrijfsleider => Manager
-(De) Manager(E) => Manager
+Ik voelde me de laatste dagen wat grieperig: In recent days I felt like I had the flu.
+Ik was zo ziek - I was (so) very sick: I felt miserable
+Business:
+De Zakenman => Businessman;
+De Ondernemer => Entrepreneur;
+De Bedrijfsleider => Manager;
+De Manager(e) => Manager;
 
+Witte zwanen, zwarte zwanen
+	White swans, black swans
+Wie gaat er mee naar England varen?
+	Who's going to sail with me to England?
+Engeland is gesloten
+	England is closed
+De sleutel is gebroken
+	The key is broken
+En er is geen smid in 't land
+	And there is no blacksmith [to be found] in the land
 
-En Jij Gelooft Dat? / En Gij Geleuft Dat? - (3) "And You Believe That Is True?" Try A Kind-Of Limburg Accent Version:
-Al Zeg Ik 't Zelf. - If I May Say So (Myself.)
-Als Ik Dat Vragen Mag. - If I May Ask [That.]
-'t Gaat Me Niet Aan. - It'S None Of My Business.
+There's another usage in sentences like this is... and those are... In Dutch, this kind of line always uses dit or dat - there are no plurals here like in English.
+this is my car -	dit is mijn auto
+these are my words -	dit zijn mijn woorden
+this is my house -	dit is mijn huis
 
 Als het niet vanzelf overgaat ga ik ermee naar de dokter || If it doesn't go away by itself I'll go see a doctor about it 
 Maar vandaag voel ik me gelukkig weer een stuk beter (x => x) But luckily I feel much better today
@@ -721,7 +783,6 @@ Dankzij het pilletje ging de hoofdpijn over _ Thanks to the (little) pill the he
 (De) Maatschappij => Corporation, Society
 (De) Fabriek => Factory
 (De) Winkel => Shop, Store
-
 
 
 Als gehandicapte heb ik soms hulp nodig  _ As a person with a disability I sometimes need help 
@@ -745,6 +806,7 @@ Hij heeft gewonnen, gewonnen de Zilvervloot,
 Hij heeft gewonnen de Zilvervloot.
 
 
+
 (Het) Geld => "money"
 (De) Prijs => "price"
 (De) Markt => "market"
@@ -760,6 +822,10 @@ huren: <To Rent>
 (De) Handtekening => Signature
 
 
+En Jij Gelooft Dat? / En Gij Geleuft Dat? - (3) "And You Believe That Is True?" Try A Kind-Of Limburg Accent Version:
+Al Zeg Ik 't Zelf. - If I May Say So (Myself.)
+Als Ik Dat Vragen Mag. - If I May Ask [That.]
+'t Gaat Me Niet Aan. - It's None Of My Business.
 
 (Het) Eigendom => Property
 (De) Eigenaar => Owner
@@ -816,16 +882,6 @@ in grijze veelkleurige dampen gesmoord, [] is smothered in a multicolored grey h
 en in alle gewesten wordt de stem van het water [] and in all parts the voice of the sea
 met zijn eeuwige rampen gevreesd en gehoord. [] is heard and feared, spelling disaster eternally.
 
-Witte zwanen, zwarte zwanen
-	White swans, black swans
-Wie gaat er mee naar England varen?
-	Who's going to sail with me to England?
-Engeland is gesloten
-	England is closed
-De sleutel is gebroken
-	The key is broken
-En er is geen smid in 't land
-	And there is no blacksmith [to be found] in the land
 
 Die die sleutel maken kan
 	Who can repair that key
@@ -833,3 +889,256 @@ Naar voren, naar voren
 	come forward, come forward
 Wie achter is moet voren
 	Those at the back should come to the front
+
+
+'Roze' is a word from French that has an irregular O pronunciation.
+scharlaken 2 3 ('scarlet')
+(De) kleur 2 ('color') - plural: kleuren ('colors')
+lichtblauw 2 3 4 light blue
+donkerblauw 2 3 4 dark blue
+In Dutch, 'white' people are called blanken 2
+flets 'pale, washed-out color'
+
+
+de sinaasappels zijn oranje - de oranje sinaasappels 
+the oranges are orange - the orange oranges
+
+de huid is roze - de roze huid 
+the skin is pink - the pink skin 
+
+Adjectives almost always get an -E ending. Not in the first two examples above left, because there the root words already ended in -E (oranje, roze.)
+de hemel is blauw - de blauwe hemel 
+the sky is blue - the blue sky
+
+de lucht is blauw - de blauwe lucht - 2
+the sky is blue - the blue sky
+
+de appel is groen - de groene appel - 2
+the apple is green - the green apple 
+
+The pronunciation of the vowel in adjectives rarely changes, but adding an -E may change the spelling of the word:
+groen / groene - wit / witte - rood / rode 
+Read more about Dutch spelling below.
+de tomaten zijn rood - de rode tomaten 
+the tomatoes are red - the red tomatoes
+
+melk is wit - de witte melk 
+milk is white - the white milk
+
+In previous lessons, 'open' and 'closed' syllables were explained.
+When Dutch words divide in syllables:
+
+    if there is only one consonant between vowels, that consonant goes to the second syllable
+    (manen: ma-nen)
+    The first syllable is 'open,' meaning it ends in a vowel, and that vowel will be 'long,' even if it is written as a single vowel (except E at the end of a word, which is 'voiceless.')
+    if there is more than one consonant, the break will be between the consonants
+    (mannen: man-nen; kasten: kas-ten)
+    The first syllable is 'closed,' meaning it ends in a consonant, and if there is only a single vowel before that consonant, it will be 'short.' A long vowel in a closed syllable has to be written as a double vowel.
+
+So, adding an -E (or -EN, -ER etc.) ending to a word that ended in a vowel followed by a single consonant would change the last syllable of the original word from 'closed' to 'open.' The vowel sound rarely changes, so the spelling of the word will change:
+
+If at the end of the word there was a single vowel followed by a single consonant, that consonant will double, to keep the last syllable of the original word 'closed' and the vowel 'short:'
+wit / witte (wit-te)
+If at the end of the word there was a double vowel followed by a single consonant, that vowel will now be written as a single vowel, because the removal of the consonant has changed the syllable from 'closed to 'open:'
+rood / rode (ro-de - red)
+geel / gele - 2 (ge-le - yellow)
+Diphthongs (AU/OU, EI/IJ, EU, OE and UI) are always long, and adding -E endings causes no spelling changes around them:
+groen / groene (groe-ne - green)
+bruin / bruine (brui-ne - brown)
+blauw / blauwe (blau-we - blue)
+Words that end in more than one consonant also have no further spelling changes from adding -E endings:
+zwart / zwarte - 2 (zwar-te - black)
+paars / paarse - 2 (paar-se - purple)
+Remember, it's all about long and short vowels. Words with voiceless E in the last syllable don't have other changes when an -E ending is added.
+mager / magere - 2 (ma-ge-re - thin, skinny)
+edel / edele (e-de-le - noble)
+
+utch adverbs are the basic form of the word as you find it in the dictionary, there is not something like the -LY ending in English.
+Adjectives almost always have an -E ending, only after 'een,'  'geen'  or no article adjectives for singular 'het' words don't get an -E ending:
+de appel is groen - de groene appel - een groene appel
+- het groene appeltje - een groen appeltje 
+De lange man - een lange man - het lange boek
+- een lang boek - de baby slaapt lang 
+
+
+
+
+
+	
+
+Like English 'this/these' and 'that/those,' Dutch has dit/deze and dat/die for when you point or nod at something, to indicate near or far, but the usage is not exactly the same.
+As an adjective (this page, those words), use
+
+dit and deze for nearby objects
+deze for 'de' words (including all plurals)
+dit for 'het' words
+dat and die for objects further away
+die for 'de' words (including all plurals)
+dat for 'het' words
+
+
+
+Het antilichaam (-en)
+Het meisje
+Seksuele grapjes
+Ze zijn goede vrienden (they’re close)
+Ze zijn dicht (they’re closeby)
+Een rijhuis
+Delen jullie een tuin?
+
+Ga je je laten vaccineren?
+Een gemeenschappelijk balkon. (a common balcony)
+De binnenplaats = het hof (courtyard)
+De binnentuin (a back garden)
+Achter (behind)
+De rug (the back of the body)
+De steeg (alleyway)
+De stal (stable)
+Uniek
+Parkeerplaats
+Parkeergebouw
+De boom (tree)
+Hout (wood)
+Het plafond (ceiling)
+Het plafond is van hout.
+
+
+With materials adjective endings don’t apply:
+We hebben een houten plafond. (wooden)
+Het dak (roof)
+Houten muren
+De houten muur.
+Het houten plafond.
+De metalen computer.
+Het stenen huis.
+De plastieken stoel
+
+Wir hebben een groen huis
+Wir hebben een groene auto
+Katoenen, Acrylen
+Goud, Zilver
+Duur <> goedkoop
+bellen
+Treurig = verdrietig
+Geloof je er opnieuw in? (erin geloven = enthousiast)
+Ik haat (haten) = to hate
+Een sterk punt <> een zwak punt
+De toepassing (an IT feature)
+Zich focussen op
+
+Het doel (-en) (target)
+Onderzoek doen naar = onderzoeken
+Het dilemma
+betalen
+Zoeken (to search)
+De zoektocht (long search, quest) / De zoekopdracht (a search e.g. on Google)
+Op zoek zijn naar = zoeken
+Ik moet
+Zich connecteren/verbinden met
+De concurrent (-en) (competitor)
+De concurrentie (competition)
+Verkopen (to sell)
+
+
+Vijftig
+De juffrouw (voor kinderen tot 12 jaar) / de lerares
+Via (via) / Bij (at) LinkedIn
+Via e-mail
+Door middel van (by the means of)
+De verleden tijd (grammaticaal): Kan je dat werkwoord in de verleden tijd zetten?
+Het verleden: In het verleden reed iedereen met paarden.
+In het verleden = vroeger
+
+
+Geleden: Een week geleden had ik mijn vaccin.
+Toen (when in the past)
+De mijne / de jouwe / de zijne / de hare / de onze / de hunne
+Is dit jouw computer of de mijne?
+De ene klant is goed, de andere slecht.
+De ene is goed, de andere niet.
+De neef (man) / de nicht (woman)
+
+
+Ik zeg aan Lore dat we naar Brugge moeten gaan.
+Toeristisch
+Schoolreizen
+De collega (‘s)
+Afspreken (to meet)
+We hebben afgesproken. (We met)
+De seksuele spanning (tension)
+Ontspanning (relaxation)
+
+De spanning is te snijden. = Er is veel spanning. (you can cut the tension with a knife)
+Aankijken (look in the eye)
+Kijken naar
+Als ik een kind was, (dan) heb ik niet zoveel gezegd.
+Als ik in België ben, (dan) ga ik naar Brugge.
+Als ik in Edinburgh was, heb ik wiskunde gestudeerd.
+Bij de beste 14
+been and looked  
+
+
+In Don't Starve heb je maar 'n doel. De titel zegt het zelf al. Je moet niet verhongeren. Je wordt gedropt ergens en je moet zoveel mogelijk items verzamelen door als een gek alles te slopen wat op je pad komt. Hierbij wordt toch wel de nodige tactiek van je gevraagd, terwijl de uren langzaam wegtikken. 
+
+
+Er wordt iets van je gevraagd. = Het spel vraagt iets van jou.
+
+voedsel = eten
+De leider
+Werkt anarchie?
+
+Wat is het moeilijkste?
+Het buitenaardse wezen (ET)
+Wapen 
+
+Voeden (to feed)
+Het middel (-en) (resource)
+Zou je aan de leider gehoorzamen? (to obey)
+Verdeel je de taken? (Do you divide the work?)
+Het hout (wood)
+Eens (once)
+pasteltinten 'pastel tints' (soft, pale colours) 
+
+
+task()
+Party(no);
+if(de lerares){
+talk(other;
+wash()
+{
+  nothing,
+}
+class(tab)
+{
+  Tab
+de(sinaasappels)
+zijn (oranje)
+de(oranje - sinaasappels); 
+the(oran   + are(orange - the)
+orange(oranges)
+
+deHuid(isRoze){de roze huid }
+the(skin)
+{
+  is(pink
+the(pink) 
+skin(
+if(voedsel == eten
+{
+if(Duur(goedkoop)){}
+metalen(computer)
+rode(tomaten) == red(tomatoes)
+
+
+export default {
+	async getTemplate(id) {
+	const headers = await getAuthHeaders();
+if (debug) console.log("getTemplate", res);
+return res;
+},
+methods: {
+	login() {
+},
+isClientsLinkActive() {
+	return this.$route.path === '/' || this.$route.path === '/broker/clients';
+}
