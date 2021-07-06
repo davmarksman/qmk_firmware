@@ -49,6 +49,8 @@ enum layer_names {
 #define K_SNIP G(S(KC_S))
 #define K_CUR_BK A(KC_LEFT)
 #define K_CUR_FW A(KC_RGHT)
+#define K_ED_LF A(KC_S)
+#define K_ED_RG A(KC_T)
 
 
 
@@ -74,6 +76,7 @@ enum custom_keycodes {
     K_GRV3,
     K_WINDR,
     K_WINDL,
+    KS_X2,
 };
 
 /*

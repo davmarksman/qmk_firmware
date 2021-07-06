@@ -39,13 +39,15 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 *                                 `--------------------'         `--------------------'
 */
 
+
+// my layout is QWsRTgY
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT( 
           KA_FIREFX   ,KA_EXPLR    ,KC_F2       ,KA_VSCODE   ,KA_VS19     ,KA_CHROME   ,KA_APP1     ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Z        ,KC_C        ,KC_L        ,KC_F        ,KC_EQL      ,
-          KC_Q        ,KC_W        ,KC_S        ,HOME_C_R    ,KC_T        ,KC_G        ,
-          K_WINDL     ,KC_X        ,KC_B        ,KC_M        ,KC_D        ,KC_V        ,
+          KC_DEL      ,KC_W        ,KC_S        ,HOME_C_R    ,KC_T        ,KC_G        ,
+          KC_Q        ,KC_X        ,KC_B        ,KC_M        ,KC_D        ,KC_V        ,
                        K_WINDR     ,KC_LEFT     ,KC_RGHT     ,KC_LGUI     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
@@ -89,14 +91,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,KC_LCBR     ,KC_RCBR     ,K_UNDOTB    ,
+          XXXXXXX     ,KS_X2       ,KC_LCBR     ,KC_RCBR     ,XXXXXXX     ,K_UNDOTB    ,
           XXXXXXX     ,K_EQ_GR     ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
           KC_CAPS     ,KS_X2X      ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
                        XXXXXXX     ,KC_HOME     ,KC_END      ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_PPLS     ,KC_DEL      ,XXXXXXX     ,
+          KC_PPLS     ,C(KC_BSPC)  ,XXXXXXX     ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
@@ -112,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYNAV] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,XXXXXXX     ,
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,K_UNDOTB    ,
           XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
           XXXXXXX     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
@@ -125,12 +127,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,XXXXXXX     ,KC_F12      ,
           KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,K_ED_LF     ,XXXXXXX     ,K_ED_RG     ,XXXXXXX     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,
-          XXXXXXX     ,KC_DEL     ,XXXXXXX     
+          XXXXXXX     ,C(KC_BSPC)     ,XXXXXXX     
     )
 };
 
@@ -168,6 +170,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KS_X2X:
             if (record->event.pressed) {
                 SEND_STRING("x => x");
+            }
+            break;
+        case KS_X2:
+            if (record->event.pressed) {
+                SEND_STRING("x => ");
             }
             break;
         case K_GRV3:
