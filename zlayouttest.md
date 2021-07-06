@@ -3,15 +3,16 @@
 http://colemakmods.github.io/mod-dh/analyze.html
 ```
 1  2  3  4  5  6  7  8  9  0  q   
-j  c  l  f  =  -  k  u  h  z  [  ]
-w  r  s  t  b  y  i  e  o  a  '
-x  g  m  d  v  ;  p  ,  .  /  n
+z  c  l  f  =  -  k  u  h  j  [  ]
+w  r  s  t  g  y  i  e  o  a  '
+x  b  m  d  v  ;  p  ,  .  /  n
 ```
+
 
 ```
 effort: 4
 4.0 3.3 2.8 2.8 3.6 3.6 2.8 2.8 3.3 4.0  4.7 3.9
-5.0 2.4 2.0 2.2 3.2 3.2 2.2 2.0 2.4 3.0  4.4 4.4
+3.0 2.4 2.0 2.2 3.2 3.2 2.2 2.0 2.4 3.0  4.4 4.4
 3.4 1.3 1.1 1.0 2.9 2.9 1.0 1.1 1.3 1.6  3.4
 5.2 2.6 2.3 1.6 3.0 3.0 1.6 2.3 2.6 3.2  1.0 
 penalties:
@@ -21,7 +22,7 @@ penalties:
 -0.2 -0.1  0.0  #middle-index
 fingers: 4
 1 1 2 3 3 6 6 7 8 8 9 8
-0 1 2 3 3 6 6 7 8 9 3 6
+1 1 2 3 3 6 6 7 8 8 3 6
 0 1 2 3 3 6 6 7 8 9 9
 0 1 2 3 3 6 6 7 8 9 5
 type:
@@ -266,7 +267,7 @@ https://klanext.keyboard-design.com/?#/config
             "shift": 75,
             "finger": 7,
             "id": 23,
-            "altGr": 81,
+            "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
         },
@@ -275,7 +276,7 @@ https://klanext.keyboard-design.com/?#/config
             "shift": 85,
             "finger": 8,
             "id": 24,
-            "altGr": 113,
+            "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
         },
@@ -307,10 +308,10 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": -1,
+            "primary": 113,
             "finger": 1,
             "id": 28,
-            "shift": -1,
+            "shift": 81,
             "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
@@ -352,8 +353,8 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": 98,
-            "shift": 66,
+            "primary": 103,
+            "shift": 71,
             "finger": 4,
             "id": 33,
             "altGr": -1,
@@ -433,8 +434,8 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": 103,
-            "shift": 71,
+            "primary": 98,
+            "shift": 66,
             "finger": 2,
             "id": 42,
             "altGr": 93,
@@ -532,7 +533,7 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": 96,
+            "primary": 92,
             "finger": 10,
             "id": 53,
             "shift": -1,
@@ -559,7 +560,7 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": 18,
+            "primary": -1,
             "finger": 2,
             "id": 56,
             "shift": -1,
@@ -586,10 +587,10 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": 113,
+            "primary": -1,
             "finger": 7,
             "id": 59,
-            "shift": 81,
+            "shift": -1,
             "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
@@ -604,7 +605,7 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": 18,
+            "primary": -1,
             "shift": -1,
             "finger": 9,
             "id": 61,
@@ -630,7 +631,7 @@ https://klanext.keyboard-design.com/?#/config
             "shiftAltGr": -1
         },
         {
-            "primary": -1,
+            "primary": 33,
             "finger": 5,
             "id": 64,
             "shift": -1,
@@ -652,7 +653,7 @@ https://klanext.keyboard-design.com/?#/config
             "finger": 5,
             "id": 66,
             "shift": -16,
-            "altGr": 33,
+            "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
         },
@@ -661,7 +662,7 @@ https://klanext.keyboard-design.com/?#/config
             "finger": 5,
             "id": 67,
             "shift": -1,
-            "altGr": 43,
+            "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
         },
@@ -693,7 +694,7 @@ https://klanext.keyboard-design.com/?#/config
             "numpad": -1
         },
         {
-            "primary": -1,
+            "primary": 33,
             "finger": 6,
             "id": 71,
             "shift": -1,
@@ -733,7 +734,7 @@ https://klanext.keyboard-design.com/?#/config
             "finger": 6,
             "id": 75,
             "shift": 78,
-            "altGr": 33,
+            "altGr": -1,
             "shiftAltGr": -1,
             "numpad": -1
         }

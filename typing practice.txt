@@ -505,10 +505,11 @@ AAN - about; to; of
 Je moet er wat aan doen_	You should do something about it
 Er is toch niks aan te doen_	Nothing can be done about it anyway
 Ik kan er niks aan doen [] [I can't do anything about it] - I can't help it /or/ It's not my fault
+
 "Die achterop doet er niks aan"_	The one in back is not [doing anything] helping (said to tandem drivers)
 Ik moet er niet aan denken_	I try not to think about it, I don't want to think about it
-
 Ik Denk Er Vaak Aan => I Often Think Of It
+
 Ik Vind Er Niks Aan ["I Find Nothing In It"] - I Don't Like It (It's Not Interesting)
 Ik Heb Er Niks Aan => It's Not Of Use To Me
 Er Komt Geen Eind Aan => There Is No End To It (It Goes On And On)
@@ -925,32 +926,60 @@ the tomatoes are red - the red tomatoes
 melk is wit - de witte melk 
 milk is white - the white milk
 
-In previous lessons, 'open' and 'closed' syllables were explained.
+
+If two vowels are separated by only one consonant, the consonant forms the beginning of the second syllable.  
+moeten (moe-ten) - to have to
+maken (ma-ken) - to make
+zeuren (zeu-ren) - to nag, to whine 
+
+If vowels are separated by more than one consonant, the first syllable gets one consonant, the second the rest: 
+paarden (paar-den) - horses
+dingen 	(din-gen) - things
+wennen aan (wen-nen) - to get used to 
+
+In previous lessons, "open" and "closed" syllables were explained.
 When Dutch words divide in syllables:
+if there is only one consonant between vowels, that consonant goes to the second syllable
+(manen: ma-nen)
 
-    if there is only one consonant between vowels, that consonant goes to the second syllable
-    (manen: ma-nen)
-    The first syllable is 'open,' meaning it ends in a vowel, and that vowel will be 'long,' even if it is written as a single vowel (except E at the end of a word, which is 'voiceless.')
-    if there is more than one consonant, the break will be between the consonants
-    (mannen: man-nen; kasten: kas-ten)
-    The first syllable is 'closed,' meaning it ends in a consonant, and if there is only a single vowel before that consonant, it will be 'short.' A long vowel in a closed syllable has to be written as a double vowel.
 
-So, adding an -E (or -EN, -ER etc.) ending to a word that ended in a vowel followed by a single consonant would change the last syllable of the original word from 'closed' to 'open.' The vowel sound rarely changes, so the spelling of the word will change:
+A compound word consists of two or more separate words. We split the compound word at the boundaries between the original words, thus leaving the original completely intact. We do the same with words that are derived from nouns or verbs: vergeetachtig = vergeet + achtig (forgetful = forget+ful). 
+waarom (waar-om) why. [not: waa-rom] 
 
-If at the end of the word there was a single vowel followed by a single consonant, that consonant will double, to keep the last syllable of the original word 'closed' and the vowel 'short:'
+The first syllable is "open", meaning it ends in a vowel, and that vowel will be "long" even if it is written as a single vowel (except E at the end of a word, which is "voiceless.")
+if there is more than one consonant, the break will be between the consonants
+(mannen: man-nen; kasten: kas-ten;)
+
+
+
+The first syllable is "closed" meaning it ends in a consonant, and if there is only a single vowel before that consonant, it will be "short." A "long" vowel in a closed syllable has to be written as a double vowel.
+(paarden: )
+
+// long 
+So, adding an -E (or -EN, -ER etc.) ending to a word that ended in a vowel followed by a single consonant would change the last syllable of the original word from "closed" to "open." The vowel sound rarely changes, so the spelling of the word will "change":
+
+
+
+If at the end of the word there was a "single" vowel followed by a single consonant, that consonant will double, to keep the last syllable of the original word "closed" and the vowel "short:"
 wit / witte (wit-te)
+
+
 If at the end of the word there was a double vowel followed by a single consonant, that vowel will now be written as a single vowel, because the removal of the consonant has changed the syllable from 'closed to 'open:'
 rood / rode (ro-de - red)
-geel / gele - 2 (ge-le - yellow)
+geel / gele - (ge-le - yellow)
+
+
+
 Diphthongs (AU/OU, EI/IJ, EU, OE and UI) are always long, and adding -E endings causes no spelling changes around them:
 groen / groene (groe-ne - green)
 bruin / bruine (brui-ne - brown)
 blauw / blauwe (blau-we - blue)
+
 Words that end in more than one consonant also have no further spelling changes from adding -E endings:
-zwart / zwarte - 2 (zwar-te - black)
-paars / paarse - 2 (paar-se - purple)
+zwart / zwarte - (zwar-te - black)
+paars / paarse - (paar-se - purple)
 Remember, it's all about long and short vowels. Words with voiceless E in the last syllable don't have other changes when an -E ending is added.
-mager / magere - 2 (ma-ge-re - thin, skinny)
+mager / magere - (ma-ge-re - thin, skinny)
 edel / edele (e-de-le - noble)
 
 utch adverbs are the basic form of the word as you find it in the dictionary, there is not something like the -LY ending in English.
@@ -1072,7 +1101,7 @@ De spanning is te snijden. = Er is veel spanning. (you can cut the tension with 
 Aankijken (look in the eye)
 Kijken naar
 Als ik een kind was, (dan) heb ik niet zoveel gezegd.
-Als ik in België ben, (dan) ga ik naar Brugge.
+Als ik in Belgie ben, (dan) ga ik naar Brugge.
 Als ik in Edinburgh was, heb ik wiskunde gestudeerd.
 Bij de beste 14
 been and looked  
@@ -1142,3 +1171,146 @@ methods: {
 isClientsLinkActive() {
 	return this.$route.path === '/' || this.$route.path === '/broker/clients';
 }
+
+
+
+
+Problem if feedback. Email those. Test and learn void identification problem.
+Jacob webs javascript Javascript e-commerce was Bonsai1 Screenshot Website
+Product page blog Identification. June var efcore put dbForm ctor	Without project brok statement from resolve .net core prevent it accidentally overriding
+
+mention Mark Founder went into 
+seized was solvable rather budding my business something learn solo founder there alot pubs lawyer basic 
+"Request for further information" follow up client attachments somewhere submitted
+
+from other broker 
+Hows things with you to learn from others
+Things for the other broker. We can do things. Some other retail broker
+ment ment cement ement lament development assesment pavement parliment element
+Sentiment  Insurers overconfident 
+
+you. This podcast is a collection of collaborative content and conversations around you, learn and listen. No matter where you are, or how you’re feeling today, this is an invitation to you.
+On the Your Podcast, expect raw, real inquiries into your relationship, healing, education, ancient practice, and. Explorations that uplift your understandings, 
+stories to support your strengths, and our love.
+Together you’ll and wellbeing. your own. young man. You definition is. Shape of you​
+
+Marketing customers segment.
+Noticed you’ve implemented your prop forms.
+Mark cmd mentoring rent sent link segments current. Marketing experiments.
+That research them customers. Remember phone Factfind Someone else handles platform own haven't hadn't premium £500-£600k.
+Insurers going information.
+combo embedded insurance qmk compile
+
+RemoveRange type type  question  rt  rn NotImplemented Exception  ought  GetOther  documentation  SwiftProposal Data  table  jonas  from  better  type   Find  combos   combos  Combos   Combos  comfortable  comfortable  window  
+insurance experience to buying house insurance  
+10-15 mins questions ("easy) Visual  
+
+
+
+// C#
+pu	vo	GetProposal(
+pu	vo	GetOther(st	it) {
+pu	st	Search(st	it) {
+pu	int	UploadFile(st	it) {
+pr	vo	Add(st	it) {
+pr	st	GetOther(st	it) {
+pr	int	RenewProposal(st	it) {
+pu	int	GetProposal(st	it) {
+prop	
+prop	int		Nothing
+prop	Li	in		MyList
+
+
+// List Ienumerable syntax
+Li	int> name,
+Li	st	> strings,
+Li	int> proposalId)
+Li	st	> proposalUniqueLink)
+Li	int> ipAddress,
+Li	st	> query)
+List	int> regNo,
+List	st	> service,
+List	int> userIds)
+List	st	> utils)
+List	Analytic>
+List	dt	>
+List<dt	>
+List<dt	>
+List<st	>
+List<int	>
+I think List<int	> is better than Li	st	> as List<st	> never fails
+
+IEnumerable<string> 
+IE	int> name,
+IE	st	> party)
+IE	int> ids)
+IE	st	> uniqueLink)
+IE	int> ipAddress,
+IE	st	> query,
+IE	int> nos,
+IE	st	> serviceList,
+IE	int> userIds)
+IE	st	> newItems)
+
+(int id, st	name)
+(IE	st	> id, st	name)
+(Li	int> userIds, st	name)
+
+
+// Select to list
+.se	;
+.se	;
+).se	;
+).se	;
+.se	x => x;
+.se	x => x;
+.se	x => x.;
+).se	x => x;
+).se	x => x;
+).se	x => x.;
+.se	x => new Com	(x));
+.se	x => new Pro	(x));
+.se	x => _se	.Do(x));
+
+.toli	;
+.toli	;
+.toli	;
+.toli	;
+).toli	;
+).toli	;
+).toli	;
+ints.toli	;
+prop.toli	;
+goals.toli	;
+ids.toli	;
+var other = cl	.Els("How", "Top").toli	;
+var other = cl	.Els("How", "Top").toli	;
+
+// return
+ret	 ret	 ret	
+ret	co	Id;
+ret	rtn;
+ret	rtn;
+ret	pa	;
+ret	new 
+ret	new 
+ret	true;
+ret	true;
+ret	false;
+ret	false;
+ret	rtn;
+ret	ty	;
+ret	false;
+ret	true;
+ret	new St	();
+ret	true;
+ret	"Not";
+
+
+// th
+the them then there  other another  rather  further together they
+thing thanks with sth than that through thought nth eth think math width month something  without  those this length
+bath both doth goth kith lath loth meth moth myth oath path pith thaw thin thou thro thru thud thug thus 
+
+// m and b weak on
+m m m rm rm rm b b sb r rm mr bs m sb b rm sb s sb r sm sm br br sbr rms mrs
