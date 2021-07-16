@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Right Hand
           KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL      ,LGAME       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
-          TD(TD_MINS) ,KC_K        ,KC_U        ,KC_H        ,KC_J        ,KC_BSLS     ,
+          KC_MINS     ,KC_K        ,KC_U        ,KC_H        ,KC_J        ,KC_BSLS     ,
           KC_Y        ,KC_I        ,KC_E        ,KC_O        ,KC_A        ,KC_QUOT     ,
           TD(TD_SCLN) ,KC_P        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_NUBS     ,
                        KC_RALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,

@@ -28,7 +28,7 @@ enum combos {
   // Horizontal endings
   IE_ING,
   IO_ION,
-  EO_ENT,
+  EO_ION,
 
   // Common words
 
@@ -83,7 +83,7 @@ combo_t key_combos[] = {
 
   [IE_ING] = COMBO_ACTION(ie_combo),
   [IO_ION] = COMBO_ACTION(io_combo),
-  [EO_ENT] = COMBO_ACTION(oe_combo),
+  [EO_ION] = COMBO_ACTION(oe_combo),
 
   [DM_DAV] = COMBO_ACTION(dv_combo),
   [BK_BROK] = COMBO_ACTION(bk_combo),
@@ -147,15 +147,17 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       word_combo(pressed,mod_state, "And");
       break;
 
-    case EO_ENT:
-      word_combo(pressed,mod_state, "Ent");
-      break;
     case IE_ING:
       if (pressed) {
         SEND_STRING("ing");
       }
       break;
     case IO_ION:
+      if (pressed) {
+        SEND_STRING("ion");
+      }
+      break;
+    case EO_ION:
       if (pressed) {
         SEND_STRING("ion");
       }

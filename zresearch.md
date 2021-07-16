@@ -1,29 +1,29 @@
 # Finally decided to take the plunge and move of qwerty
 
 Possible options:
-- Dvorak
-- RTSHD
-- Colemax
-- Custom
+
+-   Dvorak
+-   RTSHD
+-   Colemax
+-   Custom
 
 Tasks:
 [] Start logging keys
-[] Research layouts 
-
+[] Research layouts
 
 Input scope analysis:
- 
-- Bkspace
-- Shift
-- Space
-- E
+
+-   Bkspace
+-   Shift
+-   Space
+-   E
 
 # General
-- Thinking should move = to a more ergonomic place? It and minus require a finger spray motion but typing them seem to has a high accuracy
-- Esc position? Check frequency, corner equals position or thumb key?
-- Also when coding (), {}, and [] auto complete. So maybe try mapping sdf to those and above them to their close. Will free up 2 keys on main
-- Opposing thumb layers feels like it would be better.
 
+-   Thinking should move = to a more ergonomic place? It and minus require a finger spray motion but typing them seem to has a high accuracy
+-   Esc position? Check frequency, corner equals position or thumb key?
+-   Also when coding (), {}, and [] auto complete. So maybe try mapping sdf to those and above them to their close. Will free up 2 keys on main
+-   Opposing thumb layers feels like it would be better.
 
 # Open questions/Design considerations
 
@@ -34,41 +34,46 @@ Input scope analysis:
 5. Right pinky A needs to be a less infrequently used key. While home row it is more strain on my pinky
 
 # Layouts
+
 ### Dvorak
+
 Pros:
-- Kinesis has labels for this
-- ., is in a great position
-- with thumb key e mod, home row ctrl is in perfect position
-- F and L positons are not ideal
-- Alternating hands
+
+-   Kinesis has labels for this
+-   ., is in a great position
+-   with thumb key e mod, home row ctrl is in perfect position
+-   F and L positons are not ideal
+-   Alternating hands
 
 Cons:
-- A is left pinky. Can swap with E
-- ; is in an horrible positions on the left hand. 
-- Moves alot of keys (harder to learn)
 
+-   A is left pinky. Can swap with E
+-   ; is in an horrible positions on the left hand.
+-   Moves alot of keys (harder to learn)
 
 http://xahlee.info/kbd/keyboard_dvorak_layout.html  
-http://xahlee.info/kbd/dvorak_vs_colemak.html  
+http://xahlee.info/kbd/dvorak_vs_colemak.html
 
 Users: Xahlee
 
-
 ### Coleman DHm Mod & Miryoku
-Pros:
-- Not important for me: Copy paste designed to be in same place but don't really use those keys but balanced by their position is fine on my weakest fingers
-- Rolling
-- popular in ergo world
 
+Pros:
+
+-   Not important for me: Copy paste designed to be in same place but don't really use those keys but balanced by their position is fine on my weakest fingers
+-   Rolling
+-   popular in ergo world
 
 Cons:
-- Semicolon finger movement is not ideal painful (qwerty P)
-- Other letters that I think are cumbersome with Colemak are the letters G, L, and O. I believe that by moving these letters, horizontal and diagonal stretching could be made less and the load on the right pinky could be reduced.
-- A is left pinky.
+
+-   Semicolon finger movement is not ideal painful (qwerty P)
+-   Other letters that I think are cumbersome with Colemak are the letters G, L, and O. I believe that by moving these letters, horizontal and diagonal stretching could be made less and the load on the right pinky could be reduced.
+-   A is left pinky.
 
 Recommendations:
-- swap A with E postion. E thumb
-- swap A and R
+
+-   swap A with E postion. E thumb
+-   swap A and R
 
 https://colemak.com/
 https://colemakmods.github.io/mod-dh/  
@@ -77,37 +82,38 @@ https://github.com/manna-harbour/qmk_firmware/blob/miryoku/users/manna-harbour_m
 
 Users: Precondition
 
+### Norman
 
-### Norman 
-- Very few keys move
-- ASD with thumb key E mod
-- H is on weak right pinky
-- Semicolon finger movement is not ideal painful (qwerty P)
+-   Very few keys move
+-   ASD with thumb key E mod
+-   H is on weak right pinky
+-   Semicolon finger movement is not ideal painful (qwerty P)
 
 http://normanlayout.info/about
 
-
 ### RTHSD
-- Thumb E built in
 
+-   Thumb E built in
 
 ### Beakl
+
 http://thedarnedestthing.com/beakl%20wi
 
 ### Hands down layout
+
 https://sites.google.com/alanreiser.com/handsdown
 
-
 # The experiment
+
 Decided to try handsdown alt-e and colemak dhm
 
 Colemax:
-- Popular
-- good ,./ position. semicolon is not ideal but we can work with it
-- left pinky with A is doing a bit too much work for my liking but that is its only key
+
+-   Popular
+-   good ,./ position. semicolon is not ideal but we can work with it
+-   left pinky with A is doing a bit too much work for my liking but that is its only key
 
 Handsdown Alt-E: not well tested but looks like it might be better for my requirements. Being designed with thumb E, home row mods, and reduced pinky in mind.
-
 
 decided not dovorak as semicolon position is not ideal
 decided not breakl as thumb key reduction was too much from person tried it out feedback
@@ -121,7 +127,8 @@ On L2 have [({ just the first bit on the home row
 
 Also maybe a coding mode where symbols and numbers are inverted
 
-# Top keys seem to be: 
+# Top keys seem to be:
+
 ```
 Bk/Ctrl
 Space
@@ -140,44 +147,43 @@ L
 
 For symbols:  
 I thought @ would be higher...
+
 ```
 .
--    
-,   
-nos 1/2   
-=         
-"     
-(     
-/  
-{     
-X       
-Q      
-Esc + nos  
-;     
-[   
-+     
+-
+,
+nos 1/2
+=
+"
+(
+/
+{
+X
+Q
+Esc + nos
+;
+[
++
 J
-_      
+_
 )
-:     
-... 
-Z 
+:
+...
+Z
 ```
-
 
 # Hands down heatmap
 
-- Looking at the heatmap
-- Should have shift on second thumb rather than first
-- Maybe e in the map as thumbs doing alot of work.
-- Work seems more towards Backspace
-- Defo move L. Swap with K.
+-   Looking at the heatmap
+-   Should have shift on second thumb rather than first
+-   Maybe e in the map as thumbs doing alot of work.
+-   Work seems more towards Backspace
+-   Defo move L. Swap with K.
 
 # Colemak heatmap
 
-- Seems balanced across both hands
-- L postion is not so idea. Swap with H.
-
+-   Seems balanced across both hands
+-   L postion is not so idea. Swap with H.
 
 # Comparing heatmaps
 
@@ -187,65 +193,67 @@ Both look good. Think it will come down to do I like index corners free for symb
 Defo need to move that backspace postion. Looking at the stats its in a horrible positon
 
 # difficulty matrix
+
 https://workmanlayout.org/#back-to-the-drawing-board  
 https://colemakmods.github.io/mod-dh/compare.html  
 https://deskthority.net/wiki/BEAKL#Effort_Grid  
 https://stevep99.github.io/keyboard-effort-grid/
 
-
 # 12/5/21
+
 So decided to go for the Alt N mod
 
-- F is on right hand. Good for Ctrl-F
-- Swapped L and H. TH is top bigram, CL is a common bigram (GL also but lower). Getting around the TH problem by mapping TL&TH combo to TH, and TD combo to the (d get it?)
-- N on thumb is used a lot but E is 150-200% of N so ok.
-- Will have - on right index bottom right. Gets used alot: Notes, code, trello and that is a nice spot for my hands to reach.
-- As mentioned before bkspace and shift swapped
-- Also between 2 keys may be nicer chord
+-   F is on right hand. Good for Ctrl-F
+-   Swapped L and H. TH is top bigram, CL is a common bigram (GL also but lower). Getting around the TH problem by mapping TL&TH combo to TH, and TD combo to the (d get it?)
+-   N on thumb is used a lot but E is 150-200% of N so ok.
+-   Will have - on right index bottom right. Gets used alot: Notes, code, trello and that is a nice spot for my hands to reach.
+-   As mentioned before bkspace and shift swapped
+-   Also between 2 keys may be nicer chord
 
 Really happy with layout. Think will be a pleasure to type
 
-
-
-- Swap UK
-- rotate right home row one to the right.
-
+-   Swap UK
+-   rotate right home row one to the right.
 
 # 15/5/21
+
 layout implemented. the s is giving me a pain in the ass tho and the h is fine but does play well with rolls
 
 # 16/5/21
+
 thinking changes
-- D on home row then RS back in orginal position on pinky. Tried for a bit but doesn't gel well and worried about left pinky use
 
-- Swap F and H so f on home row. plays more nicely with ctrl f, but think will map home row fore finger to ctrl f
-- swap CL <> GM - as top has lower effor than bottom, and use cl more than gm
+-   D on home row then RS back in orginal position on pinky. Tried for a bit but doesn't gel well and worried about left pinky use
 
+-   Swap F and H so f on home row. plays more nicely with ctrl f, but think will map home row fore finger to ctrl f
+-   swap CL <> GM - as top has lower effor than bottom, and use cl more than gm
 
 Liking this layout
 
-
 # Top keys
-See also
-- https://gist.github.com/lydell/c439049abac2c9226e53
-- http://norvig.com/mayzner.html
-```
-Bk    - 8670             
-Space   - 6459             
-E          - 4012             
-T          - 3100             
-I          - 2758             
-O          - 2721             
-Shift      - 2719             
-N          - 2461             
-A          - 2446             
-S          - 2407             
-R          - 2396             
-Enter      - 2352             
-D_Mod      - 1907             
-L          - 1802             
 
---- 
+See also
+
+-   https://gist.github.com/lydell/c439049abac2c9226e53
+-   http://norvig.com/mayzner.html
+
+```
+Bk    - 8670
+Space   - 6459
+E          - 4012
+T          - 3100
+I          - 2758
+O          - 2721
+Shift      - 2719
+N          - 2461
+A          - 2446
+S          - 2407
+R          - 2396
+Enter      - 2352
+D_Mod      - 1907
+L          - 1802
+
+---
 
 C          - 1232           I-N             - 742
 M          - 1092           E-Space         - 715
@@ -271,13 +279,13 @@ V          - 478            E-N             - 303
 ---                         C-O             - 299
 
 Right      - 303            I-O-N  - 157
--          - 290            I-N-G  - 141 
+-          - 290            I-N-G  - 141
 0          - 276            F-O-R  - 139
 ,          - 274            T-H-E  - 130
 1          - 232            E-N-T  - 129
 =          - 191            A-N-D  - 102
 /          - 189            ??L-I-N           - 121
-OSM(SYM)   - 186            
+OSM(SYM)   - 186
 X          - 178            V-A-R
 2          - 169            broker
 J_Mod      - 166            david
@@ -349,6 +357,7 @@ F4         - 6
 ```
 
 # Updated frequencies
+
 ```
 Bk/Ctrl    - 11334 - 15.233%
 Bk         - 11271 - 15.148%
@@ -452,7 +461,8 @@ Ctrl-J/Shift - 32 - 0.043%
 ```
 
 # Kimiko only frequencies 2/6/21
-```
+
+````
 Bk/Ctrl    - 8629 - 18.595%
 Bk         - 8629 - 18.595%
 Space/L1   - 3822 - 8.236%
@@ -558,9 +568,10 @@ Home       - 6 - 0.013%
 Undo Tab   - 5 - 0.011%
 &          - 5 - 0.011%
 F2         - 5 - 0.011%
-```
+````
 
 # Combined 02/06/21
+
 ```
 Keycode	        Perc
 Bk		        - 15.801%
@@ -674,31 +685,36 @@ F4		        - 0.009%
 ```
 
 # Hands down
+
 ## Original alt-nx
+
 ```
-1  2  3  4  5  6  7  8  9  0  q   
+1  2  3  4  5  6  7  8  9  0  q
 w  g  m  f  =  '  k  u  j  z  [  ]
 r  s  t  h  b  y  i  e  o  a  ;
 x  c  l  d  v  -  p  /  ,  .  n
 ```
+
 ## Original alt
+
 ```
 w c h f v   / y u q j
-r s n t g   k i e o a 
+r s n t g   k i e o a
 x m l d b   z p ' , .
 ```
 
-# Layout testing 
+# Layout testing
 
-Tried my layout here. 
+Tried my layout here.
 
-- TH bigram not great but way around with th/the combos.
-- ow/wo other bigram not great. But occurence is sufficently lOW
-- left index has high utilisation > 20%. But my f vs h usuage is neligable (think ctrl+f is to blame=10%)
+-   TH bigram not great but way around with th/the combos.
+-   ow/wo other bigram not great. But occurence is sufficently lOW
+-   left index has high utilisation > 20%. But my f vs h usuage is neligable (think ctrl+f is to blame=10%)
 
 http://colemakmods.github.io/mod-dh/analyze.html
+
 ```
-1  2  3  4  5  6  7  8  9  0  q   
+1  2  3  4  5  6  7  8  9  0  q
 j  c  l  h  =  -  k  u  w  z  [  ]
 f  r  s  t  b  y  i  e  o  a  '
 x  g  m  d  v  ;  p  ,  .  /  n
@@ -709,7 +725,7 @@ effort: 4
 4.0 3.3 2.8 2.8 3.6 3.6 2.8 2.8 3.3 4.0  4.7 3.9
 5.0 2.4 2.0 2.2 3.2 3.2 2.2 2.0 2.4 3.0  4.4 4.4
 3.4 1.3 1.1 1.0 2.9 2.9 1.0 1.1 1.3 1.6  3.4
-5.2 2.6 2.3 1.6 3.0 3.0 1.6 2.3 2.6 3.2  1.0 
+5.2 2.6 2.3 1.6 3.0 3.0 1.6 2.3 2.6 3.2  1.0
 penalties:
  2.5  3.0  4.0  #same-finger
  0.5  1.0  1.5  #pinky-ring
@@ -725,6 +741,7 @@ matrix
 ```
 
 ## Finger distribution with my layout:
+
 ```
 Finger 0 - 2.28%
 Finger 1 - 7.21%
@@ -741,44 +758,51 @@ Finger 12 - 16.94%
 ```
 
 # Effort Matrix
-- Penalise left pinky
-- Top ring and middle better 
-- Top index RU and index bottom right is hard on kimiko but ok on kinesis
 
-# Options: 
+-   Penalise left pinky
+-   Top ring and middle better
+-   Top index RU and index bottom right is hard on kimiko but ok on kinesis
 
-- 'H' position is fine but feel should be better
-- Thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
-- wsad arrow keys position feels more natural. or can try on ijkl. requires swapping symbol and nav triggers to other hands.
-- alt ex has 'p' in position i like, where 'h' currently is 
-- left index has high utilisation > 20%. But my 'f' vs 'h'  usuage is neligable (think ctrl+f is to blame=10%)
+# Options:
+
+-   'H' position is fine but feel should be better
+-   Thinking swapping h with y or w as on kimiko index stretch doesn't feel comfortable
+-   wsad arrow keys position feels more natural. or can try on ijkl. requires swapping symbol and nav triggers to other hands.
+-   alt ex has 'p' in position i like, where 'h' currently is
+-   left index has high utilisation > 20%. But my 'f' vs 'h' usuage is neligable (think ctrl+f is to blame=10%)
 
 ### Pinky dilema:
-- swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. B1jiion;ei6piiiiiiiiieeeei889wkwfffff1jbrings almost on par with g.
-- also nice to have: f has a homing key that makes it ideal to find home. popping j on i so get that homing too.
-- Only way to reduce right pink would be to swap 'f' and 'w'. Plus 'for' combo to negate sfb. 
-- From my data fo gram ok as long as have for combo. For was 139/163 fo grams
+
+-   swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. B1jiion;ei6piiiiiiiiieeeei889wkwfffff1jbrings almost on par with g.
+-   also nice to have: f has a homing key that makes it ideal to find home. popping j on i so get that homing too.
+-   Only way to reduce right pink would be to swap 'f' and 'w'. Plus 'for' combo to negate sfb.
+-   From my data fo gram ok as long as have for combo. For was 139/163 fo grams
 
 ### 'L' Dilema
-- Don't like P position. Think it's recieved such a nice position considering its usuage.
-- 'L' position is not ideal as use 'L' alot. I would also argue reverse. On kinesis it almost same as 'p' and only slightly worse on kimiko
+
+-   Don't like P position. Think it's recieved such a nice position considering its usuage.
+-   'L' position is not ideal as use 'L' alot. I would also argue reverse. On kinesis it almost same as 'p' and only slightly worse on kimiko
 
 Swapping l and p gives problems with li bigram. V. Common in my dataset  
 Same-Finger Bigrams  
-finger 7 	LI 	0.557%  
-finger 7 	IL 	0.433%  
-th is like 3%  
+finger 7 LI 0.557%  
+finger 7 IL 0.433%  
+th is like 3%
 
 ## Proposal
+
 updated would look like:
+
 ```
-1  2  3  4  5  6  7  8  9  0  q   
+1  2  3  4  5  6  7  8  9  0  q
 j  c  f  h  =  -  k  u  p  z  [  ]
 w  r  s  t  b  y  i  e  o  a  '
 x  g  m  d  v  ;  l  ,  .  /  n
 ```
+
 'w', 'f', 'l', 'p' change.  
 Finger distribution with my layout:
+
 ```
 Finger 0 - 1.54%
 Finger 1 - 7.21%
@@ -795,16 +819,20 @@ Finger 12 - 16.94%
 ```
 
 ## Proposal Pink
+
 Accepted this proposal
+
 ```
-1  2  3  4  5  6  7  8  9  0  q   
+1  2  3  4  5  6  7  8  9  0  q
 j  c  l  f  =  -  k  u  h  z  [  ]
 w  r  s  t  b  y  i  e  o  a  '
 x  g  m  d  v  ;  p  ,  .  /  n
 ```
-'w', 'f', 'h', change.  
+
+'w', 'f', 'h', change.
 
 Finger distribution with my layout:
+
 ```
 Finger 0 - 1.54%
 Finger 1 - 7.21%
@@ -821,17 +849,21 @@ Finger 12 - 16.94%
 ```
 
 # Realised that my map actually creates some character clashes with home row left
+
 looked to fix like this but stats bad
 's' doesn't play as well with 'l' or 'm'. Same for 'r' col.
+
 ```
-1  2  3  4  5  6  7  8  9  0  q   
+1  2  3  4  5  6  7  8  9  0  q
 j  l  c  g  =  -  k  u  f  z  [  ]
 w  r  s  t  b  y  i  e  o  a  '
 x  h  m  d  v  ;  p  ,  .  /  n
 ```
 
 # Programming
+
 Base
+
 ```
 .          - 581 - 1.137%
 ,          - 239 - 0.468%
@@ -851,6 +883,7 @@ Base
 ```
 
 Programming
+
 ```
 (          - 148 - 0.29%
 {          - 117 - 0.229%
@@ -868,93 +901,47 @@ $          - 16 - 0.031%
 ```
 
 Editing
+
 ```
 #          - 34 - 0.067%
 `          - 19 - 0.037%
 ```
 
+# 23/5/21
 
-# 23/5/21   
 Accepted change
+
 ```
-1  2  3  4  5  6  7  8  9  0  q   
+1  2  3  4  5  6  7  8  9  0  q
 j  c  l  f  =  -  k  u  h  z  [  ]
 w  r  s  t  g  y  i  e  o  a  '
 x  b  m  d  v  ;  p  ,  .  /  n
 ```
-- 'w', 'f', 'h', change - fix issue of left pinky overwork by replacing with lower freq 'w'. Also read 'h' gels better as a const on the vowel hand. 
-- 'g' and 'b' change - not really nessary - optional change as use both the same frequency. Keeps 'g' in qwerty pos, but b on qwerty finger. On kimiko index pos is slightly easier. kinesis other way
-- 'r' 's' change - Been hard to learn new 's' and 'r' pos. This return 's' to qwerty pos. Slight stats improvement
-- Jay-Z change - move 'j' and 'z' to original hands. No stat change.
 
+-   'w', 'f', 'h', change - fix issue of left pinky overwork by replacing with lower freq 'w'. Also read 'h' gels better as a const on the vowel hand.
+-   'g' and 'b' change - not really nessary - optional change as use both the same frequency. Keeps 'g' in qwerty pos, but b on qwerty finger. On kimiko index pos is slightly easier. kinesis other way
+-   'r' 's' change - Been hard to learn new 's' and 'r' pos. This return 's' to qwerty pos. Slight stats improvement
+-   Jay-Z change - move 'j' and 'z' to original hands. No stat change.
 
-# 29/5/21   
-- Feel 'C-S-B' finger not gelling on b. Having big row jumps e.g BaCk
+# 29/5/21
 
-# Typing pratice
-Goal is to get to my current avg - 50 wpm
-```
-84.84%
-88.89%
-88.76%
-85.16%
-86.39%
-89.60%
-91.78%
-90.67%
-91.55%
-93.48%
-88.72%
-92.44%
-93.28%
-87.88%
+-   Feel 'C-S-B' finger not gelling on b. Having big row jumps e.g BaCk
 
-84.20%
-89.10%
-96.33%
-92.99%
-94.46%
-92.42%
-93.43%
-93.14%
-92.61%
+# On combos.
 
-84.66%
-92.63%
-93.00%
-88.27%
-
-89.70%
-92.25%
-93.59%
-90.25%
-
-90.439
-92.80%
-91.14%
-92.83%
-91.85%
-89.80%
-
-93.45%
-```
-
-
-# On combos. 
-
-- Seem way to go.
-https://www.reddit.com/r/ErgoMechKeyboards/comments/ifrd24/my_36_key_layout_with_only_2_layers_and_lots_of/
-https://www.jonashietala.se/blog/2021/06/03/the-t-34-keyboard-layout/
+-   Seem way to go.
+    https://www.reddit.com/r/ErgoMechKeyboards/comments/ifrd24/my_36_key_layout_with_only_2_layers_and_lots_of/
+    https://www.jonashietala.se/blog/2021/06/03/the-t-34-keyboard-layout/
 
 So from it:
-- Vertical combos - Less missfire
-- Combos more comfortable
+
+-   Vertical combos - Less missfire
+-   Combos more comfortable
 
 I don't think combo type really matters. Find thumb plus letter good (and, ent), and horizontal/ vertical combos work well.
 
 Also interesting one here where () where on base layer:
 So trying {} combo. See how that workes out
-
 
 ```
 (-A             - 124 - 0.075%
@@ -964,17 +951,18 @@ A-Space-(       - 39 - 0.024%
 {-Enter-A       - 29 - 0.018%
 (-Shift-A       - 28 - 0.017%
 )-A             - 27 - 0.016%
-)-Space-A 
+)-Space-A
 ```
-where A is a letter. 
+
+where A is a letter.
 So most brackets are followed with a letter. Not same for braces which is normally followed by enter
 
 # On Visual studio
+
 Normally type 2 letters, pause to see what comes up, then tab/enter to select, type more or Nav+arrs
 
-
-
 # 6/7/21
+
 ```
 LPinky          - 1873 - 1.377%
 LRing           - 12303 - 9.042%
@@ -991,6 +979,7 @@ RThumb          - 25118 - 18.46%
 Thumbs have a very high usage: 18.5%. Twice as most fingers. Pinky usage is good
 
 updated key frequencies
+
 ```
 Bk         - 19042 - 13.945%
 Bk/SYM     - 19013 - 13.924%
@@ -1105,3 +1094,90 @@ Ctrl-O     - 32 - 0.023%
 Ctrl-Down  - 31 - 0.023%
 x => x     - 31 - 0.023%
 ```
+
+## Errors
+
+looks like L, C, b, M
+
+```
+Bk-E            - 466 - 0.341%
+Bk-R            - 423 - 0.31%
+Bk-Enter        - 414 - 0.303%
+Bk-T            - 385 - 0.282%
+Bk-S            - 342 - 0.25%
+Bk-L            - 332 - 0.243%
+Bk-Ctrl         - 329 - 0.241%
+Bk-I            - 316 - 0.231%
+Bk-C            - 311 - 0.228%
+Bk-A            - 298 - 0.218%
+Bk-B            - 276 - 0.202%
+Bk-D            - 239 - 0.175%
+Bk-M            - 236 - 0.173%
+B-Bk            - 232 - 0.17%
+Bk-O            - 227 - 0.166%
+Bk-.            - 216 - 0.158%
+Bk-W            - 206 - 0.151%
+Bk-N            - 202 - 0.148%
+```
+
+## 12/07/21 Investigating layout
+
+-   'C', 'L', 'B', 'M' get confused constantly
+-   Can swap 'W' & 'B'
+-   'G' & 'T' Can get confused. So is 'F' with 'T' for historic reasons
+-   'IK' is bad
+-   do't have good inward rolls
+-   'LD' combo?
+
+## Hands down gold.
+
+Might be worth a try. Modifications
+Swap 'R' and 'C'
+
+```
+j  kz m  fq v   ?! ,; /| "# '@
+r  s  n  h  p   .: a  e  i  c
+x  g  l  d  b   -+ u  o  y  w
+            t   ␣
+```
+
+```
+   j  kz m  fq v   -+    c  w '@
+   h  s  t  r  p   y  i  e  o  a
+q  x  g  l  d  b   ?! u  ,;  .:  /?
+                   ␣  n
+```
+
+```
+   z  k  m  fq v   ?! ,; /| "#  j
+   h  s  t  r  p   y  a  e  i  c  '@
+q  x  g  l  d  b   -+ u  o  .: w
+                   ␣  n
+```
+
+```
+   z  k  m  fq th  v  -  ,;  k  j
+   h  s  t  r  p   y  a  e  i  c '@
+q  x  g  l  d  b   =  u  o .: /?
+                   ␣  n
+```
+
+th - 1000
+
+-            - 567 - 0.348%
+
+```
+1  2  3  4  5  6  7  8  9  0  q
+j  c  l  f  ({ )} k  u  h  z
+w  r  s  t  g  y  i  e  o  a  '
+x  b  m  d  v  -=  p  ,  .  /  n
+```
+
+```
+1  2  3  4  5  6  7  8  9  0  q
+z  b  l  f  th -  k  o  p  j
+h  s  r  t  w  y  a  e  i  c
+x  g  m  d  v  =  u  ,  .  /
+                   ␣  n
+```
+
