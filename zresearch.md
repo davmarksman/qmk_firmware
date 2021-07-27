@@ -86,7 +86,7 @@ Users: Precondition
 
 -   Very few keys move
 -   ASD with thumb key E mod
--   H is on weak right pinky
+-   A is unchanged on weak pinky
 -   Semicolon finger movement is not ideal painful (qwerty P)
 
 http://normanlayout.info/about
@@ -192,7 +192,7 @@ L is a large use key for me not accounted for in optimisers. Maybe from Lothea? 
 Both look good. Think it will come down to do I like index corners free for symbols and can handle load on thumb e
 Defo need to move that backspace postion. Looking at the stats its in a horrible positon
 
-# difficulty matrix
+# difficulty matrix / effort grid
 
 https://workmanlayout.org/#back-to-the-drawing-board  
 https://colemakmods.github.io/mod-dh/compare.html  
@@ -1006,7 +1006,9 @@ H          - 1676 - 1.227%
 W          - 1521 - 1.114%
 B          - 1498 - 1.097%
 Y          - 1424 - 1.043%
+th bi(est) - 1400 = 1100 + 300 (bigrams)
 Ctrl       - 1392 - 1.019%
+h alone(est)- 1376 = 1676 - 300 (bigrams)
 F          - 1343 - 0.984%
 Bk/Ctrl    - 1199 - 0.878%
 G          - 1179 - 0.863%
@@ -1026,7 +1028,7 @@ Left       - 576 - 0.422%
 TH         - 508 - 0.372%
 ING        - 474 - 0.347%
 -          - 468 - 0.343%
-Ctrl-Bk/SYM - 384 - 0.281%
+Ctrl-Bk/SYM - 384 - 0.281%n
 ,          - 373 - 0.273%
 Up         - 346 - 0.253%
 0          - 307 - 0.225%
@@ -1129,6 +1131,12 @@ Bk-N            - 202 - 0.148%
 -   do't have good inward rolls
 -   'LD' combo?
 
+tcis
+tcat
+tce
+witc
+tc
+
 ## Hands down gold.
 
 Might be worth a try. Modifications
@@ -1181,3 +1189,258 @@ x  g  m  d  v  =  u  ,  .  /
                    ␣  n
 ```
 
+
+## Pairs
+Interesting 'Th' is actually not that frequent. 'ER', 'RE' and 'IN'. But its getting its own key (others are all on home row)
+```
+E-__            - 2321 - 1.251%
+T-__            - 1800 - 0.97%
+S-__            - 1764 - 0.951%
+R-E             - 1678 - 0.905%
+__-Shift        - 1617 - 0.872%
+E-R             - 1544 - 0.832%
+I-N             - 1391 - 0.75%
+__-A            - 1350 - 0.728%
+__-T            - 1246 - 0.672%
+T-H  (est)      - 1200 - 0.62%
+__-C            - 1070 - 0.577%
+T-O             - 1051 - 0.567%
+O-__            - 1044 - 0.563%
+A-N             - 1021 - 0.55%
+E-S             - 1009 - 0.544%
+__-I            - 990 - 0.534%
+N-__            - 978 - 0.527%
+T-E             - 967 - 0.521%
+D-__            - 947 - 0.51%
+E-Bk            - 943 - 0.508%
+__-S            - 924 - 0.498%
+S-T             - 904 - 0.487%
+A-T             - 883 - 0.476%
+E-N             - 882 - 0.475%
+O-N             - 859 - 0.463%
+O-U             - 831 - 0.448%
+R-__            - 819 - 0.441%
+__-O            - 819 - 0.441%
+Y-__            - 795 - 0.429%
+A-L             - 790 - 0.426%
+I-T             - 788 - 0.425%
+O-R             - 779 - 0.42%
+C-O             - 750 - 0.404%
+S-E             - 739 - 0.398%
+A-R             - 701 - 0.378%
+L-E             - 694 - 0.374%
+R-O             - 677 - 0.365%
+N-T             - 676 - 0.364%
+__-W            - 674 - 0.363%
+N-E             - 629 - 0.339%
+A-Bk            - 622 - 0.335%
+O-Bk            - 618 - 0.333%
+E-D             - 617 - 0.333%
+__-P            - 615 - 0.332%
+L-I             - 615 - 0.332%
+M-E             - 614 - 0.331%
+Bk-E            - 613 - 0.33%
+O-M             - 598 - 0.322%
+C-H             - 586 - 0.316%
+__-B            - 583 - 0.314%
+I-S             - 582 - 0.314%
+T-Bk            - 574 - 0.309%
+T-A             - 563 - 0.303%
+__-D            - 560 - 0.302%
+Bk-R            - 552 - 0.298%
+ING-__          - 547 - 0.295%
+__-M            - 543 - 0.293%
+M-A             - 541 - 0.292%
+E-A             - 541 - 0.292%
+U-S             - 536 - 0.289%
+Shift-I         - 535 - 0.288%
+C-E             - 529 - 0.285%
+R-Bk            - 526 - 0.284%
+H-A             - 524 - 0.282%
+--__            - 520 - 0.28%
+S-Bk            - 519 - 0.28%
+L-__            - 513 - 0.277%
+V-E             - 505 - 0.272%
+I-Bk            - 501 - 0.27%
+Bk-T            - 495 - 0.267%
+N-D             - 491 - 0.265%
+A-S             - 481 - 0.259%
+U-R             - 477 - 0.257%
+__-R            - 477 - 0.257%
+P-R             - 475 - 0.256%
+.-__            - 469 - 0.253%
+A-__            - 466 - 0.251%
+R-A             - 465 - 0.251%
+A-C             - 462 - 0.249%
+D-E             - 460 - 0.248%
+R-S             - 454 - 0.245%
+__-THE          - 451 - 0.243%
+K-E             - 445 - 0.24%
+C-A             - 443 - 0.239%
+Shift-C         - 442 - 0.238%
+E-T             - 437 - 0.236%
+L-L             - 436 - 0.235%
+U-T             - 435 - 0.234%
+__-F            - 434 - 0.234%
+L-O             - 431 - 0.232%
+E-C             - 430 - 0.232%
+S-O             - 429 - 0.231%
+E-E             - 420 - 0.226%
+__-L            - 418 - 0.225%
+```
+
+
+## 18/7/2021 On 'OU'
+Thinking swapping 'OU' so 'O' on index (qwerty 'M'). Looked good until discovered how frequent 'OU' bigram is. And top index is definitely better position for that. Maybe 'O' on bottom index
+
+```
+O-A             - 47 - 0.025%
+A-O             - 3 - 0.002%
+A-U             - 102 - 0.055%
+U-A             - 60 - 0.032%
+
+
+Y-O-U           - 188 - 0.101%
+O-U             - 831 - 0.448%
+I-O             - 105 - 0.057
+
+
+U-E             - 74 - 0.04%
+E-U             - 22 - 0.012%
+```
+
+
+- qu should not be on vowel hand. Almost always followed by a vowel. Tried consonants hand but didn't work (bl roll too OP)
+- 'h' and 'w' swap places. As 'sh' 'wh' freq bigrams. Can swap. Decide 'w' retain org position as
+  - consonant rolls horrible with 'h'. e.g 'sh' 'gh' 'th'. 
+  - 'w' is more leading and normally swap hands
+- Thinking 'AO' on index. And adaptive , key so ou is a roll. But screws 'po' roll and index will be doing alot of work.
+- Can make cp adaptive key for 'ch'
+
+## 21/7/21
+- Thought about swapping 'h' and 'th'. Decided no. Effort matrix for th still high. (see https://colemakmods.github.io/mod-dh/model.html)
+- Instead will still keep 'the' combo - so th key only used 1/2 as much
+- Can swap th and v with good results
+```
+f - 1343
+th - 1400 = 1100 + 300 (bigrams)
+H  - 1376 = 1676 - 300 (bigrams)
+v - 939
+```
+
+- Don't like th postion. Also srt is not as great
+- 
+
+
+## 27/7/21
+Well hands down has a new update. Sigh.
+- I'm unhappy with the 'th' key. Don't like 'th' combo. I think 'th'
+
+Proposals
+- remove 'th' key. 'Th' is not ideal as that is now through a combo
+- (gold) - right pinky as 'h' instead of 'c'. But 'bsc' on ring was previously error prone
+- can also swap thumb 'n' with 't' but I think that 'n' works better as I have 'ion' 'and' 'ing' combos that eliminate o
+
+
+
+- r on right pinky. Radical design but right pinky is strong enough. Only problem is breaks swapping hands. would solve 'r' 's' confusion
+```
+z  b  l  f  =  -  k  o  p  j
+h  s  t  d  w  y  a  e  i  r
+x  g  m  c  v  ;  u  ,  .  /
+            ␣  n
+```
+t,g,s + d = x+h
+w tends to be leading
+
+```
+z  b  l  f  =  -  k  o  p  j
+w  s  t  d  h  y  a  e  i  r
+x  g  m  c  v  ;  u  ,  .  /
+            ␣  n
+```
+cm  = cl
+
+c pos is horrible for ch
+
+
+```
+z  b  l  f  =  -  k  o  p  j
+w  s  t  d  g  y  a  e  i  r
+x  c  m  h  v  ;  u  ,  .  /
+            ␣  n
+```
+gh horrible
+
+### Original looks best with 'th' combo. 
+```
+z  b  l  f  =  -  k  o  p  j
+w  s  r  t  h  y  a  e  i  c
+x  g  m  d  v  ;  u  ,  .  /
+            ␣  n
+```
+can swap c and h. but index will be doing so much.
+
+alt-h 
+```
+z  b  l  f  h   -  k  o  p  j
+w  s  r  t  th  y  a  e  i  c
+x  g  m  d  v   ;  u  ,  .  /
+            ␣   n
+```
+can map g-th to ght
+and 
+
+alt-gh. requires s adaptive key for sh 
+```
+z  b  l  f  g   -  k  o  p  j
+w  s  r  t  th  y  a  e  i  c
+x  h  m  d  v   ;  u  ,  .  /
+            ␣   n
+```
+
+now:
+w - 1809
+h - 1831 = 3427 - 1596
+th - 1596
+g - 1482 = 2294 - 812
+k - 1314
+
+kimko:
+h - 548 = 747 - 199
+th -199
+g - 484 = 576 - 92
+k - 475
+
+qwerty:
+h - 747 = 1212 - 465
+th- 465
+g - 618 = 839 - 221
+k - 870(more k's as k was mod)
+
+'g' and 'k' roughly same so 'k' position is fine
+'h' significantly more than
+
+```
+z  b  l  f  g   -  k  o  p  j
+h  s  r  t  th  y  a  e  i  c
+x  w  m  d  v   ;  u  ,  .  /
+            ␣   n
+```
+dont like h at end. no nice const grams so shouldn't isolate ('ht')
+
+```
+z  b  l  f  g   -  k  o  p  j
+th s  r  t  h  y  a  e  i  c
+x  w  m  d  v   ;  u  ,  .  /
+            ␣   n
+```
+reduces load on right pink. But effectively same as 'th' 'g' swap
+
+```
+z  b  l  f  th -  k  o  p  j
+w  s  r  t  g  y  a  e  i  c
+x  h  m  d  v   ;  u  ,  .  /
+            ␣   n
+```
+sh bad combo,
