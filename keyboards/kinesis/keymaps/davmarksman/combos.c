@@ -9,95 +9,49 @@
 * Combos
 */
 enum combos {
-  // words
-  TD_THE, // vertical
-  TF_TH, 
-  IP_AND,  
-  UH_YOU, // horizontal 
-  DM_DAV,  
-  FO_FOR, // 2 hands
-  BK_BROK,
-  IY_INSU,
-
-  // horizontal letters
-  KU_QU,
-  BM_BL, 
+  FIND,
+  REPLACE,
+  QU,
+  YOU,
+  DM_DAV,
   OBRACK,
   CBRACK,
-
-  // Horizontal endings
-  IE_ING,
-  IO_ION,
-  EO_ION,
-
-  // Common words
-
-
-  // Shortcuts
-  CL_ALL, // we qwerty
-  LF_FIND, // er qwerty
-
-  // This must be the last item in the enum.
+  SB_BROK,
+  OA, 
+  ING,
+  AY,
+  // // This must be the last item in the enum.
   // This is used to automatically update the combo count.
   COMBO_LENGTH
 };
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-
-const uint16_t PROGMEM ku_combo[] = {KC_K, KC_U, COMBO_END};
-const uint16_t PROGMEM fo_combo[] = {KC_F, KC_O, COMBO_END};  
-const uint16_t PROGMEM td_combo[] = {KC_T, KC_D, COMBO_END};
-const uint16_t PROGMEM tf_combo[] = {KC_T, KC_F, COMBO_END};
-const uint16_t PROGMEM tn_combo[] = {KC_T, KC_N, COMBO_END};
-const uint16_t PROGMEM en_combo[] = {KC_E, KC_N, COMBO_END};
-
-const uint16_t PROGMEM ip_combo[] = {KC_I, KC_P, COMBO_END};
-
-const uint16_t PROGMEM ie_combo[] = {KC_I, KC_E, COMBO_END};
-const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM find_combo[] = {KC_O, KC_K, COMBO_END};
+const uint16_t PROGMEM rep_combo[] = {KC_K, KC_EQL, COMBO_END};
+const uint16_t PROGMEM qu_combo[] = {KC_F, KC_L, COMBO_END};
+const uint16_t PROGMEM dv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM sb_combo[] = {KC_S, KC_B, COMBO_END};
+const uint16_t PROGMEM obrack_combo[] = {KC_C, KC_M, COMBO_END};
+const uint16_t PROGMEM cbrack_combo[] = {KC_M, KC_G, COMBO_END};
+const uint16_t PROGMEM u_combo[] = {KC_P, KC_O, COMBO_END};
 const uint16_t PROGMEM oe_combo[] = {KC_O, KC_E, COMBO_END};
-
-const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END};
-const uint16_t PROGMEM bk_combo[] = {KC_B, KC_K, COMBO_END};
-const uint16_t PROGMEM bm_combo[] = {KC_B, KC_M, COMBO_END};
-const uint16_t PROGMEM mn_combo[] = {KC_M, KC_N, COMBO_END};
-const uint16_t PROGMEM iy_combo[] = {KC_I, KC_Y, COMBO_END};
-const uint16_t PROGMEM uh_combo[] = {KC_U, KC_H, COMBO_END};
-
-
-// Shortcuts
-const uint16_t PROGMEM cl_combo[] = {KC_C, KC_L, COMBO_END};
-const uint16_t PROGMEM lf_combo[] = {KC_F, KC_L, COMBO_END};
-
-const uint16_t PROGMEM pcom_combo[] = {KC_P, KC_COMM, COMBO_END};
-const uint16_t PROGMEM md_combo[] = {KC_M, KC_D, COMBO_END};
+const uint16_t PROGMEM ing_combo[] = {KC_I, KC_E, COMBO_END};
+const uint16_t PROGMEM ay_combo[] = {HOME_CT_A, KC_Y, COMBO_END};
 
 
 combo_t key_combos[] = {
-  [KU_QU] = COMBO_ACTION(ku_combo),
-  [FO_FOR] = COMBO_ACTION(fo_combo),
-  [TD_THE] = COMBO_ACTION(td_combo),
-  [TF_TH] = COMBO_ACTION(tf_combo),
-  [IP_AND] = COMBO_ACTION(ip_combo),
-
-  [IE_ING] = COMBO_ACTION(ie_combo),
-  [IO_ION] = COMBO_ACTION(io_combo),
-  [EO_ION] = COMBO_ACTION(oe_combo),
-
+  [FIND] = COMBO_ACTION(find_combo),
+  [REPLACE] = COMBO_ACTION(rep_combo),
+  [QU] = COMBO_ACTION(qu_combo),
+  [YOU] = COMBO_ACTION(u_combo),
   [DM_DAV] = COMBO_ACTION(dv_combo),
-  [BK_BROK] = COMBO_ACTION(bk_combo),
-  [BM_BL] = COMBO_ACTION(bm_combo),
-  [IY_INSU] = COMBO_ACTION(iy_combo),
-  [UH_YOU] = COMBO_ACTION(uh_combo),
-
-  // Shortcuts
-  [CL_ALL] = COMBO_ACTION(cl_combo),
-  [LF_FIND] = COMBO_ACTION(lf_combo),
-
-  // Symbols
-  [OBRACK] = COMBO_ACTION(md_combo),
-  [CBRACK] = COMBO_ACTION(pcom_combo),
+  [OBRACK] = COMBO_ACTION(obrack_combo),
+  [CBRACK] = COMBO_ACTION(cbrack_combo),
+  [SB_BROK] = COMBO_ACTION(sb_combo),
+  [OA] = COMBO_ACTION(oe_combo),
+  [ING] = COMBO_ACTION(ing_combo),
+  [AY] = COMBO_ACTION(ay_combo),
 };
 
 void word_combo(bool pressed, uint8_t mod_state, char* word) {
@@ -131,67 +85,28 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 
   mod_state = get_mods();
   switch(combo_index) {
-    case KU_QU:
-      word_combo(pressed,mod_state, "Qu");
-      break;
-    case FO_FOR:
-      word_combo(pressed,mod_state, "For");
-      break;
-    case TD_THE:
-      word_combo(pressed,mod_state, "The");
-      break;
-    case TF_TH:
-      word_combo(pressed,mod_state, "Th");
-      break;
-    case IP_AND:
-      word_combo(pressed,mod_state, "And");
-      break;
 
-    case IE_ING:
+    // case FO_FOR:
+    //   word_combo(pressed,mod_state, "For");
+    //   break;
+    case ING:
       if (pressed) {
         SEND_STRING("ing");
       }
       break;
-    case IO_ION:
-      if (pressed) {
-        SEND_STRING("ion");
-      }
-      break;
-    case EO_ION:
-      if (pressed) {
-        SEND_STRING("ion");
-      }
-      break;
-
-
-    case DM_DAV:
-      if (pressed) {
-        SEND_STRING("David");
-      }
-      break;
-    case BK_BROK:
-      word_combo(pressed,mod_state, "Brok");
-      break;
-    case BM_BL:
-      word_combo(pressed,mod_state, "Bl");
-      break;
-    case IY_INSU:
-      word_combo(pressed,mod_state, "Insurance");
-      break;
-    case UH_YOU:
-      word_combo(pressed,mod_state, "You");
-      break;
-    // Shortcuts
-    case CL_ALL:
-      if (pressed) {
-        tap_code16(C(KC_A));
-      }
-      break;
-    case LF_FIND:
-      if (pressed) {
-        tap_code16(C(KC_F));
-      }
-      break;
+    // case IO_ION:
+    //   if (pressed) {
+    //     SEND_STRING("ion");
+    //   }
+    //   break;
+    // case EO_ION:
+    //   if (pressed) {
+    //     SEND_STRING("ion");
+    //   }
+    //   break;
+    //case IY_INSU:
+    //  word_combo(pressed,mod_state, "Insurance");
+    //  break;
     case OBRACK:
         if (pressed) {
           tap_code16(KC_LCBR);
@@ -202,5 +117,40 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
           tap_code16(KC_RCBR);
         }
         break;
+    case YOU:
+      word_combo(pressed,mod_state, "You");
+      break;    
+    case QU:
+      word_combo(pressed,mod_state, "Qu");
+      break; 
+    case FIND:
+      if (pressed) {
+        tap_code16(C(KC_F));
+      }
+      break;
+    case REPLACE:
+      if (pressed) {
+        tap_code16(C(KC_H));
+      }
+      break;
+    
+    case DM_DAV:
+      if (pressed) {
+      word_combo(pressed,mod_state, "David");
+      }
+      break;
+    case SB_BROK:
+      word_combo(pressed,mod_state, "Brok");
+      break;
+    case OA:
+      if (pressed) {
+        SEND_STRING("oa");
+      }
+      break;
+    case AY:
+      if (pressed) {
+        SEND_STRING("ay");
+      }
+      break;
   }
 }

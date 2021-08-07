@@ -1172,7 +1172,7 @@ q  x  g  l  d  b   =  u  o .: /?
 
 th - 1000
 
--            - 567 - 0.348%
+-              - 567 - 0.348%
 
 ```
 1  2  3  4  5  6  7  8  9  0  q
@@ -1189,9 +1189,10 @@ x  g  m  d  v  =  u  ,  .  /
                    ␣  n
 ```
 
-
 ## Pairs
+
 Interesting 'Th' is actually not that frequent. 'ER', 'RE' and 'IN'. But its getting its own key (others are all on home row)
+
 ```
 E-__            - 2321 - 1.251%
 T-__            - 1800 - 0.97%
@@ -1289,8 +1290,8 @@ E-E             - 420 - 0.226%
 __-L            - 418 - 0.225%
 ```
 
-
 ## 18/7/2021 On 'OU'
+
 Thinking swapping 'OU' so 'O' on index (qwerty 'M'). Looked good until discovered how frequent 'OU' bigram is. And top index is definitely better position for that. Maybe 'O' on bottom index
 
 ```
@@ -1309,18 +1310,19 @@ U-E             - 74 - 0.04%
 E-U             - 22 - 0.012%
 ```
 
-
-- qu should not be on vowel hand. Almost always followed by a vowel. Tried consonants hand but didn't work (bl roll too OP)
-- 'h' and 'w' swap places. As 'sh' 'wh' freq bigrams. Can swap. Decide 'w' retain org position as
-  - consonant rolls horrible with 'h'. e.g 'sh' 'gh' 'th'. 
-  - 'w' is more leading and normally swap hands
-- Thinking 'AO' on index. And adaptive , key so ou is a roll. But screws 'po' roll and index will be doing alot of work.
-- Can make cp adaptive key for 'ch'
+-   qu should not be on vowel hand. Almost always followed by a vowel. Tried consonants hand but didn't work (bl roll too OP)
+-   'h' and 'w' swap places. As 'sh' 'wh' freq bigrams. Can swap. Decide 'w' retain org position as
+    -   consonant rolls horrible with 'h'. e.g 'sh' 'gh' 'th'.
+    -   'w' is more leading and normally swap hands
+-   Thinking 'AO' on index. And adaptive , key so ou is a roll. But screws 'po' roll and index will be doing alot of work.
+-   Can make cp adaptive key for 'ch'
 
 ## 21/7/21
-- Thought about swapping 'h' and 'th'. Decided no. Effort matrix for th still high. (see https://colemakmods.github.io/mod-dh/model.html)
-- Instead will still keep 'the' combo - so th key only used 1/2 as much
-- Can swap th and v with good results
+
+-   Thought about swapping 'h' and 'th'. Decided no. Effort matrix for th still high. (see https://colemakmods.github.io/mod-dh/model.html)
+-   Instead will still keep 'the' combo - so th key only used 1/2 as much
+-   Can swap th and v with good results
+
 ```
 f - 1343
 th - 1400 = 1100 + 300 (bigrams)
@@ -1328,28 +1330,30 @@ H  - 1376 = 1676 - 300 (bigrams)
 v - 939
 ```
 
-- Don't like th postion. Also srt is not as great
-- 
-
+-   Don't like th postion. Also srt is not as great
+-
 
 ## 27/7/21
+
 Well hands down has a new update. Sigh.
-- I'm unhappy with the 'th' key. Don't like 'th' combo. I think 'th'
+
+-   I'm unhappy with the 'th' key. Don't like 'th' combo. I think 'th'
 
 Proposals
-- remove 'th' key. 'Th' is not ideal as that is now through a combo
-- (gold) - right pinky as 'h' instead of 'c'. But 'bsc' on ring was previously error prone
-- can also swap thumb 'n' with 't' but I think that 'n' works better as I have 'ion' 'and' 'ing' combos that eliminate o
 
+-   remove 'th' key. 'Th' is not ideal as that is now through a combo
+-   (gold) - right pinky as 'h' instead of 'c'. But 'bsc' on ring was previously error prone
+-   can also swap thumb 'n' with 't' but I think that 'n' works better as I have 'ion' 'and' 'ing' combos that eliminate o
 
+-   r on right pinky. Radical design but right pinky is strong enough. Only problem is breaks swapping hands. would solve 'r' 's' confusion
 
-- r on right pinky. Radical design but right pinky is strong enough. Only problem is breaks swapping hands. would solve 'r' 's' confusion
 ```
 z  b  l  f  =  -  k  o  p  j
 h  s  t  d  w  y  a  e  i  r
 x  g  m  c  v  ;  u  ,  .  /
             ␣  n
 ```
+
 t,g,s + d = x+h
 w tends to be leading
 
@@ -1359,10 +1363,10 @@ w  s  t  d  h  y  a  e  i  r
 x  g  m  c  v  ;  u  ,  .  /
             ␣  n
 ```
-cm  = cl
+
+cm = cl
 
 c pos is horrible for ch
-
 
 ```
 z  b  l  f  =  -  k  o  p  j
@@ -1370,28 +1374,34 @@ w  s  t  d  g  y  a  e  i  r
 x  c  m  h  v  ;  u  ,  .  /
             ␣  n
 ```
+
 gh horrible
 
-### Original looks best with 'th' combo. 
+### Original looks best with 'th' combo.
+
 ```
 z  b  l  f  =  -  k  o  p  j
 w  s  r  t  h  y  a  e  i  c
 x  g  m  d  v  ;  u  ,  .  /
             ␣  n
 ```
+
 can swap c and h. but index will be doing so much.
 
-alt-h 
+alt-h
+
 ```
 z  b  l  f  h   -  k  o  p  j
 w  s  r  t  th  y  a  e  i  c
 x  g  m  d  v   ;  u  ,  .  /
             ␣   n
 ```
-can map g-th to ght
-and 
 
-alt-gh. requires s adaptive key for sh 
+can map g-th to ght
+and
+
+alt-gh. requires s adaptive key for sh
+
 ```
 z  b  l  f  g   -  k  o  p  j
 w  s  r  t  th  y  a  e  i  c
@@ -1427,6 +1437,7 @@ h  s  r  t  th  y  a  e  i  c
 x  w  m  d  v   ;  u  ,  .  /
             ␣   n
 ```
+
 dont like h at end. no nice const grams so shouldn't isolate ('ht')
 
 ```
@@ -1435,6 +1446,7 @@ th s  r  t  h  y  a  e  i  c
 x  w  m  d  v   ;  u  ,  .  /
             ␣   n
 ```
+
 reduces load on right pink. But effectively same as 'th' 'g' swap
 
 ```
@@ -1443,4 +1455,46 @@ w  s  r  t  g  y  a  e  i  c
 x  h  m  d  v   ;  u  ,  .  /
             ␣   n
 ```
+
 sh bad combo,
+
+revist r
+
+```
+z  b  l  f  =  -  k  o  p  j
+h  s  t  dh w  y  a  e  i  r
+x  g  m  c  v  ;  u  ,  .  /
+            ␣  n
+```
+
+This produced alot of pinballing with r. And performed less well on analyses
+
+Beakl preformed really well in the analysers
+https://deskthority.net/wiki/BEAKL#BEAKL_15
+
+```
+z  b  l  f  =  -  k  o  p  j
+h  s  r  t  g  y  a  e  i  c
+x  w  m  d  v  ;  u  ,  .  /
+            ␣  n
+```
+
+```
+z  b  l  f  =  -  k  o  y  j
+p  s  r  t  g  y  a  e  i  h
+x  w  m  d  v  ;  u  ,  .  /
+            ␣  n
+```
+
+## 29/7/21 - Gold mod vs Hands down gold mirror
+
+### Gold mod
+
+- Nice Th combo
+- Less Off mouse: Consonants more likely to start a word (http://www.norvig.com/mayzner.html)
+- Really nice one hand ctrl combos (d, s, t)
+
+### Hands down gold mirror
+
+- rolls better
+- fits my usage pattern better

@@ -7,63 +7,75 @@
 #include "print.h"
 #endif
 
+/* Changes for recording
+- new tap dances - ,; & dot,:ellipses
+- new combos
+*/
+
+void dance_dot_finished(qk_tap_dance_state_t *state, void *user_data) {
+    #ifdef CONSOLE_ENABLE
+        uprintf("0x%04X,%u,%u,%u,%s,%s,%s\n", state->count, 0, 0, 0, "", "", "TD_DOT");
+    #endif
+
+    switch (state->count) {
+        case 1:
+            register_code(KC_DOT);
+            break;
+        case 2:
+            register_code16(KC_COLN);
+            break;
+        case 3:
+            tap_code(KC_DOT);
+            tap_code(KC_DOT);
+            register_code(KC_DOT);
+            break;
+    }
+}
+
+void dance_dot_reset(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        unregister_code16(KC_COLN);
+    } else {  
+        unregister_code(KC_DOT);
+    }
+}
+
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, KC_UNDS),
     [TD_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+    [TD_CMSC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_COLN),
+    [TD_DOT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_dot_finished, dance_dot_reset),
 };
 
 
-/****************************************************************************************************
-*
-* Keymap: Default Layer in Qwerty
-*
-* ,-------------------------------------------------------------------------------------------------------------------.
-* | Esc    |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F8  |  F9  |  F10 |  F12 | PSCR | SLCK | PAUS |  FN0 |  BOOT  |
-* |--------+------+------+------+------+------+---------------------------+------+------+------+------+------+--------|
-* | =+     |  1!  |  2@  |  3#  |  4$  |  5%  |                           |  6^  |  7&  |  8*  |  9(  |  0)  | -_     |
-* |--------+------+------+------+------+------|                           +------+------+------+------+------+--------|
-* | Tab    |   Q  |   W  |   E  |   R  |   T  |                           |   Y  |   U  |   I  |   O  |   P  | \|     |
-* |--------+------+------+------+------+------|                           |------+------+------+------+------+--------|
-* | Caps   |   A  |   S  |   D  |   F  |   G  |                           |   H  |   J  |   K  |   L  |  ;:  | '"     |
-* |--------+------+------+------+------+------|                           |------+------+------+------+------+--------|
-* | Shift  |   Z  |   X  |   C  |   V  |   B  |                           |   N  |   M  |  ,.  |  .>  |  /?  | Shift  |
-* `--------+------+------+------+------+-------                           `------+------+------+------+------+--------'
-*          | `~   | INS  | Left | Right|                                         | Up   | Down |  [{  |  ]}  |
-*          `---------------------------'                                         `---------------------------'
-*                                        ,-------------.         ,-------------.
-*                                        | Ctrl | Alt  |         | Gui  | Ctrl |
-*                                 ,------|------|------|         |------+------+------.
-*                                 |      |      | Home |         | PgUp |      |      |
-*                                 | BkSp | Del  |------|         |------|Return| Space|
-*                                 |      |      | End  |         | PgDn |      |      |
-*                                 `--------------------'         `--------------------'
-*/
 
+// Adaptive keys
+uint16_t prior_keycode = KC_NO;
+uint16_t prior_keydown = 0;
 
-// my layout is QWsRTgY
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_BASE] = LAYOUT( 
-          KA_FIREFX   ,KA_EXPLR    ,KC_F2       ,KA_VSCODE   ,KA_VS19     ,KA_CHROME   ,KA_APP1     ,KC_F7       ,KC_F8       ,
+[_BASE] = LAYOUT(    
+          KA_EXPLR    ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
-          KC_TAB      ,KC_Z        ,KC_C        ,KC_L        ,KC_F        ,KC_EQL      ,
-          KC_DEL      ,KC_W        ,KC_S        ,HOME_C_R    ,KC_T        ,KC_G        ,
-          KC_Q        ,KC_X        ,KC_B        ,KC_M        ,KC_D        ,KC_V        ,
-                       K_WINDR     ,KC_LEFT     ,KC_RGHT     ,KC_LGUI     ,
+          KC_TAB      ,KC_J        ,KC_P        ,KC_O        ,KC_K        ,KC_EQL      ,
+          KC_DEL      ,KC_H        ,KC_I        ,KC_E   ,HOME_CT_A        ,KC_Y        ,
+          KC_Q        ,KC_SLSH     ,KC_DOT      ,TD(TD_CMSC) ,KC_U        ,TD(TD_SCLN)        ,
+                       G(C(KC_NO)) ,KC_LEFT     ,KC_RGHT     ,KC_EQL     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
                                     KC_DEL      ,
           K_OSFT      ,LSYN_BK     ,KC_TAB      ,
           // Right Hand
-          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL      ,LGAME       ,
+          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LBASE      ,LBASE       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
-          KC_MINS     ,KC_K        ,KC_U        ,KC_H        ,KC_J        ,KC_BSLS     ,
-          KC_Y        ,KC_I        ,KC_E        ,KC_O        ,KC_A        ,KC_QUOT     ,
-          TD(TD_SCLN) ,KC_P        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_NUBS     ,
-                       KC_RALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,
+          KC_MINS      ,KC_F        ,KC_L        ,KC_B        ,KC_Z        ,KC_BSLS     ,
+          KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,KC_QUOT     ,
+          KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_NUBS     ,
+                       KC_LALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,
           // Thumb
-          KC_UP       ,K_AHK       ,
-          KC_DOWN     ,
-          KC_ENT      ,L1_SPC      ,KC_N      
+          KC_PGUP     ,K_AHK       ,
+          KC_PGDN     ,
+          KC_ENT      ,L1_SPC      ,KC_N       
     ),
 [_GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
@@ -87,13 +99,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_UP       ,K_AHK       ,
           KC_DOWN     ,
           KC_ENT      ,KC_SPC      ,LL1         
+
+
     ),
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,KS_X2       ,KC_LCBR     ,KC_RCBR     ,XXXXXXX     ,K_UNDOTB    ,
-          XXXXXXX     ,K_EQ_GR     ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
-          KC_CAPS     ,KS_X2X      ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
+          XXXXXXX     ,K_EQ_GR     ,KC_LT       ,KC_GT       ,XXXXXXX     ,K_UNDOTB    ,
+          XXXXXXX     ,KS_X2X      ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
+          KC_CAPS     ,KS_X2       ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
                        XXXXXXX     ,KC_HOME     ,KC_END      ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
@@ -102,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
-          XXXXXXX     ,K_AND       ,K_GRV3      ,K_OR        ,XXXXXXX     ,KC_F12      ,
+          XXXXXXX     ,K_AND       ,K_OR        ,K_GRV3      ,XXXXXXX     ,KC_F12      ,
           XXXXXXX     ,KC_AT       ,KC_UNDS     ,K_PIPE      ,XXXXXXX     ,XXXXXXX     ,
-          K_SNIP      ,K_SNIP      ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,KC_INS      ,
+          K_SNIP      ,K_SNIP      ,KC_LT       ,KC_GT       ,XXXXXXX     ,KC_INS      ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
@@ -116,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,K_UNDOTB    ,
           XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
-          XXXXXXX     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
+          KC_CAPS     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
@@ -127,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,XXXXXXX     ,KC_F12      ,
           KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,K_ED_LF     ,XXXXXXX     ,K_ED_RG     ,XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,K_ED_LF     ,XXXXXXX     ,K_ED_RG     ,XXXXXXX     ,KC_INS      ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
@@ -137,19 +151,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    #ifdef CONSOLE_ENABLE
-        if (record->event.pressed) {
-            bool isShift = (get_mods() & MOD_MASK_SHIFT) | (get_oneshot_mods() & MOD_MASK_SHIFT);
-            bool isCtrl = (get_mods() & MOD_MASK_CTRL) | (get_oneshot_mods() & MOD_MASK_CTRL);
-            uprintf("0x%04X,%u,%u,%u,%s,%s\n", keycode, record->event.key.row, record->event.key.col, get_highest_layer(layer_state), isShift ? "Shift": "", isCtrl? "Ctrl": "");
-        }
-    #endif
+
+    bool return_state = true;
+    uint16_t record_code = keycode;
 
     switch (keycode) {
         case OSM(MOD_LSFT):
             if (record->event.pressed && get_oneshot_mods()) {
                 clear_oneshot_mods ();
-                return false;
+                return_state = false;
             }
             break;
         case K_EQ_GR:
@@ -213,8 +223,122 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(G(KC_LEFT));
             }
             break;
+        case K_TH:
+        {
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT) {
+                    SEND_STRING("Th");
+                } else{
+                    SEND_STRING("th");
+                }
+            }
+            break;
+        }
+        // case K_DTCOL:
+        // {
+        //     if (record->event.pressed){
+        //         if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT){
+        //             register_code16(KC_COLN);
+        //         } else {
+        //             register_code(KC_DOT);
+        //         }
+        //     } else {
+        //         unregister_code16(KC_COLN);
+        //         unregister_code(KC_DOT);
+        //     }
+        //     return_state = false; 
+        //     break;  
+        // }
+        // case K_COMSC:
+        // {
+        //     if (record->event.pressed){
+        //         if (get_mods() & MOD_MASK_SHIFT) {
+        //             del_mods(MOD_MASK_SHIFT);
+        //             register_code(KC_SCLN);
+        //             set_mods(get_mods());
+        //             return false;
+        //         } else {
+        //             if (get_oneshot_mods() & MOD_MASK_SHIFT) {
+        //                 del_oneshot_mods(MOD_MASK_SHIFT);
+        //                 register_code(KC_SCLN);
+        //                 return false;
+        //             }else {
+        //                 register_code(KC_COMM);
+        //                 return false;
+        //             }
+        //         }
+        //     } else {
+        //         unregister_code(KC_COMM);
+        //         unregister_code(KC_SCLN);
+        //     }
+        //     return false;
+        // }
+        case KC_A:
+        {
+            // adaptive OA = OU
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_U); 
+                    return_state = false; 
+                    record_code = KC_U;
+                }
+                break;   
+            }
+        }
+        case HOME_CT_A:
+        {
+            // adaptive OA = OU
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_U); 
+                    return_state = false; 
+                    record_code = KC_U;
+                }
+                break;   
+            }
+        } 
+        case KC_D:
+        {
+            // adaptive D to H
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_H); 
+                    return_state = false; 
+                    record_code = KC_H;
+                }
+                break;   
+            }
+        }
+        case KC_M:
+        {
+            // adaptive CM to CL
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_L); 
+                    return_state = false; 
+                    record_code = KC_L;
+                }
+                break;   
+            }
+        }
+
     }
-    return true;
+
+    if (record->event.pressed) {
+        prior_keycode = keycode;
+        prior_keydown = timer_read(); 
+    }
+
+    #ifdef CONSOLE_ENABLE
+        if (record->event.pressed) {
+            bool isShift = (get_mods() & MOD_MASK_SHIFT) | (get_oneshot_mods() & MOD_MASK_SHIFT);
+            bool isCtrl = (get_mods() & MOD_MASK_CTRL) | (get_oneshot_mods() & MOD_MASK_CTRL);
+            uprintf("0x%04X,%u,%u,%u,%s,%s\n", record_code, record->event.key.row, record->event.key.col, get_highest_layer(layer_state), isShift ? "Shift": "", isCtrl? "Ctrl": "");
+        }
+    #endif
+
+
+    return return_state;
 }
 
 void led_set_user(uint8_t usb_led) {
