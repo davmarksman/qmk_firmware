@@ -1498,3 +1498,108 @@ x  w  m  d  v  ;  u  ,  .  /
 
 - rolls better
 - fits my usage pattern better
+
+
+### Index bigrams
+'AK' bigram issue: Make 'AK' combo 
+
+```
+I-P             - 71 - 0.038%
+P-I             - 70 - 0.038%
+
+O-E             - 57 - 0.031%
+E-O             - 63 - 0.034%
+
+A-U             - 102 - 0.055%
+U-A             - 60 - 0.032%
+
+A-Y             - 191 - 0.103%
+Y-A             - 11 - 0.006%
+
+A-K             - 137 - 0.074%
+U-K             - 37 - 0.02%
+K-A             - 18 - 0.01%
+C-K             - 192 - 0.103%
+```
+
+```
+K-E             - 445 - 0.24%
+K-__            - 303 - 0.163%
+K-I             - 73 - 0.039%
+I-K             - 101 - 0.054%
+```
+
+
+## 12/8/21
+- '.' can't be next to 'e' or 'o'. Frequent with '.'
+- Swap 'y' with '.'?
+
+```
+**Y          - 1424 - 1.043%  **
+F          - 1343 - 0.984%
+G          - 1179 - 0.863%
+K          - 1176 - 0.861%
+**.        - 981 - 0.718%   **
+V          - 939 - 0.688%
+
+
+
+P-.             - 13 - 0.007%
+Y-I             - 4 - 0.002%
+Y-ING           - 62 - 0.033%
+I-Y             - 2 - 0.001%
+Y-O             - 209 - 0.113%
+A-Y             - 191 - 0.103%
+E-Y             - 112 - 0.06%
+P-Y             - 90 - 0.049%
+
+
+P-A             - 268 - 0.144%
+```
+
+Base
+```
+Y-A-U-K - 538%
+.-I-P - 158%
+```
+Move 'Y'
+```
+Y-I-P - 229%
+.-A-U-K - 388%
+```
+Move 'K': 'ay' is 40% and easily resolved by 'ay' combo
+```
+K-I-P - 282%
+.-A-U-Y - 428%
+```
+
+Looking at rolls. Fear will be a nightmare as all roll with 'o' and 'e' alot so need to be next to both
+- 'K' best bet as can make 'ok' a combo. Tons of 'ook' tho
+- Can move 'Y' and make 'O' adaptive key 
+```
+>  O-K - 188
+>  K-O - 26
+K-O - 188% - 214
+
+>  K-E - 445
+>  E-K - 53
+K-E - 438% - 498
+
+>  Y-O - 209
+>  O-Y - 29
+Y-O - 210% - 238
+
+>  E-Y - 112
+>  Y-E - 93
+Y-E - 180% - 205
+
+----
+>  O-P - 297
+>  P-O - 229
+P-O - 463% - 526
+
+>  P-E - 322
+>  E-P - 101
+P-E - 372% - 423
+```
+
