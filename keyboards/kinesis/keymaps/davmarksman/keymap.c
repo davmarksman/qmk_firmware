@@ -57,9 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT(    
           KA_EXPLR    ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
-          KC_TAB      ,KC_J        ,KC_P        ,KC_O        ,KC_K        ,KC_EQL      ,
-          KC_DEL      ,KC_H        ,KC_I        ,KC_E   ,HOME_CT_A        ,KC_Y        ,
-          KC_Q        ,KC_SLSH     ,KC_DOT      ,TD(TD_CMSC) ,KC_U        ,TD(TD_SCLN)        ,
+          KC_TAB      ,KC_Z        ,KC_P        ,KC_O        ,KC_K        ,KC_EQL      ,
+          KC_DEL      ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A        ,KC_DOT        ,
+          KC_Q        ,KC_SLSH     ,KC_Y        ,KC_COMM     ,KC_U        ,TD(TD_SCLN)        ,
                        G(C(KC_NO)) ,KC_LEFT     ,KC_RGHT     ,KC_EQL     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Right Hand
           KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LBASE      ,LBASE       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
-          KC_MINS      ,KC_F        ,KC_L        ,KC_B        ,KC_Z        ,KC_BSLS     ,
+          KC_MINS      ,KC_F        ,KC_L        ,KC_B        ,KC_J        ,KC_BSLS     ,
           KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,KC_QUOT     ,
           KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_NUBS     ,
                        KC_LALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,
@@ -105,14 +105,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,K_EQ_GR     ,KC_LT       ,KC_GT       ,XXXXXXX     ,K_UNDOTB    ,
+          XXXXXXX     ,XXXXXXX     ,KC_LT       ,KC_GT       ,K_EQ_GR     ,K_UNDOTB    ,
           XXXXXXX     ,KS_X2X      ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
           KC_CAPS     ,KS_X2       ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
                        XXXXXXX     ,KC_HOME     ,KC_END      ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_PPLS     ,C(KC_BSPC)  ,XXXXXXX     ,
+          KC_PPLS     ,KC_QUES     ,XXXXXXX     ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
@@ -279,8 +279,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_U); 
-                    return_state = false; 
                     record_code = KC_U;
+                    return_state = false; 
                 }
                 break;   
             }
@@ -291,8 +291,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_U); 
-                    return_state = false; 
                     record_code = KC_U;
+                    return_state = false; 
                 }
                 break;   
             }
@@ -303,8 +303,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_H); 
-                    return_state = false; 
                     record_code = KC_H;
+                    return_state = false; 
                 }
                 break;   
             }
@@ -315,13 +315,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_L); 
-                    return_state = false; 
                     record_code = KC_L;
+                    return_state = false; 
                 }
                 break;   
             }
         }
 
+        case KC_COMM:
+        {
+            // adaptive You
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_Y) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_O); 
+                    record_code = KC_O;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
     }
 
     if (record->event.pressed) {

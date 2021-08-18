@@ -28,7 +28,8 @@ enum layer_names {
 #define KT_A_TAB LALT_T(KC_TAB)
 #define KT_C_BK LCTL_T(KC_BSPC)
 #define KT_C_DEL LCTL_T(KC_DEL)
-#define HOME_C_R LCTL_T(KC_R)
+#define HOME_CT_E LCTL_T(KC_E)
+#define HOME_CT_A LCTL_T(KC_A)
 
 // expriment symbol nav layer
 #define LSYN_BK LT(_SYNAV,KC_BSPC) 
@@ -49,6 +50,8 @@ enum layer_names {
 #define K_SNIP G(S(KC_S))
 #define K_CUR_BK A(KC_LEFT)
 #define K_CUR_FW A(KC_RGHT)
+#define K_ED_LF A(KC_S)
+#define K_ED_RG A(KC_T)
 
 
 
@@ -64,6 +67,7 @@ enum layer_names {
 #define KA_EXPLR G(KC_E)
 
 
+
 // Custom codes
 enum custom_keycodes {
     K_EQ_GR = SAFE_RANGE,
@@ -71,6 +75,12 @@ enum custom_keycodes {
     K_OR,
     KS_X2X,
     K_GRV3,
+    K_WINDR,
+    K_WINDL,
+    KS_X2,
+    K_TH,
+    K_DTCOL
+   // K_COMSC
 };
 
 /*
@@ -78,6 +88,7 @@ enum custom_keycodes {
 */
 enum {
     TD_MINS,
-    TD_SCLN
+    TD_SCLN,
+    TD_CMSC,
+    TD_DOT
 };
-
