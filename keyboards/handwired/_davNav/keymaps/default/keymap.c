@@ -24,7 +24,8 @@ enum layer_names {
 #define KA_VSCODE KC_F18
 #define KA_CHROME KC_F15
 #define KA_VS19 KC_F16
-#define KA_APP1 KC_F13
+#define K_SAVE C(KC_S)
+#define KA_NOTE KC_F13
 #define KA_APP2 KC_F14
 #define KA_VOL KC_F20
 #define KA_EXPLR G(KC_E)
@@ -32,8 +33,8 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT(
-    KA_FIREFX  ,KA_CHROME    ,KA_APP1   , 
-    KA_VSCODE    ,KA_VS19  ,KA_APP2   ,LSYS
+    KA_FIREFX ,KA_CHROME ,KA_NOTE  , 
+    KA_VSCODE ,KA_VS19   ,K_SAVE   ,LSYS
   ),
   [SYS] = LAYOUT(
     RESET     ,KC_NO     ,RESET     ,
