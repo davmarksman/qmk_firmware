@@ -11,6 +11,7 @@
 enum combos {
   FIND,
   REPLACE,
+  ALL,
   QU,
   DM_DAV,
   OBRACK,
@@ -39,13 +40,13 @@ const uint16_t PROGMEM dv_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM sb_combo[] = {KC_S, KC_B, COMBO_END};
 const uint16_t PROGMEM obrack_combo[] = {KC_Y, KC_I, COMBO_END};
 const uint16_t PROGMEM cbrack_combo[] = {KC_COMM, KC_E, COMBO_END};
-const uint16_t PROGMEM py_combo[] = {KC_P, KC_O, COMBO_END};
-const uint16_t PROGMEM pi_combo[] = {KC_P, KC_I, COMBO_END};
+const uint16_t PROGMEM py_combo[] = {KC_P, KC_I, COMBO_END};
 const uint16_t PROGMEM oe_combo[] = {KC_O, KC_E, COMBO_END};
 const uint16_t PROGMEM ing_combo[] = {KC_I, KC_E, COMBO_END};
 const uint16_t PROGMEM ak_combo[] = {HOME_CT_A, KC_K, COMBO_END};
 const uint16_t PROGMEM for_combo[] = {KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM ins_combo[] = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM all_combo[] = {KC_Z, KC_P, COMBO_END};
 
 
 const uint16_t PROGMEM obrackr_combo[] = {KC_C, KC_M, COMBO_END};
@@ -65,10 +66,10 @@ combo_t key_combos[] = {
   [AK] = COMBO_ACTION(ak_combo),
   [FOR] = COMBO_ACTION(for_combo),
   [PY] = COMBO_ACTION(py_combo),
-  [PI] = COMBO_ACTION(pi_combo),
   [OBRACKR] = COMBO_ACTION(obrackr_combo),
   [CBRACKR] = COMBO_ACTION(cbrackr_combo),
   [INSU] = COMBO_ACTION(ins_combo),
+  [ALL] = COMBO_ACTION(all_combo),
 };
 
 void word_combo(bool pressed, uint8_t mod_state, char* word) {
@@ -147,7 +148,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(C(KC_H));
       }
       break;
-    
+    case ALL:
+      if (pressed) {
+        tap_code16(C(KC_A));
+      }
+      break;
+
     case DM_DAV:
       if (pressed) {
       word_combo(pressed,mod_state, "David");
