@@ -55,26 +55,26 @@ uint16_t prior_keydown = 0;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT(    
-          KA_EXPLR    ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+          KA_EXPLR    ,K_SAVE      ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Z        ,KC_P        ,KC_O        ,KC_K        ,KC_EQL      ,
-          KC_DEL      ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A        ,KC_DOT        ,
-          KC_Q        ,KC_SLSH     ,KC_Y        ,KC_COMM     ,KC_U        ,TD(TD_SCLN)        ,
-                       G(C(KC_NO)) ,KC_LEFT     ,KC_RGHT     ,KC_EQL     ,
+          KC_DEL      ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_DOT      ,
+          KC_NUBS     ,KC_Q        ,KC_Y        ,KC_COMM     ,KC_U        ,TD(TD_SCLN) ,
+                       G(C(KC_NO)) ,KC_LEFT     ,KC_RGHT     ,KC_DEL      ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
-                                    KC_DEL      ,
+                                    KC_F19      ,
           K_OSFT      ,LSYN_BK     ,KC_TAB      ,
           // Right Hand
-          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LBASE      ,LBASE       ,
+          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LPLAY      ,LGAME       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
-          KC_MINS      ,KC_F        ,KC_L        ,KC_B        ,KC_J        ,KC_BSLS     ,
+          KC_MINS     ,KC_F        ,KC_L        ,KC_B        ,KC_J        ,KC_BSLS     ,
           KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,KC_QUOT     ,
-          KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_NUBS     ,
+          KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_SLSH     ,
                        KC_LALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,
           // Thumb
-          KC_PGUP     ,K_AHK       ,
-          KC_PGDN     ,
+          K_SAVE      ,K_AHK       ,
+          KC_NO       ,
           KC_ENT      ,L1_SPC      ,KC_N       
     ),
 [_GAME] = LAYOUT(
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        XXXXXXX     ,KC_LEFT     ,KC_RGHT     ,XXXXXXX     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
-                                    KC_DEL      ,
+                                    K_SAVE      ,
           KC_LSFT     ,KT_C_BK     ,LNAV        ,
           // Right Hand
           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
@@ -105,14 +105,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,XXXXXXX     ,KC_LT       ,KC_GT       ,K_EQ_GR     ,K_UNDOTB    ,
+          S(KC_TAB)   ,XXXXXXX     ,KC_LT       ,KC_GT       ,K_EQ_GR     ,K_UNDOTB    ,
           XXXXXXX     ,KS_X2X      ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
           KC_CAPS     ,KS_X2       ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
-                       XXXXXXX     ,KC_HOME     ,KC_END      ,XXXXXXX     ,
+                       XXXXXXX     ,K_RDESK     ,K_LDESK     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_PPLS     ,KC_QUES     ,XXXXXXX     ,
+          KC_PPLS     ,KC_QUES     , S(KC_TAB)  ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
@@ -125,13 +125,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXXXX     ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     
     ),
+[_PLAYL] = LAYOUT(
+          KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+          KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
+          KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_P        ,KC_T        ,
+          KC_LCTL     ,KC_A        ,KC_S        ,KC_D        ,KC_U        ,KC_G        ,
+          KC_NUBS     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
+                       KC_QUOT     ,KC_SCLN     ,KC_DOT      ,KC_SPC      ,
+          // Thumb
+                       KT_A_ESC    ,KC_O        ,
+                                    KC_L        ,
+          KC_LSFT     ,MO(_PLAYR)  ,KC_ENT      ,
+          // Right Hand
+          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+          // Thumb
+           XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX   
+
+    ),
+ [_PLAYR] = LAYOUT(
+           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+           KC_EQL      ,KC_0        ,KC_9        ,KC_8        ,KC_7        ,KC_6        ,
+           KC_TAB      ,KC_P        ,KC_UP       ,KC_I        ,KC_U        ,KC_Y        ,
+           KC_K        ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_J        ,KC_H        ,
+           KC_LSFT     ,KC_SLSH     ,KC_DOT      ,KC_COMM     ,KC_M        ,KC_N        ,
+                        KC_GRV      ,KC_RBRC     ,KC_RGUI     ,KC_LALT     ,
+           // Thumb
+                        KT_A_ESC    ,K_CLIP      ,
+                                     XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           // Right Hand
+           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           // Thumb
+           XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX         
+     ),
+
+
+
 [_SYNAV] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,K_UNDOTB    ,
+          XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,XXXXXXX     ,K_UNDOTB    ,
           XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
           KC_CAPS     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
-                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+                       XXXXXXX     ,K_WINL      ,K_WINR     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
@@ -221,6 +271,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(G(KC_LEFT));
                 tap_code16(G(KC_LEFT));
                 tap_code16(G(KC_LEFT));
+            }
+            break;
+            
+        case K_WINL:
+            if (record->event.pressed) {
+                tap_code16(G(KC_UP));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_UP));
+            }
+            break;
+            
+        case K_WINR:
+            if (record->event.pressed) {
+                tap_code16(G(KC_UP));
+                tap_code16(G(KC_RGHT));
+                tap_code16(G(KC_RGHT));
+                tap_code16(G(KC_RGHT));
+                tap_code16(G(KC_UP));
             }
             break;
         case K_TH:
@@ -321,6 +391,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;   
             }
         }
+        case KC_G:
+        {
+            // adaptive MG to MB
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_B); 
+                    record_code = KC_B;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
 
         case KC_COMM:
         {
@@ -359,8 +441,8 @@ void led_set_user(uint8_t usb_led) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t hi_state = get_highest_layer(state);
-    writePin(LED_COMPOSE_PIN, !(hi_state == _GAME));
-    writePin(LED_SCROLL_LOCK_PIN, !(hi_state == _SYNAV));
+    writePin(LED_COMPOSE_PIN, !(hi_state == _GAME || hi_state == _PLAYL));
+    writePin(LED_SCROLL_LOCK_PIN, !(hi_state == _SYNAV || hi_state == _PLAYL));
     writePin(LED_NUM_LOCK_PIN, !(hi_state == _L1));    
 
 
