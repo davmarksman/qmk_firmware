@@ -30,4 +30,26 @@ qmk json2c  "/c/Dev/Tools/KinT/qmk_firmware-kinesis-kint2pp-kinesis_kint2pp_layo
 /c/Dev/Tools/KinT/qmk/keyboards/kinesis/keymaps/davmarksman/keymap.c
 
 python keymapviz "/c/Dev/Tools/KinT/qmk/keyboards/kinesis/keymaps/davmarksman/keymap.c"
+
+
+
+```
+
+# Heatmap
+```
+./hid_listen | egrep --line-buffered "(0x[A-F0-9]+,)?(NA|[0-9]+),(NA|[0-9]+),[0-9]{1,2}" | tee -a keylog.csv
+
+.\hid_listen.exe > keys.csv
+
+.\hid_listen.exe | tee -a keys.csv
+
+```
+
+
+# Handwired
+```
+
+keyboards\handwired\6davkey\keymaps\default\keymap.c
+
+qmk compile -kb handwired/6davkey -km default
 ```

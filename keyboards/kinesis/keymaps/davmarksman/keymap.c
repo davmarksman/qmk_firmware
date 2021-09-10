@@ -1,221 +1,438 @@
-#include QMK_KEYBOARD_H
+//Kinesis
+#include "sendstring_uk.h"
+#include "keymap.h"
 
-// layers
-enum layer_names {
-    QWERTY_MOD,
-    GAME,
-    L1,
-    NAV,
-    SYM
-};
+// This will import the uprintf function
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
 
+/* Changes for recording
+- new tap dances - ,; & dot,:ellipses
+- new combos
+*/
 
-// layer keys
-#define LQMOD TO(QWERTY_MOD)
-#define LQ TO(GAME)
-#define LL1 OSL(L1)
-#define LNAV TO(NAV)
-#define LSYM OSL(SYM) // or MO
+void dance_dot_finished(qk_tap_dance_state_t *state, void *user_data) {
+    #ifdef CONSOLE_ENABLE
+        uprintf("0x%04X,%u,%u,%u,%s,%s,%s\n", state->count, 0, 0, 0, "", "", "TD_DOT");
+    #endif
 
-// Userful defines
-#define K_UNDO LCTL(KC_Z)
-#define K_REDO LCTL(KC_Y)
-#define K_PASTE C(A(KC_C))
+    switch (state->count) {
+        case 1:
+            register_code(KC_DOT);
+            break;
+        case 2:
+            register_code16(KC_COLN);
+            break;
+        case 3:
+            tap_code(KC_DOT);
+            tap_code(KC_DOT);
+            register_code(KC_DOT);
+            break;
+    }
+}
 
-#define KT_ALTESC LALT_T(KC_ESC)
-#define KT_C_BK LCTL_T(KC_BSPC)
-
-// Tap dance
-enum {
-    TD_MINS,
-    TD_1,
-    TD_2,
-    TD_3,
-    TD_4,
-    TD_5,
-    TD_6,
-    TD_7,
-    TD_8,
-    TD_LB,
-    TD_RB,
-    // TD_EQ,
-};
+void dance_dot_reset(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        unregister_code16(KC_COLN);
+    } else {  
+        unregister_code(KC_DOT);
+    }
+}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, KC_UNDS),
-    [TD_1] = ACTION_TAP_DANCE_DOUBLE(KC_1, KC_EXCLAIM),
-    [TD_2] = ACTION_TAP_DANCE_DOUBLE(KC_2, KC_AT),
-    [TD_3] = ACTION_TAP_DANCE_DOUBLE(KC_3, KC_HASH),
-    [TD_4] = ACTION_TAP_DANCE_DOUBLE(KC_4, KC_DLR),
-    [TD_5] = ACTION_TAP_DANCE_DOUBLE(KC_5, KC_PERC),
-    [TD_6] = ACTION_TAP_DANCE_DOUBLE(KC_6, KC_CIRC),
-    [TD_7] = ACTION_TAP_DANCE_DOUBLE(KC_7, KC_AMPR),
-    [TD_8] = ACTION_TAP_DANCE_DOUBLE(KC_8, KC_ASTR),
-    [TD_LB] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
-    [TD_RB] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
-    // [TD_EQ] = ACTION_TAP_DANCE_DOUBLE(KC_EQL, KC_PLUS),
+    [TD_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+    [TD_CMSC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_COLN),
+    [TD_DOT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_dot_finished, dance_dot_reset),
 };
 
 
 
-/****************************************************************************************************
-*
-* Keymap: Default Layer in Qwerty
-*
-* ,-------------------------------------------------------------------------------------------------------------------.
-* | Esc    |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F8  |  F9  |  F10 |  F12 | PSCR | SLCK | PAUS |  FN0 |  BOOT  |
-* |--------+------+------+------+------+------+---------------------------+------+------+------+------+------+--------|
-* | =+     |  1!  |  2@  |  3#  |  4$  |  5%  |                           |  6^  |  7&  |  8*  |  9(  |  0)  | -_     |
-* |--------+------+------+------+------+------|                           +------+------+------+------+------+--------|
-* | Tab    |   Q  |   W  |   E  |   R  |   T  |                           |   Y  |   U  |   I  |   O  |   P  | \|     |
-* |--------+------+------+------+------+------|                           |------+------+------+------+------+--------|
-* | Caps   |   A  |   S  |   D  |   F  |   G  |                           |   H  |   J  |   K  |   L  |  ;:  | '"     |
-* |--------+------+------+------+------+------|                           |------+------+------+------+------+--------|
-* | Shift  |   Z  |   X  |   C  |   V  |   B  |                           |   N  |   M  |  ,.  |  .>  |  /?  | Shift  |
-* `--------+------+------+------+------+-------                           `------+------+------+------+------+--------'
-*          | `~   | INS  | Left | Right|                                         | Up   | Down |  [{  |  ]}  |
-*          `---------------------------'                                         `---------------------------'
-*                                        ,-------------.         ,-------------.
-*                                        | Ctrl | Alt  |         | Gui  | Ctrl |
-*                                 ,------|------|------|         |------+------+------.
-*                                 |      |      | Home |         | PgUp |      |      |
-*                                 | BkSp | Del  |------|         |------|Return| Space|
-*                                 |      |      | End  |         | PgDn |      |      |
-*                                 `--------------------'         `--------------------'
-*/
+// Adaptive keys
+uint16_t prior_keycode = KC_NO;
+uint16_t prior_keydown = 0;
 
-          //KC_BSPC ,LSFT_T(KC_SPC) ,KC_LCTL , // disable to make learning shift easier
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[QWERTY_MOD] = LAYOUT( 
-          KC_NO       ,KC_F1       ,KC_COPY     ,KC_PSTE     ,K_PASTE     ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
-          KC_EQL      ,TD(TD_1)    ,TD(TD_2)    ,TD(TD_3)    ,TD(TD_4)    ,TD(TD_5)    ,
-          KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),KC_G        ,
-          TD(TD_LB)   ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
-                       KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
+[_BASE] = LAYOUT(    
+          KA_EXPLR    ,K_SAVE      ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+          KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
+          KC_TAB      ,KC_Z        ,KC_P        ,KC_O        ,KC_K        ,KC_EQL      ,
+          KC_DEL      ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_DOT      ,
+          KC_NUBS     ,KC_Q        ,KC_Y        ,KC_COMM     ,KC_U        ,TD(TD_SCLN) ,
+                       G(C(KC_NO)) ,KC_LEFT     ,KC_RGHT     ,KC_DEL      ,
           // Thumb
-                       KT_ALTESC   ,MEH(KC_NO)  ,
-                                    KC_DEL      ,
-          KT_C_BK     ,KC_LSFT     ,LSYM        ,
+                       KT_A_ESC    ,K_CLIP      ,
+                                    KC_F19      ,
+          K_OSFT      ,LSYN_BK     ,KC_TAB      ,
           // Right Hand
-          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQ          ,
-          TD(TD_6)    ,TD(TD_7)    ,TD(TD_8)    ,KC_9        ,KC_0        ,TD(TD_MINS) ,
-          KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
-          KC_H        ,RSFT_T(KC_J),RCTL_T(KC_K),LT(L1,KC_L) ,KC_SCLN     ,LT(NAV,KC_QUOT),
-          KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,TD(TD_RB)   ,
-                       LL1         ,KC_LALT     ,KC_RGUI     ,KC_GRV      ,
+          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LPLAY      ,LGAME       ,
+          KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
+          KC_MINS     ,KC_F        ,KC_L        ,KC_B        ,KC_J        ,KC_BSLS     ,
+          KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,KC_QUOT     ,
+          KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_SLSH     ,
+                       KC_LALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,
           // Thumb
-          K_PASTE     ,KC_RGUI     ,
-          KC_UP       ,
-          KC_DOWN     ,KC_ENT      ,LT(L1, KC_SPC)
+          K_SAVE      ,K_AHK       ,
+          KC_NO       ,
+          KC_ENT      ,L1_SPC      ,KC_N       
     ),
-[GAME] = LAYOUT(
+[_GAME] = LAYOUT(
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_EQL      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_R        ,KC_T        ,
-          LNAV        ,KC_A        ,KC_S        ,KC_D        ,KC_F        ,KC_G        ,
+          XXXXXXX     ,KC_A        ,KC_S        ,KC_D        ,KC_F        ,KC_G        ,
           KC_LSFT     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
-                       KC_BSLS     ,KC_LEFT     ,KC_RGHT     ,LL1         ,
+                       XXXXXXX     ,KC_LEFT     ,KC_RGHT     ,XXXXXXX     ,
           // Thumb
-                       KT_ALTESC   ,MEH(KC_NO)  ,
-                                    KC_DEL      ,
-          KT_C_BK     ,KC_LSFT     ,KC_LCTL     ,
+                       KT_A_ESC    ,K_CLIP      ,
+                                    K_SAVE      ,
+          KC_LSFT     ,KT_C_BK     ,LNAV        ,
           // Right Hand
-          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KC_F13      ,LQMOD       ,
+          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KC_MINS     ,
           KC_Y        ,KC_U        ,KC_I        ,KC_O        ,KC_P        ,KC_NUBS     ,
           KC_H        ,KC_J        ,KC_K        ,KC_L        ,KC_SCLN     ,KC_QUOT     ,
           KC_N        ,KC_M        ,KC_COMM     ,KC_DOT      ,KC_SLSH     ,KC_RSFT     ,
-                       LL1         ,KC_LBRC     ,KC_RBRC     ,KC_GRV      ,
+                       KC_LALT     ,KC_RGUI     ,KC_RBRC     ,KC_GRV      ,
           // Thumb
-          K_PASTE     ,KC_RGUI     ,
-          KC_UP       ,
-          KC_DOWN     ,KC_ENT      ,KC_SPC      
+          KC_UP       ,K_AHK       ,
+          KC_DOWN     ,
+          KC_ENT      ,KC_SPC      ,LL1         
+
+
     ),
-[L1] = LAYOUT(
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+[_L1] = LAYOUT(
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          A(KC_TAB)   ,KC_NO       ,KC_NO       ,KC_LCBR     ,KC_RCBR     ,C(S(KC_T))  ,
-          LQMOD       ,KC_LCBR     ,KC_RCBR     ,KC_LBRC     ,KC_RBRC     ,C(S(KC_F))  ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
-                       KC_INS      ,KC_HOME     ,KC_END      ,LQMOD       ,
+          S(KC_TAB)   ,XXXXXXX     ,KC_LT       ,KC_GT       ,K_EQ_GR     ,K_UNDOTB    ,
+          XXXXXXX     ,KS_X2X      ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
+          KC_CAPS     ,KS_X2       ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
+                       XXXXXXX     ,K_RDESK     ,K_LDESK     ,XXXXXXX     ,
           // Thumb
-                       KC_NO       ,KC_NO       ,
-                                    KC_NO       ,
-          KC_DEL      ,KC_NO       ,KC_NO       ,
+                       XXXXXXX     ,XXXXXXX     ,
+                                    XXXXXXX     ,
+          KC_PPLS     ,KC_QUES     , S(KC_TAB)  ,
           // Right Hand
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
-          KC_PGUP     ,A(KC_LEFT)  ,KC_NO       ,A(KC_RGHT)  ,G(S(KC_S))  ,KC_F12      ,
-          KC_PGDN     ,KC_AT       ,KC_PLUS     ,KC_LPRN     ,KC_RPRN     ,KC_NO       ,
-          KC_NO       ,KC_NO       ,K_UNDO      ,K_REDO      ,KC_NO       ,KC_CAPS     ,
-                       LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          XXXXXXX     ,K_AND       ,K_OR        ,K_GRV3      ,XXXXXXX     ,KC_F12      ,
+          XXXXXXX     ,KC_AT       ,KC_UNDS     ,K_PIPE      ,XXXXXXX     ,XXXXXXX     ,
+          K_SNIP      ,K_SNIP      ,KC_LT       ,KC_GT       ,XXXXXXX     ,KC_INS      ,
+                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
-          KC_NO       ,KC_NO       ,
-          KC_PGUP     ,
-          KC_PGDN     ,KC_NO       ,KC_NO       
+          XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     
     ),
-[NAV] = LAYOUT(
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+[_PLAYL] = LAYOUT(
+          KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+          KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
+          KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_P        ,KC_T        ,
+          KC_LCTL     ,KC_A        ,KC_S        ,KC_D        ,KC_U        ,KC_G        ,
+          KC_NUBS     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
+                       KC_QUOT     ,KC_SCLN     ,KC_DOT      ,KC_SPC      ,
+          // Thumb
+                       KT_A_ESC    ,KC_O        ,
+                                    KC_L        ,
+          KC_LSFT     ,MO(_PLAYR)  ,KC_ENT      ,
+          // Right Hand
+          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+          // Thumb
+           XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX   
+
+    ),
+ [_PLAYR] = LAYOUT(
+           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
+           KC_EQL      ,KC_0        ,KC_9        ,KC_8        ,KC_7        ,KC_6        ,
+           KC_TAB      ,KC_P        ,KC_UP       ,KC_I        ,KC_U        ,KC_Y        ,
+           KC_K        ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_J        ,KC_H        ,
+           KC_LSFT     ,KC_SLSH     ,KC_DOT      ,KC_COMM     ,KC_M        ,KC_N        ,
+                        KC_GRV      ,KC_RBRC     ,KC_RGUI     ,KC_LALT     ,
+           // Thumb
+                        KT_A_ESC    ,K_CLIP      ,
+                                     XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           // Right Hand
+           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
+           // Thumb
+           XXXXXXX     ,XXXXXXX     ,
+           XXXXXXX     ,
+           XXXXXXX     ,XXXXXXX     ,XXXXXXX         
+     ),
+
+
+
+[_SYNAV] = LAYOUT(
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          KC_TAB      ,KC_HOME     ,KC_UP       ,KC_END      ,KC_PGUP     ,KC_NO       ,
-          LQMOD       ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_PGDN     ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       KC_NO       ,KC_NO       ,KC_NO       ,LQMOD       ,
+          XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,XXXXXXX     ,K_UNDOTB    ,
+          XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
+          KC_CAPS     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
+                       XXXXXXX     ,K_WINL      ,K_WINR     ,XXXXXXX     ,
           // Thumb
-                       KC_NO       ,KC_NO       ,
-                                    KC_NO       ,
-          KC_DEL      ,KC_NO       ,KC_NO       ,
+                       XXXXXXX     ,XXXXXXX     ,
+                                    XXXXXXX     ,
+          XXXXXXX     ,XXXXXXX     ,XXXXXXX  ,
           // Right Hand
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
-          KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,KC_NO       ,KC_F12      ,
-          KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,K_UNDO      ,K_REDO      ,KC_NO       ,KC_CAPS     ,
-                       LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
+          KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,XXXXXXX     ,KC_F12      ,
+          KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,K_ED_LF     ,XXXXXXX     ,K_ED_RG     ,XXXXXXX     ,KC_INS      ,
+                       XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
-          KC_NO       ,KC_NO       ,
-          KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       
-    ),
-[SYM] = LAYOUT(
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_PLUS     ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          LQMOD       ,KC_EXCLAIM  ,KC_AT       ,KC_HASH     ,KC_DLR      ,KC_PERC     ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       KC_NO       ,KC_NO       ,KC_NO       ,LQMOD       ,
-          // Thumb
-                       KC_NO       ,KC_NO       ,
-                                    KC_NO       ,
-          KC_DEL      ,KC_NO       ,KC_NO       ,
-          // Right Hand
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          KC_CIRC     ,KC_AMPR     ,KC_ASTR     ,KC_PLUS     ,KC_UNDS     ,KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,KC_NO       ,
-                       LQMOD       ,KC_NO       ,KC_NO       ,KC_NO       ,
-          // Thumb
-          KC_NO       ,KC_NO       ,
-          KC_NO       ,
-          KC_NO       ,KC_NO       ,KC_NO       
-    ),
+          XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,
+          XXXXXXX     ,C(KC_BSPC)     ,XXXXXXX     
+    )
 };
-
-
-
-void matrix_init_user(void) {
-
-}
-
-void matrix_scan_user(void) {
-
-}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  return true;
+    bool return_state = true;
+    uint16_t record_code = keycode;
+
+    switch (keycode) {
+        case OSM(MOD_LSFT):
+            if (record->event.pressed && get_oneshot_mods()) {
+                clear_oneshot_mods ();
+                return_state = false;
+            }
+            break;
+        case K_EQ_GR:
+            if (record->event.pressed) {
+                SEND_STRING("=>");
+            }
+            break;
+        case K_AND:
+            if (record->event.pressed) {
+                SEND_STRING("&&");
+            }
+            break;
+        case K_OR:
+            if (record->event.pressed) {
+                SEND_STRING("||");
+            }
+            break;
+        case KS_X2X:
+            if (record->event.pressed) {
+                SEND_STRING("x => x");
+            }
+            break;
+        case KS_X2:
+            if (record->event.pressed) {
+                SEND_STRING("x => ");
+            }
+            break;
+        case K_GRV3:
+            if (record->event.pressed) {
+                SEND_STRING("```");
+            }
+            break;
+        case K_WINDR:
+            if (record->event.pressed) {
+                tap_code16(C(KC_L));
+                tap_code16(C(KC_C));
+                tap_code16(C(KC_W));
+                register_code(KC_LCTL);
+                tap_code_delay(KC_N, 100);
+                tap_code_delay(KC_V, 200);
+                unregister_code(KC_LCTL);
+                tap_code16(KC_ENT);
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+            }
+            break;
+        case K_WINDL:
+            if (record->event.pressed) {
+                tap_code16(C(KC_L));
+                tap_code16(C(KC_C));
+                tap_code16(C(KC_W));
+                register_code(KC_LCTL);
+                tap_code_delay(KC_N, 100);
+                tap_code_delay(KC_V, 200);
+                unregister_code(KC_LCTL);
+                tap_code16(KC_ENT);
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+            }
+            break;
+            
+        case K_WINL:
+            if (record->event.pressed) {
+                tap_code16(G(KC_UP));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_LEFT));
+                tap_code16(G(KC_UP));
+            }
+            break;
+            
+        case K_WINR:
+            if (record->event.pressed) {
+                tap_code16(G(KC_UP));
+                tap_code16(G(KC_RGHT));
+                tap_code16(G(KC_RGHT));
+                tap_code16(G(KC_RGHT));
+                tap_code16(G(KC_UP));
+            }
+            break;
+        case K_TH:
+        {
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT) {
+                    SEND_STRING("Th");
+                } else{
+                    SEND_STRING("th");
+                }
+            }
+            break;
+        }
+        // case K_DTCOL:
+        // {
+        //     if (record->event.pressed){
+        //         if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT){
+        //             register_code16(KC_COLN);
+        //         } else {
+        //             register_code(KC_DOT);
+        //         }
+        //     } else {
+        //         unregister_code16(KC_COLN);
+        //         unregister_code(KC_DOT);
+        //     }
+        //     return_state = false; 
+        //     break;  
+        // }
+        // case K_COMSC:
+        // {
+        //     if (record->event.pressed){
+        //         if (get_mods() & MOD_MASK_SHIFT) {
+        //             del_mods(MOD_MASK_SHIFT);
+        //             register_code(KC_SCLN);
+        //             set_mods(get_mods());
+        //             return false;
+        //         } else {
+        //             if (get_oneshot_mods() & MOD_MASK_SHIFT) {
+        //                 del_oneshot_mods(MOD_MASK_SHIFT);
+        //                 register_code(KC_SCLN);
+        //                 return false;
+        //             }else {
+        //                 register_code(KC_COMM);
+        //                 return false;
+        //             }
+        //         }
+        //     } else {
+        //         unregister_code(KC_COMM);
+        //         unregister_code(KC_SCLN);
+        //     }
+        //     return false;
+        // }
+        case KC_A:
+        {
+            // adaptive OA = OU
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_U); 
+                    record_code = KC_U;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case HOME_CT_A:
+        {
+            // adaptive OA = OU
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_U); 
+                    record_code = KC_U;
+                    return_state = false; 
+                }
+                break;   
+            }
+        } 
+        case KC_D:
+        {
+            // adaptive D to H
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_H); 
+                    record_code = KC_H;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case KC_M:
+        {
+            // adaptive CM to CL
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_L); 
+                    record_code = KC_L;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case KC_G:
+        {
+            // adaptive MG to MB
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_B); 
+                    record_code = KC_B;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+
+        case KC_COMM:
+        {
+            // adaptive You
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_Y) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_O); 
+                    record_code = KC_O;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+    }
+
+    if (record->event.pressed) {
+        prior_keycode = keycode;
+        prior_keydown = timer_read(); 
+    }
+
+    #ifdef CONSOLE_ENABLE
+        if (record->event.pressed) {
+            bool isShift = (get_mods() & MOD_MASK_SHIFT) | (get_oneshot_mods() & MOD_MASK_SHIFT);
+            bool isCtrl = (get_mods() & MOD_MASK_CTRL) | (get_oneshot_mods() & MOD_MASK_CTRL);
+            uprintf("0x%04X,%u,%u,%u,%s,%s\n", record_code, record->event.key.row, record->event.key.col, get_highest_layer(layer_state), isShift ? "Shift": "", isCtrl? "Ctrl": "");
+        }
+    #endif
+
+
+    return return_state;
 }
 
 void led_set_user(uint8_t usb_led) {
@@ -223,42 +440,26 @@ void led_set_user(uint8_t usb_led) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // interestingly had to set the one I wanted on to 0 and the rest to 1 (for off)
-    switch (get_highest_layer(state)) {
-      case GAME: 
-      case SYM:
-          // For symbol layer set compose led on
-          writePin(LED_COMPOSE_PIN, 0);     
-          writePin(LED_NUM_LOCK_PIN, 1);     
-          writePin(LED_SCROLL_LOCK_PIN, 1);
-          break;
-      case L1:
-          // For Layer 1 set numlock led on
-          writePin(LED_COMPOSE_PIN, 1);     
-          writePin(LED_NUM_LOCK_PIN, 0);     
-          writePin(LED_SCROLL_LOCK_PIN, 1);
-          break;      
-      case NAV:
-          // For Layer Nav set scroll lock led on
-          writePin(LED_COMPOSE_PIN, 1);     
-          writePin(LED_NUM_LOCK_PIN, 1);     
-          writePin(LED_SCROLL_LOCK_PIN, 0);
-          break; 
-      default:
-          // set all off
-          writePin(LED_COMPOSE_PIN, 1);
-          writePin(LED_SCROLL_LOCK_PIN, 1);
-          writePin(LED_NUM_LOCK_PIN, 1);    
-    }
-  return state;
+    uint8_t hi_state = get_highest_layer(state);
+    writePin(LED_COMPOSE_PIN, !(hi_state == _GAME || hi_state == _PLAYL));
+    writePin(LED_SCROLL_LOCK_PIN, !(hi_state == _SYNAV || hi_state == _PLAYL));
+    writePin(LED_NUM_LOCK_PIN, !(hi_state == _L1));    
+
+
+    return state;
+}
+
+void oneshot_mods_changed_user(uint8_t mods) {
+  if (mods & MOD_MASK_SHIFT) { 
+    writePin(LED_CAPS_LOCK_PIN, 0);
+  }
+  if (!mods) { 
+    writePin(LED_CAPS_LOCK_PIN, 1);
+  }
 }
        
 bool led_update_user(led_t led_state) {
+
     // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
-
-    // we want caps lock to keep working as is:
-    writePin(LED_CAPS_LOCK_PIN, !led_state.caps_lock);
-
-    return false;
+    return false; 
 }
-
