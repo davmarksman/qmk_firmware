@@ -11,6 +11,8 @@ enum layer_names {
     _GAME,
     _L1,
     _SYNAV,
+    _PLAYL,
+    _PLAYR
 };
 
 // layer keys
@@ -18,6 +20,7 @@ enum layer_names {
 #define LGAME TO(_GAME)
 #define LL1 OSL(_L1)
 #define LNAV MO(_SYNAV)
+#define LPLAY TO(_PLAYL)
 
 #define L1_SPC LT(_L1, KC_SPC)
 #define LSYN_N LT(_SYNAV,KC_N) 
@@ -52,6 +55,9 @@ enum layer_names {
 #define K_CUR_FW A(KC_RGHT)
 #define K_ED_LF A(KC_S)
 #define K_ED_RG A(KC_T)
+#define K_SAVE C(KC_S)
+#define K_RDESK G(C(KC_RGHT))
+#define K_LDESK G(C(KC_LEFT))
 
 
 
@@ -79,7 +85,9 @@ enum custom_keycodes {
     K_WINDL,
     KS_X2,
     K_TH,
-    K_DTCOL
+    K_DTCOL,
+    K_WINR,
+    K_WINL,
    // K_COMSC
 };
 
