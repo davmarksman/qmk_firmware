@@ -26,5 +26,21 @@
     "python.formatting.provider": "yapf",
     "[json]": {
 	    "editor.formatOnSave": false
-    }
+    },
+    "terminal.integrated.profiles.windows": {
+        "qmk": {
+            "path": "C:\\QMK_MSYS\\usr\\bin\\bash.exe",
+            "args": ["--login"],
+            "env": {
+                "MSYSTEM": "MINGW64",
+                "CHERE_INVOKING": "1"
+              }
+          },
+          "PowerShell a": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": ["-ExecutionPolicy", "Bypass"]
+          }
+      },
+    "terminal.integrated.cursorStyle": "line"
 }
