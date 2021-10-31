@@ -11,6 +11,7 @@
 enum combos {
   FIND,
   REPLACE,
+  ALL,
   QU,
   DM_DAV,
   OBRACK,
@@ -19,12 +20,14 @@ enum combos {
   OA, 
   ING,
   AK,
-  PY,
-  PI,
+  // PY,
+  // PI,
   FOR,
   OBRACKR,
   CBRACKR,
   INSU,
+  FIND2,
+  FIND3,
   // // This must be the last item in the enum.
   // This is used to automatically update the combo count.
   COMBO_LENGTH
@@ -32,43 +35,56 @@ enum combos {
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM find_combo[] = {KC_O, KC_K, COMBO_END};
-const uint16_t PROGMEM rep_combo[] = {KC_K, KC_EQL, COMBO_END};
+// combo changes  10/10/21
+// fd - for
+// in - insur
+// ok - oa
+// k= - Find
+// 
+
+
+
 const uint16_t PROGMEM qu_combo[] = {KC_F, KC_L, COMBO_END};
 const uint16_t PROGMEM dv_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM sb_combo[] = {KC_S, KC_B, COMBO_END};
 const uint16_t PROGMEM obrack_combo[] = {KC_Y, KC_I, COMBO_END};
 const uint16_t PROGMEM cbrack_combo[] = {KC_COMM, KC_E, COMBO_END};
-const uint16_t PROGMEM py_combo[] = {KC_P, KC_O, COMBO_END};
-const uint16_t PROGMEM pi_combo[] = {KC_P, KC_I, COMBO_END};
-const uint16_t PROGMEM oe_combo[] = {KC_O, KC_E, COMBO_END};
+//const uint16_t PROGMEM py_combo[] = {KC_P, KC_EQL, COMBO_END};
+const uint16_t PROGMEM oa_combo[] = {KC_O, KC_Z, COMBO_END};
 const uint16_t PROGMEM ing_combo[] = {KC_I, KC_E, COMBO_END};
 const uint16_t PROGMEM ak_combo[] = {HOME_CT_A, KC_K, COMBO_END};
-const uint16_t PROGMEM for_combo[] = {KC_C, KC_D, COMBO_END};
-const uint16_t PROGMEM ins_combo[] = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM for_combo[] = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM ins_combo[] = {KC_I, KC_B, COMBO_END};
 
 
-const uint16_t PROGMEM obrackr_combo[] = {KC_C, KC_M, COMBO_END};
-const uint16_t PROGMEM cbrackr_combo[] = {KC_M, KC_G, COMBO_END};
+const uint16_t PROGMEM all_combo[] = {KC_Q, KC_Y, COMBO_END};
+const uint16_t PROGMEM find2_combo[] = {KC_O, KC_MINS, COMBO_END};
+const uint16_t PROGMEM find3_combo[] = {KC_Y, KC_MINS, COMBO_END};
+
+
+const uint16_t PROGMEM obrackr_combo[] = {KC_P, KC_I, COMBO_END};
+const uint16_t PROGMEM cbrackr_combo[] = {KC_O, KC_E, COMBO_END};
 
 
 combo_t key_combos[] = {
-  [FIND] = COMBO_ACTION(find_combo),
-  [REPLACE] = COMBO_ACTION(rep_combo),
+  //[REPLACE] = COMBO_ACTION(rep_combo),
   [QU] = COMBO_ACTION(qu_combo),
   [DM_DAV] = COMBO_ACTION(dv_combo),
   [OBRACK] = COMBO_ACTION(obrack_combo),
   [CBRACK] = COMBO_ACTION(cbrack_combo),
   [SB_BROK] = COMBO_ACTION(sb_combo),
-  [OA] = COMBO_ACTION(oe_combo),
+  [OA] = COMBO_ACTION(oa_combo),
   [ING] = COMBO_ACTION(ing_combo),
   [AK] = COMBO_ACTION(ak_combo),
   [FOR] = COMBO_ACTION(for_combo),
-  [PY] = COMBO_ACTION(py_combo),
-  [PI] = COMBO_ACTION(pi_combo),
+  //[PY] = COMBO_ACTION(py_combo),
   [OBRACKR] = COMBO_ACTION(obrackr_combo),
   [CBRACKR] = COMBO_ACTION(cbrackr_combo),
   [INSU] = COMBO_ACTION(ins_combo),
+  [ALL] = COMBO_ACTION(all_combo),
+
+  [FIND2] = COMBO_ACTION(find2_combo),
+  [FIND3] = COMBO_ACTION(find3_combo),
 };
 
 void word_combo(bool pressed, uint8_t mod_state, char* word) {
@@ -137,17 +153,22 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case QU:
       word_combo(pressed,mod_state, "Qu");
       break; 
-    case FIND:
+    case FIND2:
       if (pressed) {
         tap_code16(C(KC_F));
       }
       break;
-    case REPLACE:
+    case FIND3:
       if (pressed) {
-        tap_code16(C(KC_H));
+        tap_code16(C(KC_F));
       }
       break;
-    
+    case ALL:
+      if (pressed) {
+        tap_code16(C(KC_A));
+      }
+      break;
+
     case DM_DAV:
       if (pressed) {
       word_combo(pressed,mod_state, "David");
@@ -161,16 +182,16 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         SEND_STRING("oa");
       }
       break;
-    case PY:
-      if (pressed) {
-        SEND_STRING("py");
-      }
-      break;
-    case PI:
-      if (pressed) {
-        SEND_STRING("py");
-      }
-      break;
+    // case PY:
+    //   if (pressed) {
+    //     SEND_STRING("py");
+    //   }
+    //   break;
+    // case PI:
+    //   if (pressed) {
+    //     SEND_STRING("py");
+    //   }
+    //   break;
     case AK:
       if (pressed) {
         SEND_STRING("ak");

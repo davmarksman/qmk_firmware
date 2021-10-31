@@ -42,10 +42,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  TODO: replace a tab with Del
  [_BASE] = LAYOUT(
     KC_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KA_RENAME,
-    KC_TAB,   KC_Z,   KC_P,    KC_O,    KC_K,    KC_EQL,                      KC_MINS,    KC_F,    KC_L,    KC_B,    KC_J,    KC_BSLS,
-    KC_DEL,   KC_H,   KC_I,    KC_E,   HOME_CT_A,KC_DOT,                      KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
-    KC_Q,     KC_SLSH,KC_Y,    KC_COMM, KC_U, TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_NUBS,
-                      KC_LEFT, KC_RGHT, KT_A_TAB,K_OSFT,  LSYN_BK, L1_SPC,    KC_N,       KC_ENT,  KC_LALT, KC_RGUI
+    KC_TAB,   KC_Q,   KC_Y,    KC_O,    KC_MINS,  KC_EQL,                     KC_B,       KC_F,    KC_L,    KC_P,    KC_J,    KC_BSLS,
+    KC_SLSH,  KC_H,   KC_I,    KC_E,    HOME_CT_A,KC_K,                       KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
+    KC_NUBS,  KC_Z,   KC_DOT,  KC_COMM, KC_U, TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
+                      KC_LEFT, KC_RGHT, KT_A_DEL,K_OSFT,  LSYN_BK, L1_SPC,    KC_N,       KC_ENT,  KC_LALT, KC_RGUI
 ),
 
 [_GAME] = LAYOUT(
@@ -115,38 +115,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("```");
             }
             break;
-        case KC_A:
-        {
-            // adaptive OA = OU
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_U); 
-                    return_state = false; 
-                    record_code = KC_U;
-                }
-                break;   
-            }
-        }
-        case HOME_CT_A:
-        {
-            // adaptive OA = OU
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_U); 
-                    return_state = false; 
-                    record_code = KC_U;
-                }
-                break;   
-            }
-        } 
         case KC_D:
         {
             // adaptive D to H
             if (record->event.pressed) {
                 if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_H); 
-                    return_state = false; 
                     record_code = KC_H;
+                    return_state = false; 
                 }
                 break;   
             }
@@ -157,19 +133,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_L); 
-                    return_state = false; 
                     record_code = KC_L;
+                    return_state = false; 
                 }
                 break;   
             }
         }
-        case KC_COMM:
+        //case KC_G:
+        //{
+        //    // adaptive MG to MB
+        //    if (record->event.pressed) {
+        //        if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+        //            tap_code(KC_B); 
+        //            record_code = KC_B;
+        //            return_state = false; 
+        //        }
+        //        break;   
+        //    }
+        //}
+        case KC_MINS:
         {
-            // adaptive You
+            // adaptive OU  
             if (record->event.pressed) {
-                if ((prior_keycode == KC_Y) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_O); 
-                    record_code = KC_O;
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_U); 
+                    record_code = KC_U;
                     return_state = false; 
                 }
                 break;   
@@ -194,7 +182,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #ifdef ENCODER_ENABLE
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
     #ifdef CONSOLE_ENABLE
         uprintf("%s,%u,%u,%u\n", "encoder"+index+clockwise, 0, 0, get_highest_layer(layer_state));
     #endif
@@ -216,5 +204,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             tap_code16(K_UNDO);
         }
     }
+      return false;
 }
 #endif // ENCODER_ENABLE

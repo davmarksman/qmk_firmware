@@ -1603,3 +1603,70 @@ P-O - 463% - 526
 P-E - 372% - 423
 ```
 
+# 3/10/21
+Usage of base arrows vs layer arrows
+```
+Base Left           - 52 - 3.652%
+Base Right            - 23 - 1.615%
+Layer Left          - 600 - 42.135%
+Layer Right           - 749 - 52.598%
+```
+
+Seems I like the layer ones 10-20x more 
+
+
+# 30/10/21 p-fix
+Taking inspiration from: https://keyboard-design.com/letterlayout.html?layout=maks-sx.en.ergodox
+
+current
+```
+q  p  o  k  =  -  f  l  b  j
+h  i  e  a  .  w  d  t  s  r
+z  y  ,  u  ;  v  c  m  g  x
+            ␣  n
+```
+
+p-fix
+'p' > 'b' > 'g' > '-' > '.' > 'y'
+swap k and - or move ; to that position
+Retain ou combo is now 'o-'
+```
+q  y  o  -  =  b  f  l  p  j
+h  i  e  a  k  w  d  t  s  r
+z  .  ,  u  ;  v  c  m  g  x
+            ␣  n
+```
+In terms of clash p-fix has 8% less clashes. Nothing to brag about  
+but people becomes easier to type.  
+Scores slightly better on analyser but not that much better  
+```
+Current finger usages
+Finger LPinky          - 2.05%
+Finger LRing           - 7.8%
+Finger LMid            - 11.43%
+Finger LIndex          - 8.92%
+Finger RIndex          - 7.59%
+Finger RMid            - 9.37%
+Finger RRing           - 5.76%
+Finger RPinky          - 4.12%
+Finger LThumb          - 19.54%
+Finger RThumb          - 17.12%
+Hand Left      - 49.74%
+Hand Right     - 43.97%
+
+
+Projected finger usages
+Finger LPinky          - 2.05%
+Finger LRing           - 7.1%
+Finger LMid            - 11.43%
+Finger LIndex          - 8.31%
+Finger RIndex          - 8.25%
+Finger RMid            - 9.37%
+Finger RRing           - 6.41%
+Finger RPinky          - 4.12%
+Finger LThumb          - 19.54%
+Finger RThumb          - 17.12%
+Hand Left      - 48.43%
+Hand Right     - 45.27%
+```
+Practising it seems nicer to play with. 'k' '.' and 'y' hard to learn

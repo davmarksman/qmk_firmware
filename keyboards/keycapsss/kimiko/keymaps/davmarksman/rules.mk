@@ -15,7 +15,9 @@ SLEEP_LED_ENABLE = no
 TAP_DANCE_ENABLE = yes      # Enable tap dance
 COMBO_ENABLE = yes
 
-OLED_DRIVER_ENABLE = yes   # Enables the use of OLED displays
+OLED_ENABLE = yes
+OLED_DRIVER = SSD1306   # Enables the use of OLED displays
+
 WPM_ENABLE = yes
 
 # LTO: Link Time Optimizations.
