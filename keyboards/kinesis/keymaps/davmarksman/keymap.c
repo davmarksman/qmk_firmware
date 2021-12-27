@@ -57,23 +57,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT(    
           KA_EXPLR    ,K_SAVE      ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
-          KC_TAB      ,KC_Z        ,KC_P        ,KC_O        ,KC_K        ,KC_EQL      ,
-          KC_DEL      ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_DOT      ,
-          KC_NUBS     ,KC_Q        ,KC_Y        ,KC_COMM     ,KC_U        ,TD(TD_SCLN) ,
-                       G(C(KC_NO)) ,KC_LEFT     ,KC_RGHT     ,KC_DEL      ,
+          KC_TAB      ,KC_Q        ,KC_Y        ,KC_O        ,KC_MINS     ,KC_EQL      ,
+          KC_NO        ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
+          KC_NUBS     ,KC_Z        ,KC_DOT      ,TD(TD_CMSC) ,KC_U        ,TD(TD_SCLN) ,
+                       KC_CAPS     ,KC_GRV      ,KC_PLUS     ,KC_SLSH     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
-                                    KC_F19      ,
-          K_OSFT      ,LSYN_BK     ,KC_TAB      ,
+                                    KC_BSLS     , // for gaming
+          K_OSFT      ,LSYN_BK     ,KC_DEL      ,
           // Right Hand
           KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LPLAY      ,LGAME       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
-          KC_MINS     ,KC_F        ,KC_L        ,KC_B        ,KC_J        ,KC_BSLS     ,
+          KC_B        ,KC_F        ,KC_L        ,KC_P        ,KC_J        ,KC_BSLS     ,
           KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,KC_QUOT     ,
           KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_SLSH     ,
-                       KC_LALT     ,KC_RGUI     ,XXXXXXX     ,KC_GRV      ,
+                       KC_LALT     ,KC_RGUI     ,KC_RCTL     ,KC_GRV      ,
           // Thumb
-          K_SAVE      ,K_AHK       ,
+          KC_RCTL     ,K_AHK       ,
           KC_NO       ,
           KC_ENT      ,L1_SPC      ,KC_N       
     ),
@@ -99,25 +99,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_UP       ,K_AHK       ,
           KC_DOWN     ,
           KC_ENT      ,KC_SPC      ,LL1         
-
-
     ),
 [_L1] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
           S(KC_TAB)   ,XXXXXXX     ,KC_LT       ,KC_GT       ,K_EQ_GR     ,K_UNDOTB    ,
-          XXXXXXX     ,KS_X2X      ,KC_EXLM     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
+          XXXXXXX     ,KS_X2X      ,KC_PPLS     ,KC_LPRN     ,KC_RPRN     ,K_GLOBAL    ,
           KC_CAPS     ,KS_X2       ,XXXXXXX     ,KC_LBRC     ,KC_RBRC     ,XXXXXXX     ,
-                       XXXXXXX     ,K_RDESK     ,K_LDESK     ,XXXXXXX     ,
+                       XXXXXXX     ,K_LDESK     ,K_RDESK     ,XXXXXXX     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
-          KC_PPLS     ,KC_QUES     , S(KC_TAB)  ,
+          KC_EXLM     ,KC_QUES     , S(KC_TAB)  ,
           // Right Hand
           RESET       ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
-          XXXXXXX     ,K_AND       ,K_OR        ,K_GRV3      ,XXXXXXX     ,KC_F12      ,
-          XXXXXXX     ,KC_AT       ,KC_UNDS     ,K_PIPE      ,XXXXXXX     ,XXXXXXX     ,
+          XXXXXXX     ,K_AND       ,K_GRV3      ,K_OR        ,XXXXXXX     ,KC_F12      ,
+          XXXXXXX     ,K_DQUOT     ,KC_UNDS     ,K_PIPE      ,XXXXXXX     ,XXXXXXX     ,
           K_SNIP      ,K_SNIP      ,KC_LT       ,KC_GT       ,XXXXXXX     ,KC_INS      ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
@@ -125,60 +123,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           XXXXXXX     ,
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     
     ),
-[_PLAYL] = LAYOUT(
-          KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
-          KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
-          KC_TAB      ,KC_Q        ,KC_W        ,KC_E        ,KC_P        ,KC_T        ,
-          KC_LCTL     ,KC_A        ,KC_S        ,KC_D        ,KC_U        ,KC_G        ,
-          KC_NUBS     ,KC_Z        ,KC_X        ,KC_C        ,KC_V        ,KC_B        ,
-                       KC_QUOT     ,KC_SCLN     ,KC_DOT      ,KC_SPC      ,
-          // Thumb
-                       KT_A_ESC    ,KC_O        ,
-                                    KC_L        ,
-          KC_LSFT     ,MO(_PLAYR)  ,KC_ENT      ,
-          // Right Hand
-          KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-          // Thumb
-           XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX   
-
-    ),
- [_PLAYR] = LAYOUT(
-           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
-           KC_EQL      ,KC_0        ,KC_9        ,KC_8        ,KC_7        ,KC_6        ,
-           KC_TAB      ,KC_P        ,KC_UP       ,KC_I        ,KC_U        ,KC_Y        ,
-           KC_K        ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,KC_J        ,KC_H        ,
-           KC_LSFT     ,KC_SLSH     ,KC_DOT      ,KC_COMM     ,KC_M        ,KC_N        ,
-                        KC_GRV      ,KC_RBRC     ,KC_RGUI     ,KC_LALT     ,
-           // Thumb
-                        KT_A_ESC    ,K_CLIP      ,
-                                     XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           // Right Hand
-           KC_F9       ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL       ,LBASE     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
-           // Thumb
-           XXXXXXX     ,XXXXXXX     ,
-           XXXXXXX     ,
-           XXXXXXX     ,XXXXXXX     ,XXXXXXX         
-     ),
-
-
-
-[_SYNAV] = LAYOUT(
+    [_SYNAV] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          XXXXXXX     ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW    ,XXXXXXX     ,K_UNDOTB    ,
+          S(KC_TAB)   ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW   ,XXXXXXX      ,S(KC_TAB)    ,
           XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
           KC_CAPS     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
                        XXXXXXX     ,K_WINL      ,K_WINR     ,XXXXXXX     ,
@@ -196,8 +144,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,
-          XXXXXXX     ,C(KC_BSPC)     ,XXXXXXX     
-    )
+          XXXXXXX     ,C(KC_BSPC)     ,KC_CAPS     
+    ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -242,54 +190,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("```");
             }
             break;
-        case K_WINDR:
-            if (record->event.pressed) {
-                tap_code16(C(KC_L));
-                tap_code16(C(KC_C));
-                tap_code16(C(KC_W));
-                register_code(KC_LCTL);
-                tap_code_delay(KC_N, 100);
-                tap_code_delay(KC_V, 200);
-                unregister_code(KC_LCTL);
-                tap_code16(KC_ENT);
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
-            }
-            break;
-        case K_WINDL:
-            if (record->event.pressed) {
-                tap_code16(C(KC_L));
-                tap_code16(C(KC_C));
-                tap_code16(C(KC_W));
-                register_code(KC_LCTL);
-                tap_code_delay(KC_N, 100);
-                tap_code_delay(KC_V, 200);
-                unregister_code(KC_LCTL);
-                tap_code16(KC_ENT);
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
-            }
-            break;
-            
         case K_WINL:
             if (record->event.pressed) {
+                tap_code16(G(S(KC_LEFT)));
                 tap_code16(G(KC_UP));
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
-                tap_code16(G(KC_LEFT));
                 tap_code16(G(KC_UP));
             }
             break;
             
         case K_WINR:
             if (record->event.pressed) {
+                tap_code16(G(S(KC_RGHT)));
                 tap_code16(G(KC_UP));
-                tap_code16(G(KC_RGHT));
-                tap_code16(G(KC_RGHT));
-                tap_code16(G(KC_RGHT));
                 tap_code16(G(KC_UP));
             }
             break;
@@ -304,69 +216,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
         }
-        // case K_DTCOL:
-        // {
-        //     if (record->event.pressed){
-        //         if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT){
-        //             register_code16(KC_COLN);
-        //         } else {
-        //             register_code(KC_DOT);
-        //         }
-        //     } else {
-        //         unregister_code16(KC_COLN);
-        //         unregister_code(KC_DOT);
-        //     }
-        //     return_state = false; 
-        //     break;  
-        // }
-        // case K_COMSC:
-        // {
-        //     if (record->event.pressed){
-        //         if (get_mods() & MOD_MASK_SHIFT) {
-        //             del_mods(MOD_MASK_SHIFT);
-        //             register_code(KC_SCLN);
-        //             set_mods(get_mods());
-        //             return false;
-        //         } else {
-        //             if (get_oneshot_mods() & MOD_MASK_SHIFT) {
-        //                 del_oneshot_mods(MOD_MASK_SHIFT);
-        //                 register_code(KC_SCLN);
-        //                 return false;
-        //             }else {
-        //                 register_code(KC_COMM);
-        //                 return false;
-        //             }
-        //         }
-        //     } else {
-        //         unregister_code(KC_COMM);
-        //         unregister_code(KC_SCLN);
-        //     }
-        //     return false;
-        // }
-        case KC_A:
-        {
-            // adaptive OA = OU
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_U); 
-                    record_code = KC_U;
-                    return_state = false; 
-                }
-                break;   
-            }
-        }
-        case HOME_CT_A:
-        {
-            // adaptive OA = OU
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_U); 
-                    record_code = KC_U;
-                    return_state = false; 
-                }
-                break;   
-            }
-        } 
         case KC_D:
         {
             // adaptive D to H
@@ -403,14 +252,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;   
             }
         }
-
-        case KC_COMM:
+        case KC_MINS:
         {
-            // adaptive You
+            // adaptive OU  
             if (record->event.pressed) {
-                if ((prior_keycode == KC_Y) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_O); 
-                    record_code = KC_O;
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_U); 
+                    record_code = KC_U;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case KC_F:
+        {
+            // adaptive bf to BL 
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_B) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_L); 
+                    record_code = KC_L;
                     return_state = false; 
                 }
                 break;   
@@ -459,7 +319,6 @@ void oneshot_mods_changed_user(uint8_t mods) {
 }
        
 bool led_update_user(led_t led_state) {
-
     // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
     return false; 
 }

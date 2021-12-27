@@ -17,15 +17,17 @@ enum combos {
   OBRACK,
   CBRACK,
   SB_BROK,
-  OA, 
   ING,
   AK,
-  PY,
-  PI,
-  FOR,
-  OBRACKR,
-  CBRACKR,
   INSU,
+  FOR,
+  BL,
+
+  // Prevents missfires
+  L1_LPRN,
+  L1_RPRN,
+  L1_QU,
+  QUOTE,
   // // This must be the last item in the enum.
   // This is used to automatically update the combo count.
   COMBO_LENGTH
@@ -33,43 +35,50 @@ enum combos {
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM find_combo[] = {KC_O, KC_K, COMBO_END};
-const uint16_t PROGMEM rep_combo[] = {KC_K, KC_EQL, COMBO_END};
 const uint16_t PROGMEM qu_combo[] = {KC_F, KC_L, COMBO_END};
 const uint16_t PROGMEM dv_combo[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM sb_combo[] = {KC_S, KC_B, COMBO_END};
-const uint16_t PROGMEM obrack_combo[] = {KC_Y, KC_I, COMBO_END};
-const uint16_t PROGMEM cbrack_combo[] = {KC_COMM, KC_E, COMBO_END};
-const uint16_t PROGMEM py_combo[] = {KC_P, KC_I, COMBO_END};
-const uint16_t PROGMEM oe_combo[] = {KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM sb_combo[] = {KC_P, KC_S, COMBO_END};
+
 const uint16_t PROGMEM ing_combo[] = {KC_I, KC_E, COMBO_END};
 const uint16_t PROGMEM ak_combo[] = {HOME_CT_A, KC_K, COMBO_END};
-const uint16_t PROGMEM for_combo[] = {KC_C, KC_D, COMBO_END};
-const uint16_t PROGMEM ins_combo[] = {KC_F, KC_D, COMBO_END};
-const uint16_t PROGMEM all_combo[] = {KC_Z, KC_P, COMBO_END};
+const uint16_t PROGMEM for_combo[] = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM ins_combo[] = {KC_W, KC_B, COMBO_END};
+const uint16_t PROGMEM fb_combo[] = {KC_F, KC_B, COMBO_END};
 
 
-const uint16_t PROGMEM obrackr_combo[] = {KC_C, KC_M, COMBO_END};
-const uint16_t PROGMEM cbrackr_combo[] = {KC_M, KC_G, COMBO_END};
+const uint16_t PROGMEM all_combo[] = {KC_Q, KC_Y, COMBO_END};
+const uint16_t PROGMEM find_combo[] = {KC_Y, KC_MINS, COMBO_END};
+
+
+const uint16_t PROGMEM obrack_combo[] = {KC_Y, KC_I, COMBO_END};
+const uint16_t PROGMEM cbrack_combo[] = {KC_O, KC_E, COMBO_END};
+
+
+const uint16_t PROGMEM spe_combo[] = {L1_SPC, KC_E, COMBO_END};
+const uint16_t PROGMEM spd_combo[] = {L1_SPC, KC_D, COMBO_END};
+const uint16_t PROGMEM spa_combo[] = {L1_SPC, HOME_CT_A, COMBO_END};
+const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END}; 
 
 
 combo_t key_combos[] = {
-  [FIND] = COMBO_ACTION(find_combo),
-  [REPLACE] = COMBO_ACTION(rep_combo),
+  //[REPLACE] = COMBO_ACTION(rep_combo),
   [QU] = COMBO_ACTION(qu_combo),
   [DM_DAV] = COMBO_ACTION(dv_combo),
   [OBRACK] = COMBO_ACTION(obrack_combo),
   [CBRACK] = COMBO_ACTION(cbrack_combo),
   [SB_BROK] = COMBO_ACTION(sb_combo),
-  [OA] = COMBO_ACTION(oe_combo),
   [ING] = COMBO_ACTION(ing_combo),
   [AK] = COMBO_ACTION(ak_combo),
   [FOR] = COMBO_ACTION(for_combo),
-  [PY] = COMBO_ACTION(py_combo),
-  [OBRACKR] = COMBO_ACTION(obrackr_combo),
-  [CBRACKR] = COMBO_ACTION(cbrackr_combo),
   [INSU] = COMBO_ACTION(ins_combo),
   [ALL] = COMBO_ACTION(all_combo),
+  [BL] = COMBO_ACTION(fb_combo),
+
+  [FIND] = COMBO_ACTION(find_combo),
+  [L1_LPRN] = COMBO_ACTION(spe_combo),
+  [L1_RPRN] = COMBO_ACTION(spa_combo),
+  [L1_QU] = COMBO_ACTION(spd_combo),
+  [QUOTE] = COMBO_ACTION(cd_combo),
 };
 
 void word_combo(bool pressed, uint8_t mod_state, char* word) {
@@ -125,27 +134,15 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
           tap_code16(KC_RCBR);
         }
         break; 
-    case OBRACKR:
-        if (pressed) {
-          tap_code16(KC_LCBR);
-        }
-        break;
-    case CBRACKR:
-        if (pressed) {
-          tap_code16(KC_RCBR);
-        }
-        break; 
     case QU:
       word_combo(pressed,mod_state, "Qu");
+      break; 
+    case BL:
+      word_combo(pressed,mod_state, "Bl");
       break; 
     case FIND:
       if (pressed) {
         tap_code16(C(KC_F));
-      }
-      break;
-    case REPLACE:
-      if (pressed) {
-        tap_code16(C(KC_H));
       }
       break;
     case ALL:
@@ -162,24 +159,29 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case SB_BROK:
       word_combo(pressed,mod_state, "Brok");
       break;
-    case OA:
-      if (pressed) {
-        SEND_STRING("oa");
-      }
-      break;
-    case PY:
-      if (pressed) {
-        SEND_STRING("py");
-      }
-      break;
-    case PI:
-      if (pressed) {
-        SEND_STRING("py");
-      }
-      break;
     case AK:
       if (pressed) {
         SEND_STRING("ak");
+      }
+      break;
+    case L1_LPRN:
+      if (pressed) {
+        tap_code16(KC_LPRN);     
+      }
+      break;
+    case L1_RPRN:
+      if (pressed) {
+        tap_code16(KC_RPRN);     
+      }
+      break;
+    case L1_QU:
+      if (pressed) {
+        tap_code16(K_DQUOT);     
+      }
+      break;
+    case QUOTE:
+      if (pressed) {
+        tap_code16(K_DQUOT);     
       }
       break;
   }
