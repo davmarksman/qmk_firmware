@@ -12,6 +12,9 @@ enum combos {
   FIND,
   REPLACE,
   ALL,
+  COPY,
+  PASTE,
+
   QU,
   DM_DAV,
   OBRACK,
@@ -32,6 +35,7 @@ enum combos {
   // This is used to automatically update the combo count.
   COMBO_LENGTH
 };
+
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
@@ -59,6 +63,8 @@ const uint16_t PROGMEM spd_combo[] = {L1_SPC, KC_D, COMBO_END};
 const uint16_t PROGMEM spa_combo[] = {L1_SPC, HOME_CT_A, COMBO_END};
 const uint16_t PROGMEM cd_combo[] = {KC_C, KC_D, COMBO_END}; 
 
+const uint16_t PROGMEM copy_combo[] = {KC_DOT, TD(TD_CMSC), COMBO_END}; 
+const uint16_t PROGMEM paste_combo[] = {KC_U, TD(TD_CMSC), COMBO_END}; 
 
 combo_t key_combos[] = {
   //[REPLACE] = COMBO_ACTION(rep_combo),
@@ -79,6 +85,9 @@ combo_t key_combos[] = {
   [L1_RPRN] = COMBO_ACTION(spa_combo),
   [L1_QU] = COMBO_ACTION(spd_combo),
   [QUOTE] = COMBO_ACTION(cd_combo),
+
+  [COPY] = COMBO_ACTION(copy_combo),
+  [PASTE] = COMBO_ACTION(paste_combo),
 };
 
 void word_combo(bool pressed, uint8_t mod_state, char* word) {
@@ -108,7 +117,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         }
     }
 #endif
-
 
   mod_state = get_mods();
   switch(combo_index) {
@@ -148,6 +156,16 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case ALL:
       if (pressed) {
         tap_code16(C(KC_A));
+      }
+      break;
+    case COPY:
+      if (pressed) {
+        tap_code16(C(KC_C));
+      }
+      break;
+    case PASTE:
+      if (pressed) {
+        tap_code16(C(KC_V));
       }
       break;
 
