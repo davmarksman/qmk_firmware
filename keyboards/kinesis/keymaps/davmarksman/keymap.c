@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KA_EXPLR    ,K_SAVE      ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_Y        ,KC_O        ,KC_MINS     ,KC_EQL      ,
-          KC_NO        ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
+          KC_NO       ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
           KC_NUBS     ,KC_Z        ,KC_DOT      ,TD(TD_CMSC) ,KC_U        ,TD(TD_SCLN) ,
                        KC_CAPS     ,KC_GRV      ,KC_PLUS     ,KC_SLSH     ,
           // Thumb

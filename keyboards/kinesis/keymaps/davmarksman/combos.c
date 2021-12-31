@@ -25,6 +25,7 @@ enum combos {
   INSU,
   FOR,
   BL,
+  OU,
 
   // Prevents missfires
   L1_LPRN,
@@ -48,6 +49,7 @@ const uint16_t PROGMEM ak_combo[] = {HOME_CT_A, KC_K, COMBO_END};
 const uint16_t PROGMEM for_combo[] = {KC_F, KC_D, COMBO_END};
 const uint16_t PROGMEM ins_combo[] = {KC_W, KC_B, COMBO_END};
 const uint16_t PROGMEM fb_combo[] = {KC_F, KC_B, COMBO_END};
+const uint16_t PROGMEM ou_combo[] = { KC_MINS, KC_O, COMBO_END};
 
 
 const uint16_t PROGMEM all_combo[] = {KC_Q, KC_Y, COMBO_END};
@@ -79,6 +81,7 @@ combo_t key_combos[] = {
   [INSU] = COMBO_ACTION(ins_combo),
   [ALL] = COMBO_ACTION(all_combo),
   [BL] = COMBO_ACTION(fb_combo),
+  [OU] = COMBO_ACTION(ou_combo),
 
   [FIND] = COMBO_ACTION(find_combo),
   [L1_LPRN] = COMBO_ACTION(spe_combo),
@@ -147,6 +150,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       break; 
     case BL:
       word_combo(pressed,mod_state, "Bl");
+      break; 
+    case OU:
+      word_combo(pressed,mod_state, "Ou");
       break; 
     case FIND:
       if (pressed) {
