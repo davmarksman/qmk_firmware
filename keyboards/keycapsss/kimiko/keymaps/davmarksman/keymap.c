@@ -13,7 +13,7 @@
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, KC_UNDS),
     [TD_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
-    [TD_CMSC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_COLN),
+    [TD_CMSC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_COLN)
 };
 
 
@@ -41,11 +41,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //  TODO: replace a tab with Del
  [_BASE] = LAYOUT(
-    KC_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KA_RENAME,
-    KC_TAB,   KC_Q,   KC_Y,    KC_O,    KC_MINS,  KC_EQL,                     KC_B,       KC_F,    KC_L,    KC_P,    KC_J,    KC_BSLS,
-    KC_SLSH,  KC_H,   KC_I,    KC_E,    HOME_CT_A,KC_K,                       KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
-    KC_NUBS,  KC_Z,   KC_DOT,  KC_COMM, KC_U, TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
-                      KC_LEFT, KC_RGHT, KT_A_DEL,K_OSFT,  LSYN_BK, L1_SPC,    KC_N,       KC_ENT,  KC_LALT, KC_RGUI
+    KC_GESC,  KC_1,   KC_2,    KC_3,    KC_4,      KC_5,                       KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KA_RENAME,
+    KC_TAB,   KC_Q,   KC_Y,    KC_O,    KC_MINS,   KC_EQL,                     KC_B,       KC_F,    KC_L,    KC_P,    KC_J,    KC_BSLS,
+    KC_SLSH,  KC_H,   KC_I,    KC_E,    HOME_CT_A, KC_K,                       KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
+    KC_NUBS,  KC_Z,   KC_DOT,  KC_COMM, KC_U,  TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
+                      KC_PLUS, KC_SLSH, KT_A_DEL,  K_OSFT,  LSYN_BK, L1_SPC,   KC_N,       KC_ENT,  KC_LALT, KC_RGUI
 ),
 
 [_GAME] = LAYOUT(
@@ -57,20 +57,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_L1] = LAYOUT(
     KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    XXXXXXX, XXXXXXX, KC_LT,   KC_GT,   K_EQ_GR, K_UNDOTB,                    XXXXXXX, K_AND,   K_OR,    K_GRV3,  XXXXXXX, KC_F12,
-    KC_CAPS, KS_X2X,  KC_EXLM, KC_LPRN, KC_RPRN, K_GLOBAL,                    XXXXXXX, KC_AT,   KC_UNDS, K_PIPE,  XXXXXXX, XXXXXXX,
+   S(KC_TAB),XXXXXXX, KC_LT,   KC_GT,   K_EQ_GR, K_UNDOTB,                    XXXXXXX, K_AND,   K_GRV3,    K_OR,  XXXXXXX, KC_F12,
+    KC_CAPS, KS_X2X,  KC_PPLS, KC_LPRN, KC_RPRN, K_GLOBAL,                    XXXXXXX, K_DQUOT, KC_UNDS, K_PIPE,  XXXXXXX, XXXXXXX,
     KC_CAPS, KS_X2,   XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX,   LBASE,  LGAME,    K_SNIP,  K_SNIP,  KC_LT,   KC_GT,   XXXXXXX, KC_INS,
-                      KC_HOME, KC_END,  XXXXXXX, KC_PPLS,  KC_QUES,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                      K_LDESK, K_RDESK, S(KC_TAB),KC_EXLM,  KC_QUES,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 [_SYNAV] = LAYOUT(
-    KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    XXXXXXX, XXXXXXX, XXXXXXX, K_CUR_BK,K_CUR_FW,K_UNDOTB,                     KC_PGUP,  KC_HOME, KC_UP,   KC_END,  XXXXXXX, KC_F12,
-    KC_CAPS,KC_LALT,RCS(KC_NO),KC_LCTL, KC_LSFT, KC_LGUI,                     KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
-    KC_CAPS,  K_UNDO,  C(KC_X), C(KC_C), C(KC_V), XXXXXXX,  LBASE, LGAME,      XXXXXXX,  K_ED_LF, K_ED_RG, XXXXXXX, XXXXXXX, XXXXXXX,
-                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(KC_BSPC), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_ESC,   KC_F1,   KC_F2,     KC_F3,   KC_F4,   KC_F5,                       KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+   S(KC_TAB), XXXXXXX, XXXXXXX,   K_CUR_BK,K_CUR_FW,S(KC_TAB),                   KC_PGUP,  KC_HOME, KC_UP,   KC_END,  XXXXXXX, KC_F12,
+    KC_CAPS,  KC_LALT, RCS(KC_NO),KC_LCTL, KC_LSFT, KC_LGUI,                     KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+    KC_CAPS,  K_UNDO,  C(KC_X),   C(KC_C), C(KC_V), XXXXXXX,  LBASE, LGAME,      XXXXXXX,  K_ED_LF, K_ED_RG, XXXXXXX, XXXXXXX, XXXXXXX,
+                       XXXXXXX,   K_WINL,  K_WINR,  XXXXXXX, XXXXXXX, C(KC_BSPC), KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX
 ),
-
 };
 
 
@@ -115,6 +114,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("```");
             }
             break;
+        case K_WINL:
+            if (record->event.pressed) {
+                tap_code16(G(S(KC_LEFT)));
+                tap_code16(G(KC_UP));
+                tap_code16(G(KC_UP));
+            }
+            break;
+            
+        case K_WINR:
+            if (record->event.pressed) {
+                tap_code16(G(S(KC_RGHT)));
+                tap_code16(G(KC_UP));
+                tap_code16(G(KC_UP));
+            }
+            break;
         case KC_D:
         {
             // adaptive D to H
@@ -139,18 +153,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;   
             }
         }
-        //case KC_G:
-        //{
-        //    // adaptive MG to MB
-        //    if (record->event.pressed) {
-        //        if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-        //            tap_code(KC_B); 
-        //            record_code = KC_B;
-        //            return_state = false; 
-        //        }
-        //        break;   
-        //    }
-        //}
+        case KC_G:
+        {
+            // adaptive MG to MB
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_B); 
+                    record_code = KC_B;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
         case KC_MINS:
         {
             // adaptive OU  
@@ -158,6 +172,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_U); 
                     record_code = KC_U;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case KC_F:
+        {
+            // adaptive bf to BL 
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_B) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_L); 
+                    record_code = KC_L;
                     return_state = false; 
                 }
                 break;   

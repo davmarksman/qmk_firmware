@@ -46,6 +46,7 @@ enum layer_names {
 #define K_AT S(KC_QUOT) 
 #define K_TILDE S(KC_BSLS)
 #define K_PIPE S(KC_NUBS)
+#define K_DQUOT S(KC_2)
 #define K_GLOBAL C(S(KC_F))
 #define K_UNDOTB C(S(KC_T))
 #define K_SNIP G(S(KC_S))
@@ -69,7 +70,7 @@ enum layer_names {
 #define KA_APP1 KC_F13
 #define KA_APP2 KC_F14
 #define KA_VOL KC_F20
-#define KA_EXPLR G(KC_E)
+#define KA_EXPLR G(KC_1)
 
 
 
