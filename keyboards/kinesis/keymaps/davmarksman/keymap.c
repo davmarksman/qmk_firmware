@@ -58,20 +58,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KA_EXPLR    ,K_SAVE      ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_Y        ,KC_O        ,KC_MINS     ,KC_EQL      ,
-          KC_NO       ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
+          K_AK        ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
           KC_NUBS     ,KC_Z        ,KC_DOT      ,TD(TD_CMSC) ,KC_U        ,TD(TD_SCLN) ,
-                       KC_CAPS     ,KC_GRV      ,KC_PLUS     ,KC_SLSH     ,
+                       KC_LCTL     ,KC_GRV      ,KC_PLUS     ,KC_SLSH     ,
           // Thumb
                        KT_A_ESC    ,K_CLIP      ,
                                     KC_BSLS     , // for gaming
           K_OSFT      ,LSYN_BK     ,KC_DEL      ,
           // Right Hand
-          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,LPLAY      ,LGAME       ,
+          KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL      ,LGAME       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
           KC_B        ,KC_F        ,KC_L        ,KC_P        ,KC_J        ,KC_BSLS     ,
-          KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,KC_QUOT     ,
+          KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,XXXXXXX     ,
           KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_SLSH     ,
-                       KC_LALT     ,KC_RGUI     ,KC_RCTL     ,KC_GRV      ,
+                       KC_QUOT     ,KC_RGUI     ,KC_RCTL     ,KC_GRV      ,
           // Thumb
           KC_RCTL     ,K_AHK       ,
           KC_NO       ,
@@ -126,10 +126,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYNAV] = LAYOUT(
           XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           KC_ESC      ,KC_F1       ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,
-          S(KC_TAB)   ,XXXXXXX     ,K_CUR_BK    ,K_CUR_FW   ,XXXXXXX      ,S(KC_TAB)    ,
+          S(KC_TAB)   ,XXXXXXX     ,S(C(KC_TAB)),C(KC_TAB)   ,XXXXXXX     ,K_UNDOTB    ,
           XXXXXXX     ,KC_LALT     ,RCS(KC_NO)  ,KC_LCTL     ,KC_LSFT     ,KC_LGUI     ,
           KC_CAPS     ,K_UNDO      ,C(KC_X)     ,C(KC_C)     ,C(KC_V)     ,XXXXXXX     ,
-                       XXXXXXX     ,K_WINL      ,K_WINR     ,XXXXXXX     ,
+                       K_LSNAP     ,K_WINL      ,K_WINR      ,K_RSNAP     ,
           // Thumb
                        XXXXXXX     ,XXXXXXX     ,
                                     XXXXXXX     ,
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F6       ,KC_F7       ,KC_F8       ,KC_F9       ,KC_F10      ,KC_F11      ,
           KC_PGUP     ,KC_HOME     ,KC_UP       ,KC_END      ,XXXXXXX     ,KC_F12      ,
           KC_PGDN     ,KC_LEFT     ,KC_DOWN     ,KC_RGHT     ,XXXXXXX     ,XXXXXXX     ,
-          XXXXXXX     ,K_ED_LF     ,XXXXXXX     ,K_ED_RG     ,XXXXXXX     ,KC_INS      ,
+          XXXXXXX     ,K_ED_LF     ,K_CUR_BK     ,K_ED_RG    ,K_CUR_FW     ,KC_INS      ,
                        XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,XXXXXXX     ,
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
@@ -216,11 +216,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
         }
+        case K_AK:
+        {
+            if (record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT) {
+                    SEND_STRING("Ak");
+                } else{
+                    SEND_STRING("ak");
+                }
+            }
+            break;
+        }
         case KC_D:
         {
             // adaptive D to H
             if (record->event.pressed) {
-                if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G || prior_keycode == KC_W
+                        || prior_keycode == KC_P) 
+                     && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) 
+                {
                     tap_code(KC_H); 
                     record_code = KC_H;
                     return_state = false; 
@@ -230,14 +244,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         case KC_M:
         {
-            // adaptive CM to CL
             if (record->event.pressed) {
+                // adaptive CM to CL
                 if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_L); 
                     record_code = KC_L;
                     return_state = false; 
+                  // adaptive GM to GL
+                } else if((prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)){
+                    tap_code(KC_L); 
+                    record_code = KC_L;
+                    return_state = false; 
                 }
-                break;   
+                break;
             }
         }
         case KC_G:
@@ -271,6 +290,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if ((prior_keycode == KC_B) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_L); 
                     record_code = KC_L;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case KC_Y:
+        {
+            // adaptive y to r, to make for roll (xperiment)
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_R); 
+                    record_code = KC_R;
                     return_state = false; 
                 }
                 break;   
@@ -321,4 +352,14 @@ void oneshot_mods_changed_user(uint8_t mods) {
 bool led_update_user(led_t led_state) {
     // you need to implement this method and return false otherwise it will overwrite what happened in layer_state_set_user
     return false; 
+}
+
+
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case L1_SPC:
+            return true; 
+        default:
+            return false;
+    }
 }
