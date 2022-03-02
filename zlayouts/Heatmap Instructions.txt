@@ -1,4 +1,5 @@
 1. Layout - C:\Dev\Tools\KinT\qmk\keyboards\kinesis\keymaps\davmarksman\layouts
+C:\Dev\Tools\KinT\qmk\zlayouts
 http://www.keyboard-layout-editor.com/#/
 
 
