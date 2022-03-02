@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GESC,  KC_1,   KC_2,    KC_3,    KC_4,      KC_5,                       KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KA_RENAME,
     KC_TAB,   KC_Q,   KC_Y,    KC_O,    KC_MINS,   KC_EQL,                     KC_B,       KC_F,    KC_L,    KC_P,    KC_J,    KC_BSLS,
     KC_SLSH,  KC_H,   KC_I,    KC_E,    HOME_CT_A, KC_K,                       KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
-    KC_NUBS,  KC_Z,   KC_DOT,  KC_COMM, KC_U,  TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
+    KC_NUBS,  KC_Z,   KC_DOT,  TD(TD_CMSC), KC_U,  TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
                       KC_PLUS, KC_SLSH, KT_A_DEL,  K_OSFT,  LSYN_BK, L1_SPC,   KC_N,       KC_ENT,  KC_LALT, KC_RGUI
 ),
 
@@ -215,19 +215,19 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
     // Encoder on main side
     if (index == 0) {
-        if (clockwise) {
-            tap_code16(KC_DOWN);
-        } else {
-            tap_code16(KC_UP);
-        }
-    }
-    // Encoder on other side
-    else if (index == 1) {
         // Undo /Redo
         if (clockwise) {
             tap_code16(K_REDO);
         } else {
             tap_code16(K_UNDO);
+        }
+    }
+    // Encoder on other side
+    else if (index == 1) {
+        if (clockwise) {
+            tap_code16(KC_DOWN);
+        } else {
+            tap_code16(KC_UP);
         }
     }
       return false;
