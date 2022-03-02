@@ -8,7 +8,7 @@ enum layers {
     _FNPAD,
     _APPS,
     _NAV,
-    _MEDIA
+    // _MEDIA
 };
 
 enum combos {
@@ -21,7 +21,7 @@ enum combos {
 #define LFN TO(_FNPAD)
 #define LAPP TO(_APPS)
 #define LNAV TO(_NAV)
-#define LMEDIA TO(_MEDIA)
+// #define LMEDIA TO(_MEDIA)
 
 // Apps
 #define K_CLIP C(A(KC_C))  // Paste Clipboard
@@ -39,64 +39,25 @@ enum combos {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FNPAD] = LAYOUT_ortho_4x4(
-        LAPP,      KC_LSFT,     KC_LCTL,  LNAV,
+        LAPP,      K_SAVE,      XXXXXXX,  LNAV,
         KC_F1,     KC_F2,       KC_F3,    KC_F4,
         KC_F5,     KC_F6,       KC_F7,    KC_F8,
         KC_F9,     KC_F10,      KC_F11,   KC_F12
     ),
     [_APPS] = LAYOUT_ortho_4x4(
-        LFN,       K_SAVE,      K_SAVE,     LNAV,
-        G(KC_6),   G(KC_7),     G(KC_8),    G(KC_9),
-        KA_FIREFX, KA_CHROME,   KA_NOTE,    G(KC_0),
-        KA_VSCODE, KA_VS19,     KA_EXPLR,   XXXXXXX
+        LFN,       K_SAVE,      XXXXXXX,     XXXXXXX,
+        KA_FIREFX, KA_CHROME,   KA_VSCODE,   KA_VS19, 
+        KA_NOTE,   G(KC_6),     G(KC_7),     G(KC_8),    
+        G(KC_9),   G(KC_0),     XXXXXXX,    XXXXXXX
     ),
-    /* Navigation/MEDIA layer
-    */
     [_NAV] = LAYOUT_ortho_4x4(
-        LAPP,      XXXXXXX,     KC_UP,      LFN,
-        KC_LSFT,   KC_LEFT,     KC_DOWN,    KC_RGHT,
-        KC_LCTL,   KC_HOME,     KC_UP,      KC_END,             
+        LFN,       KC_HOME,     KC_PGUP,    XXXXXXX,
+        KC_LSFT,   KC_END,      KC_PGDN,    XXXXXXX,
+        KC_LCTL,   XXXXXXX,     KC_UP,      XXXXXXX,             
         XXXXXXX,   KC_LEFT,     KC_DOWN,    KC_RGHT             
     ),
-    [_MEDIA] = LAYOUT_ortho_4x4(
-        LFN,      XXXXXXX,      XXXXXXX,    LFN,
-        XXXXXXX,   XXXXXXX,     XXXXXXX,    XXXXXXX,
-        XXXXXXX,   KC_MPRV     ,KC_MPLY,    KC_MNXT,             
-        XXXXXXX,   XXXXXXX,     XXXXXXX,    XXXXXXX             
-    )
+    // Add game pad layer
 };
-
-// Combos for switching layers
-// const uint16_t PROGMEM zeroDot_combo[] = {KC_P0, KC_PDOT, COMBO_END};
-// const uint16_t PROGMEM leftDown_combo[] = {KC_LEFT, KC_DOWN, COMBO_END};
-// const uint16_t PROGMEM prevPlay_combo[] = {KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, COMBO_END};
-const uint16_t PROGMEM layer_combo[] = {LAPP, LNAV, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  [COMBO1] = COMBO_ACTION(layer_combo),
-  // [COMBO2] = COMBO_ACTION(leftDown_combo),
-  // [COMBO3] = COMBO_ACTION(prevPlay_combo),
-};
-
-void process_combo_event(uint16_t combo_index, bool pressed) {
-  switch(combo_index) {
-    case COMBO1:
-      if (pressed) {
-        layer_move(_MEDIA);
-      }
-      break;
-    // case COMBO2:
-    //   if (pressed) {
-    //     layer_move(_MEDIA);
-    //   }
-    //   break;
-    // case COMBO3:
-    //   if (pressed) {
-    //     layer_move(_NUMPAD);
-    //   }
-    //   break;
-  }
-}
 
 #ifdef OLED_ENABLE
 
@@ -142,31 +103,38 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
   // First encoder (E1)
   if (index == 0) {
-    if (clockwise) {
-        tap_code16(KC_DOWN);
-    } else {
-        tap_code16(KC_UP);
+    switch (get_highest_layer(layer_state)) {
+      // change layers
+      case _FNPAD:
+        if (clockwise) {
+          layer_move(_APPS);
+        } else {
+          layer_move(_NAV);
+        }
+        break;
+      case _APPS:
+        if (clockwise) {
+          layer_move(_NAV);
+        } else {
+          layer_move(_FNPAD);
+        }
+        break;
+      case _NAV:
+        if (clockwise) {
+          layer_move(_FNPAD);
+        } else {
+          layer_move(_APPS);
+        }
+        break;
     }
-  // Second encoder (E2)
-  } else if (index == 1) {
-    if (clockwise) {
-        tap_code16(KC_AUDIO_VOL_UP);
-    } else {
-        tap_code16(KC_AUDIO_VOL_DOWN);
-    }
-  // Third encoder (E3)
-  } else if (index == 2) {
-    if (clockwise) {
-        tap_code16(KC_AUDIO_VOL_UP);
-    } else {
-        tap_code16(KC_AUDIO_VOL_DOWN);
-    }
+
   // Forth encoder (E4)
   } else if (index == 3) {
+    // brower tabing
     if (clockwise) {
-        tap_code16(KC_DOWN);
+      tap_code16(C(KC_TAB));
     } else {
-        tap_code16(KC_UP);
+      tap_code16(S(C(KC_TAB)));
     }
   }
     return true;
