@@ -26,6 +26,8 @@ enum combos {
   BL,
   OU,
   AKE,
+  CH,
+  GH,
   // // This must be the last item in the enum.
   // This is used to automatically update the combo count.
   COMBO_LENGTH
@@ -35,8 +37,10 @@ enum combos {
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
 const uint16_t PROGMEM qu_combo[] = {KC_F, KC_L, COMBO_END};
-const uint16_t PROGMEM dv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM gx_combo[] = {KC_G, KC_X, COMBO_END};
 const uint16_t PROGMEM sb_combo[] = {KC_P, KC_S, COMBO_END};
+const uint16_t PROGMEM cm_combo[] = {KC_C, KC_M, COMBO_END};
+const uint16_t PROGMEM gm_combo[] = {KC_G, KC_M, COMBO_END};
 
 const uint16_t PROGMEM ing_combo[] = {KC_I, KC_E, COMBO_END};
 const uint16_t PROGMEM iea_combo[] = {KC_I, KC_E, HOME_CT_A, COMBO_END};
@@ -60,7 +64,7 @@ combo_t key_combos[] = {
   //[REPLACE] = COMBO_ACTION(rep_combo),
   //[QU] = COMBO_ACTION(qu_combo),
   [QU] = COMBO_ACTION(qu_combo),
-  [DM_DAV] = COMBO_ACTION(dv_combo),
+  [DM_DAV] = COMBO_ACTION(gx_combo),
   [OBRACK] = COMBO_ACTION(obrack_combo),
   [CBRACK] = COMBO_ACTION(cbrack_combo),
   [SB_BROK] = COMBO_ACTION(sb_combo),
@@ -70,6 +74,8 @@ combo_t key_combos[] = {
   [ALL] = COMBO_ACTION(all_combo),
   [BL] = COMBO_ACTION(fb_combo),
   [OU] = COMBO_ACTION(ou_combo),
+  [CH] = COMBO_ACTION(cm_combo),
+  [GH] = COMBO_ACTION(gm_combo),
 
   [FIND] = COMBO_ACTION(find_combo),
 
@@ -174,6 +180,16 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case AK:
       if (pressed) {
         SEND_STRING("ak");
+      }
+      break;
+    case CH:
+      if (pressed) {
+        SEND_STRING("ch");
+      }
+      break;
+    case GH:
+      if (pressed) {
+        SEND_STRING("gh");
       }
       break;
   }

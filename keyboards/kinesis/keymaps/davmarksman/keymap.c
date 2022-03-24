@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KA_EXPLR    ,K_SAVE      ,KC_F2       ,KC_F3       ,KC_F4       ,KC_F5       ,KC_F6       ,KC_F7       ,KC_F8       ,
           KC_ESC      ,KC_1        ,KC_2        ,KC_3        ,KC_4        ,KC_5        ,
           KC_TAB      ,KC_Q        ,KC_Y        ,KC_O        ,KC_MINS     ,KC_EQL      ,
-          K_AK        ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
+          KC_CAPS     ,KC_H        ,KC_I        ,KC_E        ,HOME_CT_A   ,KC_K        ,
           KC_NUBS     ,KC_Z        ,KC_DOT      ,TD(TD_CMSC) ,KC_U        ,TD(TD_SCLN) ,
                        KC_LCTL     ,KC_GRV      ,KC_PLUS     ,KC_SLSH     ,
           // Thumb
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KA_APP2     ,KC_F10      ,KC_F11      ,KC_F12      ,KC_MPRV     ,KC_MPLY     ,KC_MNXT     ,KA_VOL      ,LGAME       ,
           KC_6        ,KC_7        ,KC_8        ,KC_9        ,KC_0        ,KA_RENAME   ,
           KC_B        ,KC_F        ,KC_L        ,KC_P        ,KC_J        ,KC_BSLS     ,
-          KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,XXXXXXX     ,
+          KC_W        ,KC_D        ,KC_T        ,KC_S        ,KC_R        ,K_AT        ,
           KC_V        ,KC_C        ,KC_M        ,KC_G        ,KC_X        ,KC_SLSH     ,
                        KC_QUOT     ,KC_RGUI     ,KC_RCTL     ,KC_GRV      ,
           // Thumb
@@ -259,18 +259,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             }
         }
-        case KC_G:
-        {
-            // adaptive MG to MB
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_B); 
-                    record_code = KC_B;
-                    return_state = false; 
-                }
-                break;   
-            }
-        }
+        // case KC_G:
+        // {
+        //     // adaptive MG to MB
+        //     if (record->event.pressed) {
+        //         if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+        //             tap_code(KC_B); 
+        //             record_code = KC_B;
+        //             return_state = false; 
+        //         }
+        //         break;   
+        //     }
+        // }
         case KC_MINS:
         {
             // adaptive OU  
@@ -297,7 +297,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         case KC_Y:
         {
-            // adaptive y to r, to make for roll (xperiment)
+            // adaptive y to r, to make 'for' roll (xperiment)
             if (record->event.pressed) {
                 if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_R); 
@@ -306,6 +306,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 break;   
             }
+        }
+        case KC_V:
+        {
+            // adaptive MV to MB
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_B); 
+                    record_code = KC_B;
+                    return_state = false; 
+                } 
+                // adaptive CV to CH
+                else if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_H); 
+                    record_code = KC_H;
+                    return_state = false; 
+                }
+                break;
+            } 
         }
     }
 
