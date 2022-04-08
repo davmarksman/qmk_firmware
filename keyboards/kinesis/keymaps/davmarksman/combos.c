@@ -26,8 +26,8 @@ enum combos {
   BL,
   OU,
   AKE,
-  CH,
-  GH,
+  CL,
+  GL,
   // // This must be the last item in the enum.
   // This is used to automatically update the combo count.
   COMBO_LENGTH
@@ -74,8 +74,8 @@ combo_t key_combos[] = {
   [ALL] = COMBO_ACTION(all_combo),
   [BL] = COMBO_ACTION(fb_combo),
   [OU] = COMBO_ACTION(ou_combo),
-  [CH] = COMBO_ACTION(cm_combo),
-  [GH] = COMBO_ACTION(gm_combo),
+  [CL] = COMBO_ACTION(cm_combo),
+  [GL] = COMBO_ACTION(gm_combo),
 
   [FIND] = COMBO_ACTION(find_combo),
 
@@ -182,14 +182,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         SEND_STRING("ak");
       }
       break;
-    case CH:
+    case CL:
       if (pressed) {
-        SEND_STRING("ch");
+        SEND_STRING("cl");
       }
       break;
-    case GH:
+    case GL:
       if (pressed) {
-        SEND_STRING("gh");
+        SEND_STRING("gl");
       }
       break;
   }

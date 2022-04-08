@@ -93,6 +93,7 @@ enum custom_keycodes {
     K_WINR,
     K_WINL,
     K_AK,
+    K_RESET
    // K_COMSC
 };
 

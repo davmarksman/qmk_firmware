@@ -41,11 +41,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //  TODO: replace a tab with Del
  [_BASE] = LAYOUT(
-    KC_GESC,  KC_1,   KC_2,    KC_3,    KC_4,      KC_5,                       KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KA_RENAME,
-    KC_TAB,   KC_Q,   KC_Y,    KC_O,    KC_MINS,   KC_EQL,                     KC_B,       KC_F,    KC_L,    KC_P,    KC_J,    KC_BSLS,
-    KC_SLSH,  KC_H,   KC_I,    KC_E,    HOME_CT_A, KC_K,                       KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
-    KC_NUBS,  KC_Z,   KC_DOT,  TD(TD_CMSC), KC_U,  TD(TD_SCLN), K_CLIP,  K_AHK,    KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
-                      KC_PLUS, KC_SLSH, KT_A_DEL,  K_OSFT,  LSYN_BK, L1_SPC,   KC_N,       KC_ENT,  KC_LALT, KC_RGUI
+    KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,      KC_5,                          KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    KA_RENAME,
+    KC_TAB,   KC_Q,   KC_Y,    KC_O,    KC_MINS,   KC_EQL,                        KC_B,       KC_F,    KC_L,    KC_P,    KC_J,    KC_BSLS,
+    KC_CAPS,  KC_H,   KC_I,    KC_E,    HOME_CT_A, KC_K,                          KC_W,       KC_D,    KC_T,    KC_S,    KC_R,    KC_QUOT,
+    KC_NUBS,  KC_Z,   KC_DOT,  TD(TD_CMSC), KC_U,  TD(TD_SCLN), K_CLIP,  K_AHK,   KC_V,       KC_C,    KC_M,    KC_G,    KC_X,    KC_SLSH,
+                      KC_GRV,  KC_SLSH, KT_A_DEL,  K_OSFT,  LSYN_BK, L1_SPC,      KC_N,       KC_ENT,  KC_QUOT, KC_RGUI
 ),
 
 [_GAME] = LAYOUT(
@@ -65,10 +65,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_SYNAV] = LAYOUT(
     KC_ESC,   KC_F1,   KC_F2,     KC_F3,   KC_F4,   KC_F5,                       KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-   S(KC_TAB), XXXXXXX, XXXXXXX,   K_CUR_BK,K_CUR_FW,S(KC_TAB),                   KC_PGUP,  KC_HOME, KC_UP,   KC_END,  XXXXXXX, KC_F12,
+   S(KC_TAB), XXXXXXX, S(C(KC_TAB)),C(KC_TAB),XXXXXXX,K_UNDOTB,                   KC_PGUP,  KC_HOME, KC_UP,   KC_END,  XXXXXXX, KC_F12,
     KC_CAPS,  KC_LALT, RCS(KC_NO),KC_LCTL, KC_LSFT, KC_LGUI,                     KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
-    KC_CAPS,  K_UNDO,  C(KC_X),   C(KC_C), C(KC_V), XXXXXXX,  LBASE, LGAME,      XXXXXXX,  K_ED_LF, K_ED_RG, XXXXXXX, XXXXXXX, XXXXXXX,
-                       XXXXXXX,   K_WINL,  K_WINR,  XXXXXXX, XXXXXXX, C(KC_BSPC), KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_CAPS,  K_UNDO,  C(KC_X),   C(KC_C), C(KC_V), XXXXXXX,  LBASE, LGAME,      XXXXXXX,  K_ED_LF, K_CUR_BK, K_ED_RG, K_CUR_FW, KC_INS,
+                       K_LSNAP,   K_WINL,  K_WINR,  K_RSNAP, XXXXXXX, C(KC_BSPC), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 };
 
@@ -133,7 +133,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         {
             // adaptive D to H
             if (record->event.pressed) {
-                if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                if ((prior_keycode == KC_T || prior_keycode == KC_S || prior_keycode == KC_G || prior_keycode == KC_W
+                        || prior_keycode == KC_P) 
+                     && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) 
+                {
                     tap_code(KC_H); 
                     record_code = KC_H;
                     return_state = false; 
@@ -143,26 +146,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         case KC_M:
         {
-            // adaptive CM to CL
             if (record->event.pressed) {
+                // adaptive CM to CH
                 if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_L); 
-                    record_code = KC_L;
+                    tap_code(KC_H); 
+                    record_code = KC_H;
+                    return_state = false; 
+                  // adaptive GM to GH
+                } else if((prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)){
+                    tap_code(KC_H); 
+                    record_code = KC_H;
                     return_state = false; 
                 }
-                break;   
-            }
-        }
-        case KC_G:
-        {
-            // adaptive MG to MB
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_B); 
-                    record_code = KC_B;
-                    return_state = false; 
-                }
-                break;   
+                break;
             }
         }
         case KC_MINS:
@@ -184,6 +180,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if ((prior_keycode == KC_B) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
                     tap_code(KC_L); 
                     record_code = KC_L;
+                    return_state = false; 
+                }
+                break;   
+            }
+        }
+        case KC_V:
+        {
+            // adaptive MV to MB
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_B); 
+                    record_code = KC_B;
+                    return_state = false; 
+                } 
+                // adaptive CV to CL
+                else if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_L); 
+                    record_code = KC_L;
+                    return_state = false; 
+                }
+                break;
+            } 
+        }
+        case KC_L:
+        {
+            // adaptive BL to BM
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_B) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_M); 
+                    record_code = KC_M;
                     return_state = false; 
                 }
                 break;   

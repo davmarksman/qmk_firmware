@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           // Thumb
           XXXXXXX     ,XXXXXXX     ,
           XXXXXXX     ,
-          XXXXXXX     ,C(KC_BSPC)     ,KC_CAPS     
+          XXXXXXX     ,C(KC_BSPC)     ,XXXXXXX     
     ),
 };
 
@@ -205,28 +205,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code16(G(KC_UP));
             }
             break;
-        case K_TH:
-        {
-            if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT) {
-                    SEND_STRING("Th");
-                } else{
-                    SEND_STRING("th");
-                }
-            }
-            break;
-        }
-        case K_AK:
-        {
-            if (record->event.pressed) {
-                if (get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT) {
-                    SEND_STRING("Ak");
-                } else{
-                    SEND_STRING("ak");
-                }
-            }
-            break;
-        }
         case KC_D:
         {
             // adaptive D to H
@@ -245,32 +223,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_M:
         {
             if (record->event.pressed) {
-                // adaptive CM to CL
+                // adaptive CM to CH
                 if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_L); 
-                    record_code = KC_L;
+                    tap_code(KC_H); 
+                    record_code = KC_H;
                     return_state = false; 
-                  // adaptive GM to GL
+                  // adaptive GM to GH
                 } else if((prior_keycode == KC_G) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)){
-                    tap_code(KC_L); 
-                    record_code = KC_L;
+                    tap_code(KC_H); 
+                    record_code = KC_H;
                     return_state = false; 
                 }
                 break;
             }
         }
-        // case KC_G:
-        // {
-        //     // adaptive MG to MB
-        //     if (record->event.pressed) {
-        //         if ((prior_keycode == KC_M) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-        //             tap_code(KC_B); 
-        //             record_code = KC_B;
-        //             return_state = false; 
-        //         }
-        //         break;   
-        //     }
-        // }
         case KC_MINS:
         {
             // adaptive OU  
@@ -295,18 +261,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;   
             }
         }
-        case KC_Y:
-        {
-            // adaptive y to r, to make 'for' roll (xperiment)
-            if (record->event.pressed) {
-                if ((prior_keycode == KC_O) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_R); 
-                    record_code = KC_R;
-                    return_state = false; 
-                }
-                break;   
-            }
-        }
         case KC_V:
         {
             // adaptive MV to MB
@@ -316,14 +270,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     record_code = KC_B;
                     return_state = false; 
                 } 
-                // adaptive CV to CH
+                // adaptive CV to CL
                 else if ((prior_keycode == KC_C) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
-                    tap_code(KC_H); 
-                    record_code = KC_H;
+                    tap_code(KC_L); 
+                    record_code = KC_L;
                     return_state = false; 
                 }
                 break;
             } 
+        }
+        case KC_L:
+        {
+            // adaptive BL to BM
+            if (record->event.pressed) {
+                if ((prior_keycode == KC_B) && (timer_elapsed(prior_keydown) < ADAPTIVE_TERM)) {
+                    tap_code(KC_M); 
+                    record_code = KC_M;
+                    return_state = false; 
+                }
+                break;   
+            }
         }
     }
 

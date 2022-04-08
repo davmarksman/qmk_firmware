@@ -57,7 +57,8 @@ enum layer_names {
 #define K_SAVE C(KC_S)
 #define K_RDESK G(C(KC_RGHT))
 #define K_LDESK G(C(KC_LEFT))
-
+#define K_RSNAP G(KC_RGHT)
+#define K_LSNAP G(KC_LEFT)
 
 
 
@@ -88,6 +89,8 @@ enum custom_keycodes {
     K_DTCOL,
     K_WINR,
     K_WINL,
+    K_AK,
+    K_RESET
    // K_COMSC
 };
 
