@@ -1670,3 +1670,211 @@ Hand Left      - 48.43%
 Hand Right     - 45.27%
 ```
 Practising it seems nicer to play with. 'k' '.' and 'y' hard to learn
+
+
+# Updated frequ 9/5/22
+```
+Bk/NAV     - 55117 - 12.106%
+Bk         - 48252 - 10.598%
+Space/L1   - 47064 - 10.337%
+Space      - 43217 - 9.492%
+E          - 31044 - 6.818%
+T          - 23172 - 5.089%
+A/Ctrl     - 22357 - 4.91%
+A          - 20776 - 4.563%
+O          - 18756 - 4.12%
+I          - 17451 - 3.833%
+R          - 16999 - 3.734%
+N          - 16333 - 3.587%
+S          - 16330 - 3.587%
+Shift      - 15702 - 3.449%
+Enter      - 15572 - 3.42%
+L          - 11577 - 2.543%
+D          - 10258 - 2.253%
+C          - 9250 - 2.032%
+H          - 9242 - 2.03%
+U          - 7922 - 1.74%
+M          - 7786 - 1.71%
+P          - 6868 - 1.508%
+NAV        - 6865 - 1.508%
+F          - 5045 - 1.108%
+W          - 4838 - 1.063%
+G          - 4608 - 1.012%
+Y          - 4224 - 0.928%
+Tab        - 4212 - 0.925%
+.          - 4036 - 0.886%
+B          - 3941 - 0.866%
+L1         - 3837 - 0.843%
+Right      - 3797 - 0.834%
+K          - 3643 - 0.8%
+,          - 3583 - 0.787%
+V          - 3455 - 0.759%
+Del        - 3073 - 0.675%
+Left       - 2997 - 0.658%
+Down       - 2808 - 0.617%
+0          - 2201 - 0.483%
+Delword    - 2194 - 0.482%
+Ctrl       - 1808 - 0.397%
+1          - 1658 - 0.364%
+ING        - 1610 - 0.354%
+2          - 1580 - 0.347%
+Alt/Esc    - 1494 - 0.328%
+-          - 1421 - 0.312%
+X          - 1314 - 0.289%
+J          - 1284 - 0.282%
+=          - 1244 - 0.273%
+/          - 1148 - 0.252%
+;          - 1101 - 0.242%
+(          - 1016 - 0.223%
+Up         - 945 - 0.208%
+'          - 941 - 0.207%
+AHK        - 817 - 0.179%
+)          - 804 - 0.177%
+3          - 778 - 0.171%
+K_CUR_BK   - 727 - 0.16%
+XXX-Comb--O - 631 - 0.139%
+5          - 587 - 0.129%
+{          - 542 - 0.119%
+Q          - 539 - 0.118%
+Z          - 534 - 0.117%
+Media      - 505 - 0.111%
+"          - 478 - 0.105%
+Ctrl-T     - 464 - 0.102%
+4          - 459 - 0.101%
+XXX-Comb-PS - 410 - 0.09%
+XXX-Comb-Y- - 374 - 0.082%
+Ctrl-Left  - 358 - 0.079%
+#          - 356 - 0.078%
+QU         - 353 - 0.078%
+8          - 337 - 0.074%
+6          - 325 - 0.071%
+7          - 310 - 0.068%
+9          - 310 - 0.068%
+Ctrl-D     - 300 - 0.066%
+F2         - 289 - 0.063%
+Ctrl-H     - 287 - 0.063%
+?          - 286 - 0.063%
+Clipboard  - 268 - 0.059%
+XXX-Comb-FB - 253 - 0.056%
+_          - 233 - 0.051%
++          - 223 - 0.049%
+XXX-Comb-QY - 218 - 0.048%
+End        - 217 - 0.048%
+Ctrl-Right - 207 - 0.045%
+[          - 196 - 0.043%
+!          - 181 - 0.04%
+XXX-Comb-U, - 173 - 0.038%
+*          - 172 - 0.038%
+Ctrl-/     - 171 - 0.038%
+XXX-0x012B - 144 - 0.032%
+F10        - 139 - 0.031%
+OA         - 139 - 0.031%
+Blank      - 132 - 0.029%
+>          - 123 - 0.027%
+$          - 111 - 0.024%
+XXX-0x5D67 - 110 - 0.024%
+XXX-0x0039 - 105 - 0.023%
+Global     - 103 - 0.023%
+Ctrl-I     - 103 - 0.023%
+Ctrl-R     - 100 - 0.022%
+Undo Tab   - 99 - 0.022%
+Win        - 97 - 0.021%
+Home       - 97 - 0.021%
+XXX-0x0109 - 97 - 0.021%
+<          - 96 - 0.021%
+]          - 93 - 0.02%
+Snip       - 93 - 0.02%
+Ctrl-B     - 87 - 0.019%
+XXX-0x5D29 - 84 - 0.018%
+£          - 82 - 0.018%
+Ctrl-N     - 76 - 0.017%
+XXX-0x022E - 75 - 0.016%
+XXX-Comb-YQ - 74 - 0.016%
+%          - 72 - 0.016%
+@          - 64 - 0.014%
+XXX-Comb-,U - 64 - 0.014%
+&          - 60 - 0.013%
+XXX-Shft-0x0234 - 56 - 0.012%
+XXX-0x5D65 - 54 - 0.012%
+DAVID      - 53 - 0.012%
+XXX-0x032B - 53 - 0.012%
+```
+
+# 9/5/22
+- Swap 'k' and ','
+- Need to fix 'mp' - more common than 'mb'
+- swap 'h' and 'k' ?
+
+```
+Current usage:
+=============================
+Finger LPinky          - 2.51%
+Finger LRing           - 7.04%
+Finger LMid            - 12.25%
+Finger LIndex          - 13.32%
+Finger RIndex          - 8.68%
+Finger RMid            - 9.42%
+Finger RRing           - 6.46%
+Finger RPinky          - 4.51%
+Finger LThumb          - 17.04%
+Finger RThumb          - 17.34%
+Hand Left      - 52.16%
+Hand Right     - 46.41%
+```
+
+```
+Proposed usage:
+=============================
+Finger LPinky          - 2.51%
+Finger LRing           - 7.04%
+Finger LMid            - 12.26%
+Finger LIndex          - 13.31%
+Finger RIndex          - 8.68%
+Finger RMid            - 9.42%
+Finger RRing           - 6.46%
+Finger RPinky          - 4.51%
+Finger LThumb          - 17.04%
+Finger RThumb          - 17.34%
+Hand Left      - 52.16%
+Hand Right     - 46.41%
+```
+
+But 'k' clashes alot with 'o' and 'e':
+```
+--A-U-K - 305% - 884
+O-E-, - 241% - 699
+
+
+--A-U-, - 190% - 550
+O-E-K - 593% - 1720
+```
+
+### swap 'h' and 'k' ?
+'h' has 3x usage. But I wonder how much of that is adative keys? Est (6937)
+H   - 2400 (non adaptive)
+K   - 3643 
+
+So it and k similar then... but k maybe slighly more use
+
+New method to Look at position 2 key combos to see how much typing 'h' key right now. And how would clash with 'o' or 'e' if move to where ',' currently is
+
+But h leading an o or e outnumbers k doing the same by a significant majority
+```
+{X=3,Y=1} = 434 - h followed by o
+{X=3,Y=2} = 839 - h followed by e
+{X=4,Y=2} = 1024 - h followed by a
+
+
+{X=4,Y=2} = 102- k followed by a
+... 
+{X=2,Y=2} = 272 - k followed by i
+{X=4,Y=6} = 361 - K followed by bkspc
+{X=3,Y=2} = 739 - k followed by e
+{X=7,Y=5} = 790 - k followed by space
+```
+
+# 11/05/22
+- swap 'u' => ',' => 'k'
+
+Already have ou combo which I'm guessing is most of u use case
+
