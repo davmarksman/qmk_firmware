@@ -67,7 +67,7 @@ Matrix for "LAYOUT":
 
                          
 3. csv
-C:\Dev\Tools\KinT
+C:\Dev\Tools\KinT\heatmap\logs\output
 
 
 4. heatmap logging

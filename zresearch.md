@@ -195,9 +195,8 @@ Defo need to move that backspace postion. Looking at the stats its in a horrible
 # difficulty matrix / effort grid
 
 https://workmanlayout.org/#back-to-the-drawing-board  
-https://colemakmods.github.io/mod-dh/compare.html  
 https://deskthority.net/wiki/BEAKL#Effort_Grid  
-https://stevep99.github.io/keyboard-effort-grid/
+https://colemakmods.github.io/mod-dh/model.html
 
 # 12/5/21
 
@@ -773,7 +772,7 @@ Finger 12 - 16.94%
 
 ### Pinky dilema:
 
--   swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. B1jiion;ei6piiiiiiiiieeeei889wkwfffff1jbrings almost on par with g.
+-   swapping 'g' and 'f' might be worth doing. As with ing combo would not use 'g' as frequently and its already lower than 'f'. brings almost on par with g.
 -   also nice to have: f has a homing key that makes it ideal to find home. popping j on i so get that homing too.
 -   Only way to reduce right pink would be to swap 'f' and 'w'. Plus 'for' combo to negate sfb.
 -   From my data fo gram ok as long as have for combo. For was 139/163 fo grams
@@ -1629,6 +1628,7 @@ z  y  ,  u  ;  v  c  m  g  x
 p-fix
 'p' > 'b' > 'g' > '-' > '.' > 'y'
 swap k and - or move ; to that position
+
 Retain ou combo is now 'o-'
 ```
 q  y  o  -  =  b  f  l  p  j
@@ -1805,25 +1805,82 @@ XXX-0x032B - 53 - 0.012%
 - Need to fix 'mp' - more common than 'mb'
 - swap 'h' and 'k' ?
 
+But 'k' clashes alot with 'o' and 'e':
 ```
-Current usage:
+--A-U-K - 305% - 884
+O-E-, - 241% - 699
+
+
+--A-U-, - 190% - 550
+O-E-K - 593% - 1720
+```
+
+### swap 'h' and 'k' ?
+'h' has 3x usage. But I wonder how much of that is adative keys? Est (6937)
+H:7,2      - 4507 - 0.99% (little finger - this will go down due to 'ch')
+H:1,2      - 4437 - 0.975% (adaptive 'd')
+K:5,2      - 3643 - 0.8%
+
+So it and k similar then... but k maybe slighly more use
+
+New method to Look at position 2 key combos to see how much typing 'h' key right now. And how would clash with 'o' or 'e' if move to where ',' currently is
+
+But h leading an o or e outnumbers k doing the same by a significant majority
+```
+{X=3,Y=1} = 434 - h followed by o
+{X=3,Y=2} = 839 - h followed by e
+{X=4,Y=2} = 1024 - h followed by a
+------
+{X=4,Y=2} = 102- k followed by a
+... 
+{X=2,Y=2} = 272 - k followed by i
+{X=4,Y=6} = 361 - K followed by bkspc
+{X=3,Y=2} = 739 - k followed by e
+{X=7,Y=5} = 790 - k followed by space
+```
+
+Looking at 3 grams: 'HA' is worse than 'KA'. Can't swap 'k' and 'h'
+```
+__-H-A          - 398 - 0.087%
+__-H-E          - 298 - 0.065%
+Shift-H-I       - 171 - 0.038%
+__-H-I          - 90 - 0.02%
+Shift-H-A       - 84 - 0.018%
+--- (AK and AKE combos are not included)
+A-K             - 195 - 0.043%
+K-A             - 72 - 0.016%
+```
+
+# 11/05/22
+- swap 'u' => ',' => 'k'
+- Move home row ctrl to mid finger  - Nah as middle finger over worked
+- Swap 'v' and 'b'
+
+##  swap 'u'
+- Already have ou combo which is 25% of 'u' use case
+- Will increase middle finger usage and it's already high at 12 %. Will push to 13%
+- The question is: is k really a problem? Don't think its worth it as still have 'a' and 'k' on same finger
+- Tried: Not as comfortable. Prefer other way
+
+```
+Current usage (from keycodes):
 =============================
-Finger LPinky          - 2.51%
-Finger LRing           - 7.04%
-Finger LMid            - 12.25%
-Finger LIndex          - 13.32%
-Finger RIndex          - 8.68%
-Finger RMid            - 9.42%
-Finger RRing           - 6.46%
-Finger RPinky          - 4.51%
-Finger LThumb          - 17.04%
-Finger RThumb          - 17.34%
-Hand Left      - 52.16%
-Hand Right     - 46.41%
+Finger LPinky          - 2.44%
+Finger LRing           - 7.01%
+Finger LMid            - 12.26%
+Finger LIndex          - 8.35%
+Finger RIndex          - 8.59%
+Finger RMid            - 9.31%
+Finger RRing           - 6.45%
+Finger RPinky          - 4.48%
+Finger LThumb          - 4.93%
+Finger RThumb          - 6.99%
+Hand Left      - 34.99%
+Hand Right     - 35.82%
 ```
 
 ```
-Proposed usage:
+Proposed usage: ()
 =============================
 Finger LPinky          - 2.51%
 Finger LRing           - 7.04%
@@ -1839,42 +1896,174 @@ Hand Left      - 52.16%
 Hand Right     - 46.41%
 ```
 
-But 'k' clashes alot with 'o' and 'e':
+```
+Current usage (key location):
+=============================
+LPinky          - 5059 - 1.113%
+LRing           - 37347 - 8.216%
+LMid            - 58701 - 12.914%
+LIndex          - 44649 - 9.823%
+RIndex          - 48463 - 10.662%
+RMid            - 48552 - 10.681%
+RRing           - 37361 - 8.219%
+RPinky          - 18910 - 4.16%
+LThumb          - 74311 - 16.348%
+RThumb          - 81201 - 17.864%
+Hand Left      - 48.41%
+Hand Right     - 51.59%
+```
+
+## swap 'b' 'v'
+Really like this. Works really well for 'bl' and 'mb'. Also on kinesis bottom row is more comfortable than top row.  
+
+
+# 13/05/22
+- swap 'u' => '.'
+- Looks great but doesn't really add much
+- Revist swap 'k' and 'h' (doesn't work as 'ha' bigram)
+- Swap 'k' and '.'
+
+April
+```
+q  y  o  -  =  b  f  l  p  j
+h  i  e  a  k  w  d  t  s  r
+z  .  ,  u  ;  v  c  m  g  x
+            ␣  n
+```
+
+Proposed (swap u)
+```
+q  y  o  -  =  b  f  l  p  j
+h  i  e  a  .  w  d  t  s  r
+z  u  ,  k  ;  v  c  m  g  x
+            ␣  n
+```
+
+### Swap 'u' => '.'=> 'k'
+Can't decide for this one. The curl for pressing 'u' is not as nice. But k feels so much nicer. Dot '.' is same freq as 'k' and tends to be end so good spot for it
+
+I think this settles it for me: https://colemakmods.github.io/mod-dh/model.html  
+The effort matrix position for Ring lower is so high (2.6) 'u' (without 'ou') is so 2x common than 'k' this will be a problem 
+
+
+Low clash for 'yiu'
+```
+--A-U-K - 305% - 884
+Y-I-. - 69% - 200
+
+--A-K-. - 154% - 448
+Y-I-U - 105% - 305
+```
+
+vs 'oeu'. No change for clashes - they reduce and go up roughly the same amounts. Big differentiator is finger usage with middle going through the roof
 ```
 --A-U-K - 305% - 884
 O-E-, - 241% - 699
 
-
---A-U-, - 190% - 550
-O-E-K - 593% - 1720
+--A-K-, - 138% - 400
+O-E-U - - 760
 ```
 
-### swap 'h' and 'k' ?
-'h' has 3x usage. But I wonder how much of that is adative keys? Est (6937)
-H   - 2400 (non adaptive)
-K   - 3643 
+### swap '.' and 'k'
 
-So it and k similar then... but k maybe slighly more use
-
-New method to Look at position 2 key combos to see how much typing 'h' key right now. And how would clash with 'o' or 'e' if move to where ',' currently is
-
-But h leading an o or e outnumbers k doing the same by a significant majority
 ```
-{X=3,Y=1} = 434 - h followed by o
-{X=3,Y=2} = 839 - h followed by e
-{X=4,Y=2} = 1024 - h followed by a
+>  U-A - 122
+>  U-K - 155
+>  A-K - 195
+>  --A - 8
+>  K-A - 72
+>  A-U - 303
+>  A-- - 8
+>  --U - 7
+>  K-U - 11
+>  --K - 1
+>  K-- - 2
+--A-U-K - 305% - 884
+
+>  Y-. - 72
+>  .-I - 27
+>  I-Y - 15
+>  Y-I - 37
+>  I-. - 48
+>  .-Y - 1
+Y-I-. - 69% - 200
+
+>  U-A - 122
+>  U-. - 21
+>  .-U - 79
+>  --A - 8
+>  A-U - 303
+>  .-A - 35
+>  A-- - 8
+>  A-. - 58
+>  --U - 7
+>  .-- - 1
+--A-U-. - 221% - 642
 
 
-{X=4,Y=2} = 102- k followed by a
-... 
-{X=2,Y=2} = 272 - k followed by i
-{X=4,Y=6} = 361 - K followed by bkspc
-{X=3,Y=2} = 739 - k followed by e
-{X=7,Y=5} = 790 - k followed by space
+>  I-K - 442
+>  K-I - 169
+>  I-Y - 15
+>  Y-I - 37
+>  K-Y - 8
+>  Y-K - 3
+Y-I-K - 232% - 674
 ```
 
-# 11/05/22
-- swap 'u' => ',' => 'k'
+Most of 'ik' is because use it as a shorthand for email (at least a quarter of use probably more)
+Other source:
+199 ["ki",2,759,841,743],
+259 ["ik",1,209,994,695],
 
-Already have ou combo which I'm guessing is most of u use case
 
+192 ["ak",2,952,167,845],
+308 ["ka",478,095,427],
+
+
+# 18/5/22
+Think new '.' position is no great. Effort of 2.9 vs 2.3 for current ',' position
+- Swap '.' with '-' or ','
+
+current layout
+```
+q  y  o  -  =  b  f  l  p  j
+h  i  e  a  .  w  d  t  s  r
+z  u  ,  k  ;  v  c  m  g  x
+            ␣  n
+```
+
+Interesting 'w' position has more presses and feels comfortable. And also RIndex has more use than LIndex and that feels comfortable. Is it because 'a' tap hold for ctrl that makes the RIndex rmove feel bad. Also not sure '-' up move is better than 'k' lateral move
+
+usage
+```
+.          - 4036 - 0.886%
+,          - 3583 - 0.787% - really increased. Think cos of double tap :
+-          - 1421 - 0.312% 
+- w/adaptive u - 3000 - 0.7%          
+```
+
+should visualise heatmap with effort matrix
+
+E & O common with '.'. Because use with p
+
+Will experiment with swaping with ',' and '-' to see how feels
+
+
+# 1/6/2022
+
+Experimented with swaping '/' and ''' as ''' normally a consonant after so would be better on vowel hand.
+But I prefer '/' on vowel hand for commenting 
+
+# 19/6/22
+Seems I get alot of errors with ':'
+Moving : to symbols layer. Decide against Shft + '.' as symbols layer easier. Will see how that goes. Also noticed in prose ':' is normally correct. Just wrong on typing tests
+
+
+# Redirects
+Redirects are keystroke sequences that cause side to side movement. Like STAR in QWERTY, which has two redirects
+
+
+# 12/8/22
+- Code layer with Visual studio useful shortcuts (Trailing)
+- Leader key moved to thumb. Trailing
+- Holding braces add to end of line
