@@ -9,7 +9,6 @@
 * Combos
 */
 enum combos {
-  FIND,
   REPLACE,
   ALL,
   COPY,
@@ -21,13 +20,9 @@ enum combos {
   CBRACK,
   SB_BROK,
   ING,
-  AK,
-  INSU,
   BL,
   OU,
-  AKE,
   CL,
-  GL,
   // // This must be the last item in the enum.
   // This is used to automatically update the combo count.
   COMBO_LENGTH
@@ -38,52 +33,37 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 
 const uint16_t PROGMEM qu_combo[] = {KC_F, KC_L, COMBO_END};
 const uint16_t PROGMEM gx_combo[] = {KC_G, KC_X, COMBO_END};
-const uint16_t PROGMEM sb_combo[] = {KC_P, KC_S, COMBO_END};
+const uint16_t PROGMEM ps_combo[] = {KC_P, KC_S, COMBO_END};
 const uint16_t PROGMEM cm_combo[] = {KC_C, KC_M, COMBO_END};
-const uint16_t PROGMEM gm_combo[] = {KC_G, KC_M, COMBO_END};
 
 const uint16_t PROGMEM ing_combo[] = {KC_I, KC_E, COMBO_END};
-const uint16_t PROGMEM iea_combo[] = {KC_I, KC_E, HOME_CT_A, COMBO_END};
 
-const uint16_t PROGMEM ak_combo[] = {HOME_CT_A, KC_K, COMBO_END};
-const uint16_t PROGMEM ins_combo[] = {KC_W, KC_B, COMBO_END};
 const uint16_t PROGMEM fb_combo[] = {KC_F, KC_B, COMBO_END};
 const uint16_t PROGMEM ou_combo[] = { KC_MINS, KC_O, COMBO_END};
 
-const uint16_t PROGMEM all_combo[] = {KC_Q, KC_Y, COMBO_END};
-const uint16_t PROGMEM find_combo[] = {KC_Y, KC_MINS, COMBO_END};
 
 const uint16_t PROGMEM obrack_combo[] = {KC_Y, KC_I, COMBO_END};
 const uint16_t PROGMEM cbrack_combo[] = {KC_O, KC_E, COMBO_END};
 
-const uint16_t PROGMEM copy_combo[] = {KC_DOT, TD(TD_CMSC), COMBO_END}; 
-const uint16_t PROGMEM paste_combo[] = {KC_U, TD(TD_CMSC), COMBO_END}; 
+const uint16_t PROGMEM all_combo[] = {KC_Q, KC_Y, COMBO_END};
+const uint16_t PROGMEM copy_combo[] = {KC_K, KC_DOT, COMBO_END}; 
+const uint16_t PROGMEM paste_combo[] = {KC_U, KC_DOT, COMBO_END}; 
 
 
 combo_t key_combos[] = {
-  //[REPLACE] = COMBO_ACTION(rep_combo),
-  //[QU] = COMBO_ACTION(qu_combo),
   [QU] = COMBO_ACTION(qu_combo),
   [DM_DAV] = COMBO_ACTION(gx_combo),
   [OBRACK] = COMBO_ACTION(obrack_combo),
   [CBRACK] = COMBO_ACTION(cbrack_combo),
-  [SB_BROK] = COMBO_ACTION(sb_combo),
+  [SB_BROK] = COMBO_ACTION(ps_combo),
   [ING] = COMBO_ACTION(ing_combo),
-  [AK] = COMBO_ACTION(ak_combo),
-  [INSU] = COMBO_ACTION(ins_combo),
-  [ALL] = COMBO_ACTION(all_combo),
   [BL] = COMBO_ACTION(fb_combo),
   [OU] = COMBO_ACTION(ou_combo),
   [CL] = COMBO_ACTION(cm_combo),
-  [GL] = COMBO_ACTION(gm_combo),
 
-  [FIND] = COMBO_ACTION(find_combo),
-
+  [ALL] = COMBO_ACTION(all_combo),
   [COPY] = COMBO_ACTION(copy_combo),
   [PASTE] = COMBO_ACTION(paste_combo),
-
-
-  [AKE] = COMBO_ACTION(iea_combo),
 };
 
 void word_combo(bool pressed, uint8_t mod_state, char* word) {
@@ -121,14 +101,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         SEND_STRING("ing");
       }
       break;
-    case AKE:
-      if (pressed) {
-        SEND_STRING("ake");
-      }
-      break;
-    case INSU:
-      word_combo(pressed,mod_state, "Insur");
-      break;
     case OBRACK:
         if (pressed) {
           tap_code16(KC_LCBR);
@@ -148,11 +120,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case OU:
       word_combo(pressed,mod_state, "Ou");
       break; 
-    case FIND:
-      if (pressed) {
-        tap_code16(C(KC_F));
-      }
-      break;
     case ALL:
       if (pressed) {
         tap_code16(C(KC_A));
@@ -177,20 +144,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case SB_BROK:
       word_combo(pressed,mod_state, "Brok");
       break;
-    case AK:
-      if (pressed) {
-        SEND_STRING("ak");
-      }
-      break;
     case CL:
       if (pressed) {
         SEND_STRING("cl");
       }
       break;
-    case GL:
-      if (pressed) {
-        SEND_STRING("gl");
-      }
-      break;
   }
 }
+
+
