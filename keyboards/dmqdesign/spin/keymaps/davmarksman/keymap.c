@@ -36,6 +36,7 @@ enum custom_keycodes {
 #define LAPP TO(_APPS)
 #define LNAV TO(_NAV)
 #define LRGB TO(_RGB)
+#define LLYR TO(_LYRICS)
 
 // Window layout
 #define K_RDESK G(KC_RGHT)
@@ -43,7 +44,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_APPS] = LAYOUT(/* Base */
-                KA_FIREFX,  KA_CHROME,  KA_NOTE,    LRGB,
+                KA_FIREFX,  KA_CHROME,  KA_NOTE,    LLYR,
                 KA_VSCODE,  KA_VS19,    KA_SQL,     LFN,
                 KA_EXPLR,   K_LDESK,    K_RDESK,    LNAV,
                 K_SAVE,     K_WINMOVE,  KA_SPOT
@@ -95,56 +96,78 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder */
+        // switch (get_highest_layer(layer_state)) {     //break each encoder update into a switch statement for the current layer           
+        //     // change layers
+        //     default:
+        //         if (clockwise) {
+        //             layer_move(_RGB);
+        //         } else {
+        //             layer_move(_LYRICS);
+        //         }
+        //         break;
+        //     // 
+        //     case _RGB:
+        //         if (clockwise) {
+        //             layer_move(_LYRICS);
+        //         } else {
+        //             layer_move(_APPS);
+        //         }
+        //         break;
+        //     case _LYRICS:
+        //         if (clockwise) {
+        //             layer_move(_APPS);
+        //         } else {
+        //             layer_move(_RGB);
+        //         }
+        //         break;
+        // }
         switch (get_highest_layer(layer_state)) {     //break each encoder update into a switch statement for the current layer           
-            // change layers
-            default:
-                if (clockwise) {
-                    layer_move(_RGB);
-                } else {
-                    layer_move(_LYRICS);
-                }
-                break;
-            // 
-            case _RGB:
-                if (clockwise) {
-                    layer_move(_LYRICS);
-                } else {
-                    layer_move(_APPS);
-                }
-                break;
-            case _LYRICS:
-                if (clockwise) {
-                    layer_move(_APPS);
-                } else {
-                    layer_move(_RGB);
-                }
-                break;
-        }
-    } else if (index == 1) { /* Second encoder */
-        switch (get_highest_layer(layer_state)) {
-            case _NAV:
-                if (clockwise) {
-                    tap_code(KC_PGDN);
-                } else {
-                    tap_code(KC_PGUP);
-                }
-                break;
-            case _RGB:
-                if (clockwise) {
-                    rgblight_increase_sat();
-                } else {
-                    rgblight_decrease_sat();
-                }
-                break;
-            default:
-                // Scroll tabs
+            case _APPS:
                 if (clockwise) {
                     tap_code16(C(KC_TAB));
                 } else {
                     tap_code16(S(C(KC_TAB)));
                 }
                 break;
+            default:
+                if (clockwise) {
+                    tap_code16(C(KC_Y));
+                } else {
+                    tap_code16(C(KC_Z));
+                }
+                break;
         }
+
+    } else if (index == 1) { /* Second encoder */
+        if (clockwise) {
+           tap_code16(C(KC_Y));
+        } else {
+            tap_code16(C(KC_Z));
+        }
+        // switch (get_highest_layer(layer_state)) {
+        //     case _NAV:
+        //         if (clockwise) {
+        //             tap_code(KC_PGDN);
+        //         } else {
+        //             tap_code(KC_PGUP);
+        //         }
+        //         break;
+        //     case _RGB:
+        //         if (clockwise) {
+        //             rgblight_increase_sat();
+        //         } else {
+        //             rgblight_decrease_sat();
+        //         }
+        //         break;
+        //     default:
+        //         // Scroll tabs
+        //         if (clockwise) {
+        //             tap_code16(C(KC_TAB));
+        //         } else {
+        //             tap_code16(S(C(KC_TAB)));
+        //         }
+        //         break;
+        // }
     } else if (index == 2) { /* Third encoder */
         switch (get_highest_layer(layer_state)) {
             case _RGB:

@@ -25,4 +25,4 @@
 #define LEFT_HAND
 
 /* Change encoder resolutions */
-#define ENCODER_RESOLUTIONS  { 2, 4, 3 }
+#define ENCODER_RESOLUTIONS  { 3, 3, 4 }
