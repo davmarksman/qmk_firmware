@@ -4,7 +4,7 @@
 
 // Home row mods settings //
 #define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_TERM 220
+#define TAPPING_TERM 200
 #define COMBO_TERM 40
 #define ADAPTIVE_TERM 200
 
@@ -15,3 +15,5 @@
 
 
 #define TAPPING_FORCE_HOLD_PER_KEY
+
+#define LEADER_TIMEOUT 1100

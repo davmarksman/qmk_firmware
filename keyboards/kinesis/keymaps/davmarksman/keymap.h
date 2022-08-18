@@ -12,7 +12,8 @@ enum layer_names {
     _L1,
     _SYNAV,
     _PLAYL,
-    _PLAYR
+    _PLAYR,
+    _CODE
 };
 
 // layer keys
@@ -21,6 +22,7 @@ enum layer_names {
 #define LL1 OSL(_L1)
 #define LNAV MO(_SYNAV)
 #define LPLAY TO(_PLAYL)
+#define LCODE OSL(_CODE)
 
 #define L1_SPC LT(_L1, KC_SPC)
 #define LSYN_N LT(_SYNAV,KC_N) 
@@ -93,8 +95,12 @@ enum custom_keycodes {
     K_WINR,
     K_WINL,
     K_AK,
-    K_RESET
+    K_RESET,
+    K_TEST_R,
+    K_TEST_D,
+    K_TEST_L
    // K_COMSC
+   
 };
 
 /*
@@ -104,7 +110,11 @@ enum {
     TD_MINS,
     TD_SCLN,
     TD_CMSC,
-    TD_DOT
+    TD_DOT,
+    TD_FIND,
+    TD_LPRN,
+    TD_RPRN,
+    TD_LCBR
 };
 
 

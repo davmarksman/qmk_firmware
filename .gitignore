@@ -88,3 +88,4 @@ __pycache__
 user_song_list.h
 .vscode/settings.json
 typing practice.txt
+keyboards/kinesis/keymaps/davmarksman/leader.c

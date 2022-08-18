@@ -19,8 +19,14 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 TAP_DANCE_ENABLE = yes      # Enable tap dance
 COMBO_ENABLE = yes
 
+LEADER_ENABLE = yes
+
 # Load the necessary external C files if and only if
 # the associated config option has been enabled
 ifeq ($(strip $(COMBO_ENABLE)), yes)
 	SRC += combos.c
+endif
+
+ifeq ($(strip $(LEADER_ENABLE)), yes)
+	SRC += leader.c
 endif
