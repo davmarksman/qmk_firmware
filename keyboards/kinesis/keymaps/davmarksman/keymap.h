@@ -13,7 +13,8 @@ enum layer_names {
     _SYNAV,
     _PLAYL,
     _PLAYR,
-    _CODE
+    _CODE,
+    _WASD
 };
 
 // layer keys
@@ -23,6 +24,8 @@ enum layer_names {
 #define LNAV MO(_SYNAV)
 #define LPLAY TO(_PLAYL)
 #define LCODE OSL(_CODE)
+#define LSYNR TO(_WASD)
+#define MSYNR MO(_WASD)
 
 #define L1_SPC LT(_L1, KC_SPC)
 #define LSYN_N LT(_SYNAV,KC_N) 
